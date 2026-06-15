@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import LowerHero from "@/components/landing-page/LowerHero";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -15,8 +16,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "PRO RCS",
-  description:
-    "From startup to multi-location growth, we build the structure, processes, and partnerships that keep your operations efficient, compliant, and profitable.",
+  description: "From startup to multi-location growth, we build the structure, processes, and partnerships that keep your operations efficient, compliant, and profitable.",
 };
 
 export default function RootLayout({
@@ -25,13 +25,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${dmSans.variable} ${inter.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${dmSans.variable} ${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <Header />
         {children}
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
+        <LowerHero />
       </body>
     </html>
   );

@@ -12,6 +12,7 @@
   --accent: #eb692c;
   --font-sans: var(--font-dm-sans);
   --font-mono: var(--font-inter);
+  --width: 1560px;
 }
 
 @theme inline {
@@ -30,6 +31,14 @@
   --shadow-btn-primary: inset 0 5px 4px 0 #ffffff40, inset 0 -4px 13px 0 #c04a12;
 
   --shadow-btn-secondary: inset 0 5px 4px 0 #ffffff14, inset 0 -4px 13px 0 #ffffff1f;
+
+  --shadow-glass:
+    0 4.8px 12px 0 #0000005c, 0 20.4px 20.4px 0 #00000024, 0 46.8px 28.8px 0 #00000000, 0 84.01px 33.6px 0 #00000000, 0 130.81px 37.2px 0 #00000003,
+    inset 0 8.4px 16.8px 0 #ffffff08, inset 0 7.2px 4.8px 0 #ffffff05, inset 0 1.2px 1.2px 0 #ffffff1a, inset 0 1.09px 1.09px 0 #ffffff40;
+}
+
+@utility container {
+  @apply mx-auto max-w-(--width) w-full px-5;
 }
 
 body {
