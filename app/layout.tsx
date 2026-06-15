@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import LowerHero from "@/components/landing-page/LowerHero";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -29,36 +28,6 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <Header />
         {children}
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
-        <LowerHero />
       </body>
     </html>
   );

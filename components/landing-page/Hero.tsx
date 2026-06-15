@@ -1,4 +1,5 @@
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
+import LogoMarquee from "@/components/landing-page/LogoMarquee";
 import Button from "@/components/ui/Button";
 import GradientText from "@/components/ui/GradientText";
 import Heading from "@/components/ui/Heading";
@@ -35,6 +36,8 @@ const Hero = () => {
           </Button>
         </div>
       </div>
+
+      <LogoMarquee />
     </section>
   );
 };
