@@ -1,22 +1,25 @@
 import GradientBg from "@/components/ui/GradientBg";
+import Heading from "@/components/ui/Heading";
 import Image from "next/image";
 import type { StrategyCardData } from "./strategy-section-data";
 
-const StrategyCard = ({ titlePrefix, titleHighlight, subtitle, description, listItems, image, imageClassName }: StrategyCardData) => {
+const StrategyCard = ({ title, subtitle, description, listItems, image, imageClassName }: StrategyCardData) => {
   return (
     <article className="relative overflow-hidden rounded-3xl px-6 py-8 shadow-md sm:px-8 sm:py-10">
       <span className="absolute inset-0 bottom-0 left-0 z-0 rotate-180 opacity-50">
         <GradientBg />
       </span>
 
-      <div className="relative z-10 ">
-        <h3 className="font-sans text-3xl font-bold leading-[121%] tracking-[-0.03em] text-text sm:text-4xl lg:text-[54px]">
-          {titlePrefix} <span className="text-primary">{titleHighlight}</span>
-        </h3>
+      <div className="relative z-10">
+        <Heading as="h3" multicolor={title} size="display-sm" uppercase={false} />
 
-        <p className="mt-3 font-sans text-xl font-semibold italic leading-[142%] tracking-[-0.02em] text-text sm:text-2xl lg:mt-4 lg:text-[26px]">{subtitle}</p>
+        <p className="mt-3 font-sans text-xl font-semibold italic leading-[142%] tracking-[-0.02em] text-text sm:text-2xl lg:mt-4 lg:text-[26px]">
+          {subtitle}
+        </p>
 
-        <p className="mt-4 font-sans text-base font-medium leading-[142%] text-text-secondary lg:mt-5 lg:text-[18px]">{description}</p>
+        <p className="mt-4 font-sans text-base font-medium leading-[142%] text-text-secondary lg:mt-5 lg:text-[18px]">
+          {description}
+        </p>
 
         {listItems && listItems.length > 0 && (
           <ul className="mt-4 space-y-1 font-sans text-base font-medium leading-[142%] text-text-secondary lg:mt-5 lg:text-[18px]">
