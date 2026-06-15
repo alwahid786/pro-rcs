@@ -26,10 +26,61 @@
   --color-text: var(--text);
   --color-text-secondary: var(--text-secondary);
   --color-accent: var(--accent);
+
+  --shadow-btn-primary: inset 0 5px 4px 0 #ffffff40, inset 0 -4px 13px 0 #c04a12;
+
+  --shadow-btn-secondary: inset 0 5px 4px 0 #ffffff14, inset 0 -4px 13px 0 #ffffff1f;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.custom-btn {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 0px;
+    height: 100%;
+    background: var(--secondary);
+    opacity: 1;
+    transition: width 0.3s ease;
+    z-index: 0;
+    border-radius: 1000px;
+  }
+  span {
+    z-index: 2;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  &:hover {
+    &::before {
+      z-index: 2;
+      transform: scale(1);
+      width: 100%;
+    }
+  }
+}
+
+.custom-btn.btn-secondary {
+  &::before {
+    background: var(--primary);
+  }
+}
+
+.custom-btn.btn-outline {
+  &:hover {
+    span {
+      color: white;
+    }
+  }
+  &::before {
+    background: var(--primary);
+  }
 }
