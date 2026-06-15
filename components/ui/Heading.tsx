@@ -17,7 +17,7 @@ type HeadingProps = Omit<HTMLAttributes<HTMLElement>, "as"> & {
   align?: "left" | "center" | "right";
   tone?: "default" | "muted";
   multicolor?: MulticolorHeading;
-  size?: "default" | "display" | "display-sm";
+  size?: "default" | "display" | "display-sm" | "step-number" | "card-title";
   uppercase?: boolean;
   weight?: HeadingWeight;
 };
@@ -35,6 +35,8 @@ const sizeStyles: Record<Exclude<HeadingTag, "hr">, string> = {
 const customSizeStyles = {
   display: "text-4xl leading-[121%] tracking-[-0.03em] sm:text-5xl lg:text-[62px]",
   "display-sm": "text-3xl leading-[121%] tracking-[-0.03em] sm:text-4xl lg:text-[54px]",
+  "step-number": "text-5xl leading-none tracking-normal text-primary/35 sm:text-6xl lg:text-[70.72px]",
+  "card-title": "text-2xl leading-[121%] tracking-[-0.03em] sm:text-[26px] lg:text-[30.38px]",
 };
 
 const alignStyles = {
@@ -84,7 +86,9 @@ const Heading = ({
 
   const Component = as;
   const resolvedSizeStyle = size === "default" ? sizeStyles[as] : customSizeStyles[size];
-  const resolvedWeight = weight ?? defaultWeightByTag[as];
+  const resolvedWeight =
+    weight ??
+    (size === "step-number" ? "medium" : size === "card-title" ? "bold" : defaultWeightByTag[as]);
 
   return (
     <Component
