@@ -4,6 +4,7 @@ import HowItWorksSection from "@/components/landing-page/HowItWorksSection";
 import ProcessSection from "@/components/landing-page/ProcessSection";
 import ResultsSection from "@/components/landing-page/ResultsSection";
 import StrategySection from "@/components/landing-page/StrategySection";
+import TestimonialsSection from "@/components/landing-page/TestimonialsSection";
 import UpperFooterSection from "@/components/landing-page/UpperFooterSection";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <AboutSection />
       <HowItWorksSection />
       <ProcessSection />
+      <TestimonialsSection />
       <UpperFooterSection />
     </main>
   );
