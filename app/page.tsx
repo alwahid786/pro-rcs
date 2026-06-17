@@ -8,6 +8,7 @@ import ResultsSection from "@/components/landing-page/ResultsSection";
 import StrategySection from "@/components/landing-page/StrategySection";
 import TestimonialsSection from "@/components/landing-page/TestimonialsSection";
 import UpperFooterSection from "@/components/landing-page/UpperFooterSection";
+import WhatSetsApartSection from "@/components/landing-page/WhatSetsApartSection";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <HowItWorksSection />
       <ProcessSection />
       <RealProblemsSection />
+      <WhatSetsApartSection />
       <TestimonialsSection />
       <FaqSection />
       <UpperFooterSection />
