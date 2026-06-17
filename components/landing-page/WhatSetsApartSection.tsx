@@ -7,7 +7,12 @@ import { motion } from "motion/react";
 import { type ReactNode } from "react";
 import { whatSetsApartContent, type ApartCard, type ApartIconKey } from "./what-sets-apart-data";
 
-const cardOffsets = ["translate-y-8 lg:translate-y-12", "translate-y-0", "translate-y-6 lg:translate-y-10", "translate-y-0"];
+const cardOffsets = [
+  "translate-y-0 sm:translate-y-5 lg:translate-y-12",
+  "translate-y-0 sm:-translate-y-5 lg:translate-y-0",
+  "translate-y-0 sm:translate-y-5 lg:translate-y-10",
+  "translate-y-0 sm:-translate-y-5 lg:translate-y-0",
+];
 
 const ExpertiseIcon = () => (
   <motion.svg viewBox="0 0 176 88" fill="none" aria-hidden preserveAspectRatio="none" className="h-23 w-full">
@@ -100,14 +105,14 @@ const iconMap: Record<ApartIconKey, () => ReactNode> = {
 const GlassCard = ({ card, className }: { card: ApartCard; className?: string }) => {
   const Icon = iconMap[card.iconKey];
   return (
-    <article className={cn("relative", className)}>
-      <div className="absolute left-1/2 top-0 z-[-1] -translate-x-1/2 translate-y-[-62%]">
+    <article className={cn("relative isolate", className)}>
+      <div className="absolute left-1/2 top-0 z-0 -translate-x-1/2 translate-y-[-56%]">
         <div className="flex size-16 items-center justify-center rounded-full bg-[linear-gradient(180deg,#da671f_0%,#bd4d10_100%)] text-4xl font-medium text-white shadow-[0_16px_30px_rgba(218,103,31,0.5)]">
           {card.number}
         </div>
       </div>
 
-      <div className="relative z-20 bg-white/10 shadow-md border border-white/70 backdrop-blur-[2px] py-10 px-5 rounded-3xl">
+      <div className="relative z-20 bg-white/10 shadow-md border border-white/70 backdrop-blur-[2px] py-10 px-6 rounded-3xl">
         <Heading as="h3" multicolor={card.title} uppercase={false} className="mt-6 text-center text-[2.2rem] leading-[1.1] tracking-[-0.02em]" />
 
         <div className="mt-5 min-h-23 w-full">{Icon()}</div>
@@ -125,7 +130,7 @@ const WhatSetsApartSection = () => {
       <div className="container relative z-10">
         <HeadingBlock badge={badge} heading={heading} isCenter weight="regular" />
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-14 lg:grid-cols-4 lg:gap-6">
           {cards.map((card, index) => (
             <GlassCard key={card.number} card={card} className={cardOffsets[index]} />
           ))}
