@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
 
 const ServiceInnerCard = ({
@@ -11,8 +11,8 @@ const ServiceInnerCard = ({
   title: string;
   description: string;
   listItems: string[];
-  image: string;
-  imageMobile: string;
+  image: StaticImageData;
+  imageMobile: StaticImageData;
 }) => {
   return (
     <section className="container mx-auto bg-pink-300">

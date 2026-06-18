@@ -68,7 +68,7 @@
 }
 
 @utility glass {
-  @apply bg-white/10 backdrop-blur-[3px] border border-white/70;
+  @apply bg-white/15 backdrop-blur-[3px] border border-white/70;
 }
 
 body {
