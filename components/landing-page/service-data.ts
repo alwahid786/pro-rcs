@@ -11,6 +11,7 @@ import service5Mob from "@/assets/imgs/services/service-5-mb.png";
 import type { StaticImageData } from "next/image";
 
 export type ServiceData = {
+  slug: string;
   category: string;
   headline: string;
   offeringsHeading: string;
@@ -22,6 +23,7 @@ export type ServiceData = {
 
 export const serviceData: ServiceData[] = [
   {
+    slug: "consulting-strategy",
     category: "Consulting & Strategy",
     headline: "We help restaurant businesses transform into scalable franchise systems and support their growth through structured sales strategies.",
     offeringsHeading: "What we offer:",
@@ -39,6 +41,7 @@ export const serviceData: ServiceData[] = [
     imageMobile: service1Mob,
   },
   {
+    slug: "supply-chain",
     category: "Supply Chain",
     headline: "We optimize your supply chain to reduce costs, improve reliability, and strengthen vendor relationships.",
     offeringsHeading: "",
@@ -55,6 +58,7 @@ export const serviceData: ServiceData[] = [
     imageMobile: service2Mob,
   },
   {
+    slug: "operations-systems",
     category: "Operations & Systems",
     headline: "We support your physical and operational growth end-to-end.",
     offeringsHeading: "",
@@ -72,6 +76,7 @@ export const serviceData: ServiceData[] = [
     imageMobile: service3Mob,
   },
   {
+    slug: "brand-growth",
     category: "Brand & Growth",
     headline: "We help you build a menu that is scalable and profitable.",
     offeringsHeading: "",
@@ -81,6 +86,7 @@ export const serviceData: ServiceData[] = [
     imageMobile: service4Mob,
   },
   {
+    slug: "operations-expansion",
     category: "Operations & Systems (Expansion)",
     headline: "We help you make the right expansion decisions.",
     offeringsHeading: "",

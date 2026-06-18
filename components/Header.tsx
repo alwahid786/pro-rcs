@@ -35,8 +35,7 @@ const Header = () => {
         <div className="container pointer-events-auto">
           <section
             className={cn(
-              "animate-header-enter flex items-center justify-between gap-4 rounded-full border border-white/60 px-4 py-2.5 shadow-glass backdrop-blur-sm transition-all duration-500 sm:px-6 sm:py-3 lg:px-8",
-              scrolled ? "bg-white/80" : "bg-white/65",
+              "animate-header-enter flex items-center justify-between gap-4 rounded-full border border-white/60 px-4 py-2.5 shadow-glass transition-all duration-500 sm:px-6 sm:py-3 lg:px-8 glass backdrop-blur-sm",
             )}
           >
             <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">

@@ -1,4 +1,5 @@
 import type { ServiceData } from "@/components/landing-page/service-data";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const ServiceInnerCard = ({
@@ -9,9 +10,10 @@ const ServiceInnerCard = ({
   footerNote,
   image,
   imageMobile,
-}: ServiceData) => {
+  className,
+}: ServiceData & { className?: string }) => {
   return (
-    <article className="relative max-w-225 overflow-hidden">
+    <article className={cn("relative max-w-225 overflow-hidden", className)}>
       <div
         className="absolute inset-0 hidden bg-cover bg-center bg-no-repeat max-[900px]:block"
         style={{
