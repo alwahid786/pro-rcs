@@ -81,7 +81,7 @@ const ServiceSection = () => {
     <section className="relative container mx-auto flex flex-col items-center overflow-hidden bg-white px-5 py-16 sm:py-20 lg:py-24">
       <HeadingBlock badge="Our Services" heading={{ prefix: "Our", highlight: "Services", suffix: "" }} />
 
-      <div className="mt-10 flex w-full flex-col gap-8 min-[1100px]:hidden">
+      <div className="mt-10 flex w-full flex-col gap-10 min-[1100px]:hidden">
         {serviceData.map((service) => (
           <ServiceInnerCard key={service.slug} {...service} />
         ))}
@@ -126,7 +126,7 @@ const ServiceSection = () => {
 
         <div
           ref={scrollRef}
-          className="relative h-(--service-slide-height) snap-y snap-mandatory overflow-y-auto scroll-smooth scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="relative flex h-(--service-slide-height) flex-col gap-10 snap-y snap-mandatory overflow-y-auto scroll-smooth scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           style={{ "--service-slide-height": SLIDE_HEIGHT } as CSSProperties}
         >
           {serviceData.map((service, index) => {
@@ -140,7 +140,7 @@ const ServiceSection = () => {
                   slideRefs.current[index] = node;
                 }}
                 data-index={index}
-                className="flex h-(--service-slide-height) snap-start snap-always items-center"
+                className="flex h-(--service-slide-height) shrink-0 snap-start snap-always items-center"
                 style={{ "--service-slide-height": SLIDE_HEIGHT } as CSSProperties}
               >
                 <motion.div
