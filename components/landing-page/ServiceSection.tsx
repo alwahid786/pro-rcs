@@ -86,8 +86,7 @@ const ServiceSection = () => {
           <ServiceInnerCard key={service.slug} {...service} />
         ))}
       </div>
-
-      <div className="mt-10 hidden w-full grid-cols-[minmax(0,340px)_1fr] items-start gap-12 min-[1100px]:grid xl:gap-16">
+      <div className="mt-10 hidden w-full grid-cols-[minmax(0,340px)_1fr] items-start gap-12 min-[1100px]:grid xl:gap-16 bg-linear-to-br from-cyan-100 via-white to-orange-100 rounded-2xl px-10 py-12 shadow-lg">
         <nav aria-label="Service categories" className="sticky top-28 self-center">
           <ul className="flex flex-col gap-4">
             {serviceData.map((service, index) => {
@@ -102,7 +101,7 @@ const ServiceSection = () => {
                       transition={{ type: "spring", stiffness: 420, damping: 32 }}
                       className={cn(
                         "glass inline-flex min-w-14 items-center justify-center rounded-full px-4 py-3 text-2xl font-medium transition-colors duration-300",
-                        isActive ? "bg-primary text-white" : "text-primary",
+                        isActive ? "bg-primary text-white" : "text-primary border border-gray-200/50 shadow-sm",
                       )}
                     >
                       {label}
@@ -113,7 +112,7 @@ const ServiceSection = () => {
                       transition={{ type: "spring", stiffness: 420, damping: 32 }}
                       className={cn(
                         "glass rounded-full px-4 py-3 text-base font-medium whitespace-nowrap transition-colors duration-300 sm:text-lg",
-                        isActive ? "bg-secondary text-white" : "text-text group-hover:text-primary",
+                        isActive ? "bg-secondary text-white" : "text-text group-hover:text-primary border border-gray-200/50 shadow-sm",
                       )}
                     >
                       {service.category}

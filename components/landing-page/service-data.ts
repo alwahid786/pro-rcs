@@ -87,7 +87,7 @@ export const serviceData: ServiceData[] = [
   },
   {
     slug: "operations-expansion",
-    category: "Operations & Systems (Expansion)",
+    category: "Operations & Systems",
     headline: "We help you make the right expansion decisions.",
     offeringsHeading: "",
     points: ["SEO analysis through national partners", "Market feasibility studies", "Site selection and location strategy"],
