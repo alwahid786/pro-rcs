@@ -9,10 +9,7 @@ import StrategySection from "@/components/landing-page/StrategySection";
 import TestimonialsSection from "@/components/landing-page/TestimonialsSection";
 import UpperFooterSection from "@/components/landing-page/UpperFooterSection";
 import WhatSetsApartSection from "@/components/landing-page/WhatSetsApartSection";
-
-import service1 from "@/assets/imgs/services/service-1.png";
-import service1Mob from "@/assets/imgs/services/service-1-mb.png";
-import ServiceInnerCard from "@/components/landing-page/ServiceInnerCard";
+import ServiceSection from "@/components/landing-page/ServiceSection";
 
 export default function Home() {
   return (
@@ -23,13 +20,7 @@ export default function Home() {
       <AboutSection />
       <HowItWorksSection />
 
-      <ServiceInnerCard
-        title="Consulting & Strategy"
-        description="We help restaurant businesses transform into scalable franchise systems and support their growth through structured sales strategies."
-        listItems={["Franchise Development", "Sales Strategy", "Franchise Support", "Franchise Training", "Franchise Marketing", "Franchise Operations", "Franchise Finance"]}
-        image={service1}
-        imageMobile={service1Mob}
-      />
+      <ServiceSection />
 
       <ProcessSection />
       <RealProblemsSection />

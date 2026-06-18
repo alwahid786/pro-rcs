@@ -1,68 +1,64 @@
-import Image, { StaticImageData } from "next/image";
-import React from "react";
+import type { ServiceData } from "@/components/landing-page/service-data";
+import Image from "next/image";
 
 const ServiceInnerCard = ({
-  title,
-  description,
-  listItems,
+  category,
+  headline,
+  offeringsHeading,
+  points,
+  footerNote,
   image,
   imageMobile,
-}: {
-  title: string;
-  description: string;
-  listItems: string[];
-  image: StaticImageData;
-  imageMobile: StaticImageData;
-}) => {
+}: ServiceData) => {
   return (
-    <section className="container mx-auto bg-pink-300">
-      <article className="relative max-w-225 overflow-hidden">
-        <div
-          className="hidden max-[900px]:block absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${imageMobile})`,
-          }}
-        />
+    <article className="relative max-w-225 overflow-hidden">
+      <div
+        className="absolute inset-0 hidden bg-cover bg-center bg-no-repeat max-[900px]:block"
+        style={{
+          backgroundImage: `url(${imageMobile.src})`,
+        }}
+      />
 
-        <div
-          className="
-        absolute top-3.75 left-0 z-10
-        px-6 py-4
+      <div
+        className="
+        glass absolute top-3.75 left-0 z-10
+        rounded-full px-6 py-4
         text-xl font-medium text-black
-        glass rounded-full
         max-[900px]:static
-        max-[900px]:inline-block
+        max-[900px]:mt-5
         max-[900px]:mb-6
         max-[900px]:ml-5
-        max-[900px]:mt-5
+        max-[900px]:inline-block
         max-[900px]:text-white
       "
-        >
-          {title}
-        </div>
+      >
+        {category}
+      </div>
 
-        <Image src={image} alt="service" className="w-full h-full object-contain max-[900px]:hidden" priority />
+      <Image src={image} alt={category} className="h-full w-full object-contain max-[900px]:hidden" priority />
 
-        <div
-          className="
-        absolute bottom-0 right-0 z-10
+      <div
+        className="
+        absolute right-0 bottom-0 z-10
         flex flex-col gap-4
         p-4 text-base text-white
-
         max-[900px]:static
         max-[900px]:p-6
       "
-        >
-          <p>{description}</p>
+      >
+        <p>{headline}</p>
 
-          <ul className="flex flex-col gap-2 pl-4 list-disc list-inside">
-            {listItems.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      </article>
-    </section>
+        {offeringsHeading && <p className="font-medium">{offeringsHeading}</p>}
+
+        <ul className="flex list-inside list-disc flex-col gap-2 pl-4">
+          {points.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+
+        {footerNote && <p>{footerNote}</p>}
+      </div>
+    </article>
   );
 };
 
