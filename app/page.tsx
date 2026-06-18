@@ -1,4 +1,5 @@
 import AboutSection from "@/components/landing-page/AboutSection";
+import ContactSection from "@/components/landing-page/ContactSection";
 import FaqSection from "@/components/landing-page/FaqSection";
 import Hero from "@/components/landing-page/Hero";
 import HowItWorksSection from "@/components/landing-page/HowItWorksSection";
@@ -27,6 +28,7 @@ export default function Home() {
       <WhatSetsApartSection />
       <TestimonialsSection />
       <FaqSection />
+      <ContactSection />
       <UpperFooterSection />
     </main>
   );
