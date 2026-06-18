@@ -5,7 +5,14 @@ import FaqsStar from "@/assets/icons/FaqsStar";
 import { faqSectionContent } from "@/components/landing-page/faq-data";
 import Button from "@/components/ui/Button";
 import HeadingBlock from "@/components/ui/HeadingBlock";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+
+const accordionTransition = {
+  duration: 0.4,
+  ease: [0.22, 1, 0.36, 1] as const,
+};
 
 const FaqSection = () => {
   const { badge, heading, items, cta } = faqSectionContent;
@@ -17,37 +24,91 @@ const FaqSection = () => {
         <HeadingBlock badge={badge} heading={heading} weight="regular" />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_320px] lg:gap-8">
-          <div className="rounded-3xl border border-[#e8e3dd] bg-white p-4 shadow-[0_16px_50px_rgba(0,0,0,0.05)] sm:p-5">
+          <div>
             <div className="space-y-3">
               {items.map((item, index) => {
                 const isOpen = openIndex === index;
 
                 return (
-                  <div key={item.question} className="rounded-2xl border border-[#ece8e2] bg-white">
+                  <motion.div
+                    key={item.question}
+                    layout
+                    transition={{ layout: accordionTransition }}
+                    className={cn("overflow-hidden rounded-2xl border shadow-lg glass transition-colors duration-300", isOpen ? "border-primary/40" : "border-primary/20")}
+                  >
                     <button
                       type="button"
-                      className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left sm:px-5"
+                      className="flex w-full items-center justify-between gap-4 p-6 text-left"
                       onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                      aria-expanded={isOpen}
                     >
-                      <span className={`font-sans text-base font-semibold sm:text-lg ${isOpen ? "text-primary" : "text-text"}`}>{item.question}</span>
-                      <span
-                        className={`inline-flex size-6 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${isOpen ? "bg-primary text-white" : "text-primary"}`}
+                      <span className={cn("font-sans text-base font-semibold transition-colors duration-300 sm:text-lg", isOpen ? "text-primary" : "text-text/70")}>
+                        {item.question}
+                      </span>
+
+                      <motion.span
+                        animate={{
+                          backgroundColor: isOpen ? "var(--primary)" : "transparent",
+                          color: isOpen ? "#ffffff" : "var(--primary)",
+                          scale: isOpen ? 1.05 : 1,
+                        }}
+                        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                        className="inline-flex size-6 shrink-0 items-center justify-center rounded-lg text-xl shadow-xl"
                         aria-hidden
                       >
-                        {isOpen ? "−" : "+"}
-                      </span>
+                        <AnimatePresence mode="wait" initial={false}>
+                          <motion.span
+                            key={isOpen ? "minus" : "plus"}
+                            initial={{ opacity: 0, rotate: -90, scale: 0.6 }}
+                            animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                            exit={{ opacity: 0, rotate: 90, scale: 0.6 }}
+                            transition={{ duration: 0.2 }}
+                            className="leading-none"
+                          >
+                            {isOpen ? "−" : "+"}
+                          </motion.span>
+                        </AnimatePresence>
+                      </motion.span>
                     </button>
 
-                    {isOpen && <p className="px-4 pb-5 font-sans text-sm leading-relaxed text-text-secondary sm:px-5 sm:text-base">{item.answer}</p>}
-                  </div>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={accordionTransition}
+                          className="overflow-hidden"
+                        >
+                          <motion.hr
+                            initial={{ scaleX: 0, opacity: 0 }}
+                            animate={{ scaleX: 1, opacity: 1 }}
+                            exit={{ scaleX: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                            className="mx-auto max-w-[95%] origin-center border-primary/40"
+                          />
+
+                          <motion.p
+                            initial={{ y: -8, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -8, opacity: 0 }}
+                            transition={{ ...accordionTransition, delay: 0.05 }}
+                            className="px-4 py-5 font-sans text-sm leading-relaxed text-text-secondary sm:px-5 sm:text-base"
+                          >
+                            {item.answer}
+                          </motion.p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
                 );
               })}
             </div>
           </div>
 
           <aside className="rounded-3xl border border-[#e8e3dd] bg-white p-4 shadow-[0_16px_50px_rgba(0,0,0,0.05)] sm:p-5">
-            <div className="relative rounded-2xl bg-[#fff4ee] p-4 text-center">
-              <div className="absolute -top-3 right-3 rounded-full border border-[#eaded4] bg-[#fff4ee] px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.08em] text-[#b79f8d]">
+            <div className="relative rounded-2xl bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 p-4 text-center">
+              <div className="absolute -top-3 right-3 rounded-full border bg-white/10 shadow-lg backdrop-blur-[2px] border-primary/20 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.08em] text-primary">
                 {cta.helperLabel}
               </div>
               <div className="mx-auto w-fit">
@@ -79,4 +140,3 @@ const FaqSection = () => {
 };
 
 export default FaqSection;
-

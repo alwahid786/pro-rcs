@@ -22,7 +22,7 @@ const Stars = () => (
 
 const TestimonialCard = ({ quote, brand, logo }: Testimonial) => {
   return (
-    <article className="flex min-h-[25rem] w-[17.5rem] shrink-0 flex-col rounded-3xl bg-white px-6 py-8 shadow-[0_12px_40px_rgba(0,0,0,0.08)] sm:w-80 sm:px-7 sm:py-9">
+    <article className="flex min-h-[25rem] w-[17.5rem] shrink-0 flex-col rounded-3xl bg-white px-6 py-8 shadow-[0_12px_40px_rgba(0,0,0,0.08)] border border-primary sm:w-80 sm:px-7 sm:py-9">
       <QuoteIcon />
 
       <p className="mt-5 flex-1 font-sans text-sm leading-relaxed text-text-secondary sm:text-base sm:leading-7">{quote}</p>
