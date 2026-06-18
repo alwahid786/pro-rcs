@@ -7,13 +7,25 @@ import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 
+const DESKTOP_BREAKPOINT = "(min-width: 1100px)";
 const SLIDE_HEIGHT = "550px";
 
 const ServiceSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const isClickScrolling = useRef(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(DESKTOP_BREAKPOINT);
+    const updateViewport = () => setIsDesktop(media.matches);
+
+    updateViewport();
+    media.addEventListener("change", updateViewport);
+
+    return () => media.removeEventListener("change", updateViewport);
+  }, []);
 
   const scrollToSlide = useCallback((index: number) => {
     const slide = slideRefs.current[index];
@@ -34,6 +46,8 @@ const ServiceSection = () => {
   }, []);
 
   useEffect(() => {
+    if (!isDesktop) return;
+
     const container = scrollRef.current;
     if (!container) return;
 
@@ -61,21 +75,27 @@ const ServiceSection = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isDesktop]);
 
   return (
     <section className="relative container mx-auto flex flex-col items-center overflow-hidden bg-white px-5 py-16 sm:py-20 lg:py-24">
       <HeadingBlock badge="Our Services" heading={{ prefix: "Our", highlight: "Services", suffix: "" }} />
 
-      <div className="mt-10 grid w-full gap-8 lg:grid-cols-[minmax(0,340px)_1fr] lg:items-start lg:gap-12 xl:gap-16">
-        <nav aria-label="Service categories" className="lg:sticky lg:top-28 lg:self-center">
-          <ul className="flex gap-3 overflow-x-auto pb-2 lg:flex-col lg:gap-4 lg:overflow-visible lg:pb-0">
+      <div className="mt-10 flex w-full flex-col gap-8 min-[1100px]:hidden">
+        {serviceData.map((service) => (
+          <ServiceInnerCard key={service.slug} {...service} />
+        ))}
+      </div>
+
+      <div className="mt-10 hidden w-full grid-cols-[minmax(0,340px)_1fr] items-start gap-12 min-[1100px]:grid xl:gap-16">
+        <nav aria-label="Service categories" className="sticky top-28 self-center">
+          <ul className="flex flex-col gap-4">
             {serviceData.map((service, index) => {
               const isActive = activeIndex === index;
               const label = String(index + 1).padStart(2, "0");
 
               return (
-                <li key={service.slug} className="shrink-0">
+                <li key={service.slug}>
                   <button type="button" onClick={() => scrollToSlide(index)} aria-current={isActive ? "true" : undefined} className="group flex items-center gap-2 text-left">
                     <motion.span
                       layout
