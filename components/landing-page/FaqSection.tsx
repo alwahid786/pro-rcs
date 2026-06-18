@@ -106,7 +106,7 @@ const FaqSection = () => {
             </div>
           </div>
 
-          <aside className="rounded-3xl border border-[#e8e3dd] bg-white p-4 shadow-[0_16px_50px_rgba(0,0,0,0.05)] sm:p-5">
+          <aside className="rounded-3xl  bg-white p-4 shadow-xl sm:p-5">
             <div className="relative rounded-2xl bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 p-4 text-center">
               <div className="absolute -top-3 right-3 rounded-full border bg-white/10 shadow-lg backdrop-blur-[2px] border-primary/20 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.08em] text-primary">
                 {cta.helperLabel}
