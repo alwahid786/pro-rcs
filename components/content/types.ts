@@ -42,6 +42,91 @@ export type HeadingIntroSectionContent = {
   description: string;
 };
 
+export type StatItem = {
+  value: string;
+  title: string;
+  description: string;
+};
+
+export type StatsSectionContent = {
+  type: "stats";
+  badge: string;
+  items: StatItem[];
+};
+
+export type OurStorySectionContent = {
+  type: "our-story";
+  badge: string;
+  heading: MulticolorHeading;
+  paragraphs: string[];
+  features: string[];
+  card: {
+    badge: string;
+    mission: { title: string; text: string };
+    vision: { title: string; text: string };
+    location: { title: string; address: string };
+  };
+};
+
+export type MissionVisionCard = {
+  title: string;
+  description: string;
+  quote: string;
+};
+
+export type MissionVisionSectionContent = {
+  type: "mission-vision";
+  badge: string;
+  heading: HeadingSegment[];
+  mission: MissionVisionCard;
+  vision: MissionVisionCard;
+};
+
+export type CoreValueItem = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
+export type CoreValuesSectionContent = {
+  type: "core-values";
+  badge: string;
+  heading: MulticolorHeading;
+  description: string;
+  items: CoreValueItem[];
+};
+
+export type ExpertiseAreaCard = {
+  number: string;
+  title: string;
+  items: string[];
+  variant: "dark" | "light";
+};
+
+export type ExpertiseAreasSectionContent = {
+  type: "expertise-areas";
+  badge: string;
+  heading: MulticolorHeading;
+  cta: PageButton;
+  cards: ExpertiseAreaCard[];
+};
+
+export type CtaContactItem = {
+  label: string;
+  value: string;
+  href?: string;
+};
+
+export type CtaContactSectionContent = {
+  type: "cta-contact";
+  badge: string;
+  heading: HeadingSegment[];
+  description: string;
+  primaryButton: PageButton;
+  secondaryButton: PageButton;
+  contactItems: CtaContactItem[];
+};
+
 export type ServiceAccordionItem = {
   number: string;
   title: string;
@@ -110,6 +195,12 @@ export type BlogListSectionContent = {
 export type PageSection =
   | HeroSectionContent
   | HeadingIntroSectionContent
+  | StatsSectionContent
+  | OurStorySectionContent
+  | MissionVisionSectionContent
+  | CoreValuesSectionContent
+  | ExpertiseAreasSectionContent
+  | CtaContactSectionContent
   | ServicesAccordionSectionContent
   | FlagshipServiceSectionContent
   | ProcessGridSectionContent
