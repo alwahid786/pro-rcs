@@ -5,7 +5,7 @@ const RoatatingStar = ({ position, width, className }: { position: string; width
   const size = Number(width);
 
   return (
-    <div className={`absolute ${position} z-0 opacity-50 ${className}`} style={{ width: size, height: size }}>
+    <div className={`absolute ${position} z-0 opacity-30 ${className}`} style={{ width: size, height: size }}>
       <Image src={star} width={size} height={size} className="animate-spin [animation-duration:28s] h-full w-full" alt="star" />
     </div>
   );

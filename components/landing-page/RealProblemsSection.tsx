@@ -8,13 +8,14 @@ import HeadingBlock from "@/components/ui/HeadingBlock";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { type ReactNode, useMemo, useState } from "react";
+import RoatatingStar from "../ui/RoatatingStar";
 
 type FilterValue = (typeof realProblemsContent.filters)[number];
 
 const MetricRow = ({ metrics }: { metrics: RealProblemCase["metrics"] }) => (
   <div className="mt-7 grid grid-cols-3 gap-4 sm:gap-6">
-    {metrics.map((metric) => (
-      <div key={`${metric.value}-${metric.label}`}>
+    {metrics.map((metric, i) => (
+      <div className={`flex flex-col  ${i !== 0 && "items-center justify-center"}`} key={`${metric.value}-${metric.label}`}>
         <p className="font-sans text-4xl font-bold tracking-tight text-primary sm:text-5xl">{metric.value}</p>
         <p className="mt-1 font-sans text-xs uppercase text-[#646c7d] sm:text-sm">{metric.label}</p>
       </div>
@@ -37,10 +38,7 @@ const RealProblemsSection = () => {
   const [activeFilter, setActiveFilter] = useState<FilterValue>("All");
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const filteredCases = useMemo(
-    () => (activeFilter === "All" ? cases : cases.filter((item) => item.category === activeFilter)),
-    [activeFilter, cases],
-  );
+  const filteredCases = useMemo(() => (activeFilter === "All" ? cases : cases.filter((item) => item.category === activeFilter)), [activeFilter, cases]);
 
   const featuredCases = filteredCases.slice(0, 2);
   const compactCases = filteredCases.slice(2);
@@ -50,8 +48,9 @@ const RealProblemsSection = () => {
   };
 
   return (
-    <section className="bg-background py-16 sm:py-20 lg:py-24">
-      <div className="container">
+    <section className="bg-background relative py-16 sm:py-20 lg:py-24">
+      <RoatatingStar position="top-0 left-[-5%]" width="200" className="max-[1100px]:hidden" />
+      <div className="container relative z-2">
         <HeadingBlock badge={badge} heading={heading} weight="regular" />
 
         <div className="mt-8 flex flex-wrap gap-2.5">
@@ -77,16 +76,18 @@ const RealProblemsSection = () => {
           {featuredCases.map((item) => {
             const isOpen = expandedId === item.id;
             return (
-              <article key={item.id} className="rounded-3xl border border-[#e7e2dc] bg-[linear-gradient(180deg,#ffffff_0%,#fff4ec_100%)] p-5 shadow-[0_16px_42px_rgba(0,0,0,0.05)] sm:p-7">
+              <article
+                key={item.id}
+                className="rounded-3xl border border-[#e7e2dc] bg-[linear-gradient(180deg,#ffffff_0%,#fff4ec_100%)] p-5 shadow-[0_16px_42px_rgba(0,0,0,0.05)] sm:p-7"
+              >
                 <div className="flex items-start justify-between gap-4">
-                  <span className="rounded-full border border-[#e9bf9d] px-3 py-1 font-sans text-xs uppercase tracking-[0.08em] text-[#b17340]">
-                    {item.category}
-                  </span>
-                  <Image src={item.logo} alt={`${item.brand} logo`} className="size-12 rounded-full object-cover shadow-sm" sizes="48px" />
+                  <div className="flex flex-col gap-2 items-start">
+                    <span className="rounded-full border border-primary glass px-3 py-1 font-sans text-xs uppercase tracking-[0.08em] text-primary">{item.category}</span>
+                    <h3 className="font-sans text-[2rem] font-bold tracking-tight text-text">{item.brand}</h3>
+                    <p className=" max-w-[40rem] font-sans text-[15px] leading-relaxed text-text-secondary">{item.summary}</p>
+                  </div>
+                  <Image src={item.logo} alt={`${item.brand} logo`} className="max-w-[70px]" />
                 </div>
-
-                <h3 className="mt-4 font-sans text-[2rem] font-bold tracking-tight text-text">{item.brand}</h3>
-                <p className="mt-2 max-w-[40rem] font-sans text-[15px] leading-relaxed text-text-secondary">{item.summary}</p>
 
                 <MetricRow metrics={item.metrics} />
 
@@ -103,11 +104,7 @@ const RealProblemsSection = () => {
                   <div className="mt-6 space-y-5 border-t border-[#ece7e1] pt-5">
                     <DetailRow title="The Problem" icon={<Problem />} text={item.problem} tone="problem" />
                     <DetailRow title="Our Solution" icon={<Outcome />} text={item.outcome} tone="outcome" />
-                    {item.quote && (
-                      <blockquote className="border-l-2 border-[#8ab3ff] pl-3 font-sans text-base italic text-text-secondary">
-                        &ldquo;{item.quote}&rdquo;
-                      </blockquote>
-                    )}
+                    {item.quote && <blockquote className="border-l-2 border-[#8ab3ff] pl-3 font-sans text-base italic text-text-secondary">&ldquo;{item.quote}&rdquo;</blockquote>}
                   </div>
                 )}
               </article>
@@ -119,11 +116,14 @@ const RealProblemsSection = () => {
           {compactCases.map((item) => {
             const isOpen = expandedId === item.id;
             return (
-              <article key={item.id} className="rounded-3xl border border-[#e7e2dc] bg-[linear-gradient(180deg,#ffffff_0%,#fff4ec_100%)] p-4 shadow-[0_14px_32px_rgba(0,0,0,0.04)] sm:p-5">
+              <article
+                key={item.id}
+                className="rounded-3xl border border-[#e7e2dc] bg-[linear-gradient(180deg,#ffffff_0%,#fff4ec_100%)] p-4 shadow-[0_14px_32px_rgba(0,0,0,0.04)] sm:p-5"
+              >
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="font-sans text-xs uppercase tracking-[0.08em] text-[#b17340]">{item.category}</p>
-                    <h3 className="mt-2 font-sans text-[2rem] font-bold tracking-tight text-text">{item.brand}</h3>
+                    <p className="font-sans text-xs uppercase tracking-[0.08em] text-primary font-semibold">{item.category}</p>
+                    <h3 className="mt-2 font-sans text-base font-bold tracking-tight text-text">{item.brand}</h3>
                   </div>
                   <button type="button" onClick={() => toggleOpen(item.id)} className="text-primary">
                     <ChevronDownIcon className={cn("transition-transform", isOpen ? "rotate-180" : "")} />
@@ -135,7 +135,7 @@ const RealProblemsSection = () => {
                     <p className="font-sans text-[2.6rem] font-bold tracking-tight text-primary">{item.metrics[0].value}</p>
                     <p className="font-sans text-xs uppercase text-[#98a2b3]">{item.metrics[0].label}</p>
                   </div>
-                  <Image src={item.logo} alt={`${item.brand} logo`} className="size-12 rounded-full object-cover" sizes="48px" />
+                  <Image src={item.logo} alt={`${item.brand} logo`} className="max-w-[70px]" />
                 </div>
 
                 {isOpen && (
@@ -154,4 +154,3 @@ const RealProblemsSection = () => {
 };
 
 export default RealProblemsSection;
-
