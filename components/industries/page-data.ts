@@ -11,23 +11,110 @@ export const industriesPageContent = {
     {
       type: "hero",
       heading: [
-        { text: "Industries We " },
-        { text: "Serve", highlight: true },
+        { text: "Every " },
+        { text: "Format", highlight: true },
+        { text: ". Every Stage." },
       ],
       description:
-        "From fast casual to fine dining, franchise brands to multi-unit operators — we bring deep restaurant expertise to every segment of the industry.",
-      secondaryButton: { label: "Book Consultation", href: "/contact" },
-      primaryButton: { label: "Our Services", href: "/services" },
+        "Whether You're Running A Single Food Truck Or Scaling A Full-Service Franchise Network, RCS Brings The Same Operational Depth And Strategic Precision To Every Engagement.",
+      secondaryButton: { label: "Explore Your Industry", href: "#industries-list" },
+      primaryButton: { label: "View Services", href: "/services" },
     },
     {
-      type: "heading-intro",
-      badge: "Our Expertise",
+      type: "marquee",
+      items: [
+        "CATERING & EVENTS",
+        "FOOD TRUCKS & POP-UPS",
+        "FULL-SERVICE RESTAURANTS",
+        "QUICK SERVICE & QSR",
+        "CAFES & BAKERIES",
+      ],
+    },
+    {
+      type: "industry-block",
+      index: "2",
+      variant: "dark",
+      badge: "CONCEPT TO MULTI UNIT EXPANSION",
+      title: "Full-Service Restaurants",
+      description:
+        "From white-tablecloth dining to casual full-service concepts, RCS partners with restaurateurs at every growth stage. We align your brand, operations, and financials to support sustainable scaling — whether you're launching a flagship or franchising your tenth location.",
+      highlight: "The most complex format to scale. The one we know best.",
+      cta: { label: "Work With Us", href: "/contact" },
+      helpItems: [
+        "Concept development & brand positioning",
+        "Franchise structure & expansion planning",
+        "Menu engineering & recipe development",
+        "Supply chain optimization",
+        "Operations manuals & training programs",
+      ],
+    },
+    {
+      type: "industry-block",
+      index: "3",
+      variant: "light",
+      badge: "OPERATIONS, PRICING & REVENUE DIVERSIFICATION",
+      title: "Catering & Events",
+      description:
+        "Catering is high-margin and high-complexity. RCS helps catering and event operations streamline logistics, sharpen pricing, differentiate in competitive markets, and build recurring revenue streams that stabilize growth year-round.",
+      highlight: "Turn events into a repeatable, scalable revenue engine.",
+      cta: { label: "Work With Us", href: "/contact" },
+      helpItems: [
+        "Strategic growth & market positioning",
+        "Operational streamlining & logistics",
+        "Pricing optimization & margin analysis",
+        "Revenue diversification strategy",
+        "Brand differentiation & client acquisition",
+      ],
+    },
+    {
+      type: "industry-block",
+      index: "4",
+      variant: "dark",
+      badge: "COMMUNITY-ROOTED GROWTH & BRAND INNOVATION",
+      title: "Cafes & Bakeries",
+      description:
+        "Cafes and bakeries thrive on experience, community, and product craft — but scaling without losing that authenticity is the hard part. RCS helps you modernize systems, strengthen your supply chain, and build a brand that earns loyalty in every market you enter.",
+      highlight: "Scale without losing the soul of the brand.",
+      cta: { label: "Work With Us", href: "/contact" },
+      helpItems: [
+        "Concept development & brand strategy",
+        "Menu innovation & seasonal programming",
+        "Supply chain management for specialty goods",
+        "System modernization & tech integration",
+        "Community-brand building & local marketing",
+      ],
+    },
+    {
+      type: "stand-for",
+      badge: "OUR COMMITMENT",
       heading: {
-        prefix: "Specialized For",
-        highlight: "Your Segment",
+        prefix: "What We Stand For ",
+        highlight: "Across Every Industry",
       },
       description:
-        "Every restaurant segment has unique challenges. We tailor our consulting approach to the operational, financial, and growth dynamics of your specific market.",
+        "These aren't aspirational values on a slide deck — they're the standard we hold every client engagement to.",
+      items: [
+        {
+          title: "Excellence",
+          description:
+            "Every engagement is held to the highest standard — no shortcuts, no half-measures.",
+        },
+        {
+          title: "Integrity",
+          description:
+            "We tell you what you need to hear, not what you want to hear.",
+        },
+        {
+          title: "Innovation",
+          description:
+            "We bring fresh thinking to old problems and build systems that last.",
+        },
+        {
+          title: "Collaboration",
+          description:
+            "Your growth is our growth. We work as partners, not vendors.",
+        },
+      ],
     },
   ],
 } satisfies PageContent;
