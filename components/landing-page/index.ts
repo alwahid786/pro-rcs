@@ -1,0 +1,23 @@
+export { default as Hero } from "./Hero";
+export { default as LogoMarquee } from "./LogoMarquee";
+export { default as ResultsSection } from "./ResultsSection";
+export { default as StrategySection } from "./StrategySection";
+export { default as HowItWorksSection } from "./HowItWorksSection";
+export { default as RealProblemsSection } from "./RealProblemsSection";
+export { default as WhatSetsApartSection } from "./WhatSetsApartSection";
+export { default as ProcessSection } from "./ProcessSection";
+export { default as TestimonialsSection } from "./TestimonialsSection";
+export { default as FaqSection } from "./FaqSection";
+export { default as ContactSection } from "./ContactSection";
+export { default as UpperFooterSection } from "./UpperFooterSection";
+
+export { heroCarouselLogos } from "./hero-carousel-logos";
+export { faqSectionContent, type FaqItem } from "./faq-data";
+export { strategySectionContent } from "./strategy-section-data";
+export { howItWorksContent } from "./how-it-works-data";
+export { realProblemsContent, type RealProblemCase } from "./real-problems-data";
+export { whatSetsApartContent, type ApartCard, type ApartIconKey } from "./what-sets-apart-data";
+export { processSectionContent, type ProcessStep } from "./process-section-data";
+export { testimonialsContent } from "./testimonials-data";
+export { contactSectionContent } from "./contact-section-data";
+export { upperFooterImages } from "./upper-footer-data";
