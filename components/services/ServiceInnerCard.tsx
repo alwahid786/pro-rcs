@@ -1,4 +1,4 @@
-import type { ServiceData } from "@/components/landing-page/service-data";
+import type { ServiceData } from "@/components/services/service-section-data";
 import { cn } from "@/lib/utils";
 
 const ServiceInnerCard = ({ category, headline, offeringsHeading, points, footerNote, image, imageMobile, className }: ServiceData & { className?: string }) => {
