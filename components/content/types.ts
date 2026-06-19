@@ -175,7 +175,7 @@ export type MarqueeSectionContent = {
 
 export type IndustryBlockSectionContent = {
   type: "industry-block";
-  index: string;
+  index?: string;
   variant: "dark" | "light";
   badge: string;
   title: string;
@@ -270,14 +270,15 @@ export type AlsoRelevantSectionContent = {
 };
 
 export type BlogPost = {
-  slug: string;
+  slug?: string;
   title: string;
   excerpt: string;
   category: string;
   date: string;
   readTime: string;
-  href: string;
+  href?: string;
   image?: StaticImageData | string;
+  featured?: boolean;
   author?: {
     name: string;
     role?: string;
@@ -286,9 +287,15 @@ export type BlogPost = {
 
 export type BlogListSectionContent = {
   type: "blog-list";
+  featured: BlogPost;
+  posts: BlogPost[];
   badge?: string;
   heading?: MulticolorHeading;
   description?: string;
+};
+
+export type BlogRowsSectionContent = {
+  type: "blog-rows";
   posts: BlogPost[];
 };
 
@@ -313,7 +320,8 @@ export type PageSection =
   | ApproachPhasesSectionContent
   | TestimonialSectionContent
   | AlsoRelevantSectionContent
-  | BlogListSectionContent;
+  | BlogListSectionContent
+  | BlogRowsSectionContent;
 
 /** Top-level page content — compose sections in any order per page. */
 export type PageContent = {
