@@ -6,7 +6,7 @@ import Heading from "@/components/ui/Heading";
 import RoatatingStar from "../ui/RoatatingStar";
 
 // Tight orange range around primary — smooth sweep without harsh dark/light contrast
-const highlightColors = ["#eb692c", "#f08a52", "#e57638"];
+const highlightColors = ['#eb692c', '#f08a52', '#e57638'];
 
 const HeroGrad = ({ position }: { position: string }) => {
   return <div className={`absolute ${position} h-150 w-100 rounded-full bg-[#C04A12]/60 blur-[144px] animate-pulse [animation-duration:5s]`} />;
@@ -35,15 +35,26 @@ const Hero = () => {
           </Heading>
         </span>
 
-        <Heading as="p" align="center" tone="muted" className="mt-6 max-w-2xl sm:mt-8">
-          From Startup To Multi-Location Growth, We Build The Structure, Processes, And Partnerships That Keep Your Operations Efficient, Compliant, And Profitable.
+        <Heading as="p" align="center" tone="muted" className="mt-6 max-w-2xl">
+          From Startup To Multi-Location Growth, We Build The Structure, Processes, And Partnerships
+          That Keep Your Operations Efficient, Compliant, And Profitable.
         </Heading>
 
         <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:mt-12 sm:w-auto sm:flex-row">
-          <Button variant="secondary" size="md" icon={<ArrowRightIcon />} className="w-full sm:w-auto">
+          <Button
+            variant="secondary"
+            size="md"
+            icon={<ArrowRightIcon />}
+            className="w-full sm:w-auto"
+          >
             Get A Quote
           </Button>
-          <Button variant="primary" size="md" icon={<ArrowRightIcon />} className="w-full sm:w-auto">
+          <Button
+            variant="primary"
+            size="md"
+            icon={<ArrowRightIcon />}
+            className="w-full sm:w-auto"
+          >
             Book Consultation
           </Button>
         </div>
