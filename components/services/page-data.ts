@@ -22,9 +22,9 @@ export const servicesPageContent = {
     },
     {
       type: "heading-intro",
-      badge: "What We Offer",
+      badge: "WHAT WE OFFER",
       heading: {
-        prefix: "Nine Services. One",
+        prefix: "Nine Services. One ",
         highlight: "Partner.",
       },
       description:
@@ -36,87 +36,51 @@ export const servicesPageContent = {
         {
           number: "01",
           title: "Franchise Concept Development",
-          tagline: "FROM IDEA TO FRANCHISE-READY BRAND",
-          description:
-            "We help you refine your concept, define your value proposition, and build the foundation for a franchise model that attracts the right operators and scales with integrity.",
-          keyAreas: ["Concept refinement", "Brand positioning", "Franchise model design"],
         },
         {
           number: "02",
           title: "Market Analysis & Feasibility",
-          tagline: "DATA-DRIVEN EXPANSION DECISIONS",
-          description:
-            "We evaluate market demand, competitive landscape, and location viability so every expansion decision is backed by research — not guesswork.",
-          keyAreas: ["Market research", "Competitive analysis", "Site feasibility"],
         },
         {
           number: "03",
           title: "Business Planning & Financial Modeling",
-          tagline: "NUMBERS THAT SUPPORT YOUR GROWTH",
-          description:
-            "We build financial models, unit economics, and growth projections that give you and your investors confidence in every phase of expansion.",
-          keyAreas: ["Financial modeling", "Unit economics", "Investor-ready plans"],
         },
         {
           number: "04",
           title: "Branding & Franchise Marketing",
-          tagline: "A BRAND THAT SELLS ITSELF",
-          description:
-            "We develop brand systems and marketing strategies that attract franchisees, drive customer loyalty, and maintain consistency across every location.",
-          keyAreas: ["Brand identity", "Franchise marketing", "Customer acquisition"],
         },
         {
           number: "05",
           title: "Menu Engineering & Product Development",
-          tagline: "MENUS BUILT FOR SCALE AND MARGIN",
-          description:
-            "We optimize your menu for profitability, operational efficiency, and consistency — so every location delivers the same great experience.",
-          keyAreas: ["Menu costing", "Product development", "Operational efficiency"],
         },
         {
           number: "06",
           title: "Operations & Training Programs",
           tagline: "SYSTEMS FOR CONSISTENCY AT SCALE",
           description:
-            "We develop comprehensive operations manuals, training programs, and quality control systems that enable your team to deliver the same exceptional experience at location 2, 10, or 100 — regardless of who's running the shift.",
+            "Comprehensive operations manuals, brand standards documentation, and structured training programs that ensure every franchisee delivers the same quality — location 1 or location 100.",
           keyAreas: ["Operations manuals", "Training programs", "Quality control"],
         },
         {
           number: "07",
           title: "Technology, POS & Operational Systems",
-          tagline: "TECH THAT POWERS YOUR OPERATIONS",
-          description:
-            "We help you select and implement the right POS, inventory, and operational technology stack to streamline workflows and give you real-time visibility across locations.",
-          keyAreas: ["POS selection", "Inventory systems", "Reporting & analytics"],
         },
         {
           number: "08",
           title: "Franchise Documentation & Compliance",
-          tagline: "LEGAL AND OPERATIONAL READINESS",
-          description:
-            "We coordinate with franchise attorneys and compliance specialists to ensure your FDD, agreements, and operational documentation meet regulatory standards.",
-          keyAreas: ["FDD preparation", "Franchise agreements", "Compliance support"],
-        },
-        {
-          number: "09",
-          title: "Supply Chain & Vendor Optimization",
-          tagline: "MARGINS PROTECTED AT SCALE",
-          description:
-            "We optimize vendor relationships, negotiate better terms, and build supply chain systems that protect your margins as you grow from one location to many.",
-          keyAreas: ["Vendor negotiation", "Cost optimization", "Distribution planning"],
         },
       ],
     },
     {
       type: "flagship-service",
-      badge: "Flagship Service",
+      badge: "FLAGSHIP SERVICE",
       heading: [
         { text: "Franchise " },
         { text: "Development &", highlight: true },
         { text: " Support Infrastructure" },
       ],
       description:
-        "RCS's flagship offering brings together everything you need to turn a successful restaurant into a franchise-ready brand — from legal documentation and operational systems to franchisee recruitment and ongoing support infrastructure.",
+        "Our most comprehensive engagement — covering everything a franchisor needs to launch, protect, and grow a scalable network. Built from years of actual operator experience, not theory.",
       quote:
         "We exist to be the strategic backbone that restaurant operators rely on — from first concept to hundredth location.",
       cta: { label: "Start with Franchise Development", href: "/contact" },
@@ -145,31 +109,31 @@ export const servicesPageContent = {
     },
     {
       type: "process-grid",
-      badge: "How We Work",
+      badge: "HOW WE WORK",
       steps: [
         {
           number: "01",
           title: "Discovery Call",
           description:
-            "We learn about your concept, goals, and current challenges in a no-pressure conversation.",
+            "We map your goals, brand, and current stage in a focused strategy session.",
         },
         {
           number: "02",
           title: "Audit & Analysis",
           description:
-            "We evaluate operations, financials, and market position to identify the highest-leverage opportunities.",
+            "Deep-dive into your operations, market position, and growth levers.",
         },
         {
           number: "03",
-          title: "Custom Roadmap",
+          title: "Strategy Delivery",
           description:
-            "You receive a prioritized, actionable plan tailored to your brand and growth timeline.",
+            "A tailored roadmap with clear priorities, timelines, and ownership.",
         },
         {
           number: "04",
-          title: "Implementation & Support",
+          title: "Execution Support",
           description:
-            "We guide execution of every initiative and provide ongoing support as you scale.",
+            "We stay engaged — coaching, reviewing, and adapting as you scale.",
         },
       ],
     },
