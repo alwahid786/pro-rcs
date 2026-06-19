@@ -1,4 +1,4 @@
-import type { PageContent } from "./types";
+import type { PageContent } from "@/components/content/types";
 
 export const servicesPageContent = {
   slug: "services",

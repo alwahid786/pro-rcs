@@ -1,12 +1,12 @@
 'use client';
 
-import ServiceInnerCard from "@/components/landing-page/ServiceInnerCard";
-import { serviceData } from "@/components/landing-page/service-data";
+import ServiceInnerCard from "@/components/services/ServiceInnerCard";
+import { serviceData } from "@/components/services/service-section-data";
 import HeadingBlock from "@/components/ui/HeadingBlock";
+import RoatatingStar from "@/components/ui/RoatatingStar";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
-import RoatatingStar from "../ui/RoatatingStar";
 
 const DESKTOP_BREAKPOINT = '(min-width: 1100px)';
 const SLIDE_HEIGHT = '550px';

@@ -1,6 +1,6 @@
 import aboutImage from "@/assets/imgs/about-img.png";
 import Image from "next/image";
-import HeadingBlock from "../ui/HeadingBlock";
+import HeadingBlock from "@/components/ui/HeadingBlock";
 
 const AboutSection = () => {
   return (

@@ -1,5 +1,5 @@
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
-import type { HeadingSegment, PageButton } from "@/components/page-data/types";
+import type { HeadingSegment, PageButton } from "@/components/content/types";
 import Heading from "@/components/ui/Heading";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
