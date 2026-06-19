@@ -198,6 +198,77 @@ export type StandForSectionContent = {
   items: StandForItem[];
 };
 
+export type ChallengeDeliverSectionContent = {
+  type: "challenge-deliver";
+  challenge: {
+    badge: string;
+    heading: MulticolorHeading;
+    description: string;
+  };
+  deliver: {
+    badge: string;
+    heading: string;
+    items: string[];
+  };
+};
+
+export type IndustryServiceCard = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
+export type IndustryServicesGridSectionContent = {
+  type: "industry-services-grid";
+  badge: string;
+  heading: MulticolorHeading;
+  description: string;
+  items: IndustryServiceCard[];
+};
+
+export type ApproachPhase = {
+  number: string;
+  title: string;
+  description: string;
+};
+
+export type ApproachPhasesSectionContent = {
+  type: "approach-phases";
+  badge: string;
+  heading: HeadingSegment[];
+  description: string;
+  phases: ApproachPhase[];
+};
+
+export type TestimonialSectionContent = {
+  type: "testimonial";
+  quote: string;
+  attribution: {
+    title: string;
+    subtitle: string;
+  };
+  images: {
+    featured: StaticImageData | string;
+    operations: StaticImageData | string;
+    growth: StaticImageData | string;
+  };
+};
+
+export type AlsoRelevantCard = {
+  index?: string;
+  title: string;
+  description: string;
+  image: StaticImageData | string;
+  cta: string;
+  href?: string;
+};
+
+export type AlsoRelevantSectionContent = {
+  type: "also-relevant";
+  badge: string;
+  items: AlsoRelevantCard[];
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -237,6 +308,11 @@ export type PageSection =
   | MarqueeSectionContent
   | IndustryBlockSectionContent
   | StandForSectionContent
+  | ChallengeDeliverSectionContent
+  | IndustryServicesGridSectionContent
+  | ApproachPhasesSectionContent
+  | TestimonialSectionContent
+  | AlsoRelevantSectionContent
   | BlogListSectionContent;
 
 /** Top-level page content — compose sections in any order per page. */
