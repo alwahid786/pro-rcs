@@ -1,23 +1,17 @@
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
+import type { HeadingSegment, PageButton } from "@/components/page-data/types";
 import Heading from "@/components/ui/Heading";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-export type HeroHeadingSegment = {
-  text: string;
-  highlight?: boolean;
-};
-
-export type HeroSectionButton = {
-  label: string;
-  href: string;
-};
+export type HeroHeadingSegment = HeadingSegment;
+export type HeroSectionButton = PageButton;
 
 export type HeroSectionProps = {
-  heading: HeroHeadingSegment[];
+  heading: HeadingSegment[];
   description: string;
-  primaryButton: HeroSectionButton;
-  secondaryButton: HeroSectionButton;
+  primaryButton: PageButton;
+  secondaryButton: PageButton;
   className?: string;
 };
 
