@@ -168,6 +168,36 @@ export type ProcessGridSectionContent = {
   steps: ProcessGridStep[];
 };
 
+export type MarqueeSectionContent = {
+  type: "marquee";
+  items: string[];
+};
+
+export type IndustryBlockSectionContent = {
+  type: "industry-block";
+  index: string;
+  variant: "dark" | "light";
+  badge: string;
+  title: string;
+  description: string;
+  highlight: string;
+  cta: PageButton;
+  helpItems: string[];
+};
+
+export type StandForItem = {
+  title: string;
+  description: string;
+};
+
+export type StandForSectionContent = {
+  type: "stand-for";
+  badge: string;
+  heading: MulticolorHeading;
+  description: string;
+  items: StandForItem[];
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -204,6 +234,9 @@ export type PageSection =
   | ServicesAccordionSectionContent
   | FlagshipServiceSectionContent
   | ProcessGridSectionContent
+  | MarqueeSectionContent
+  | IndustryBlockSectionContent
+  | StandForSectionContent
   | BlogListSectionContent;
 
 /** Top-level page content — compose sections in any order per page. */
