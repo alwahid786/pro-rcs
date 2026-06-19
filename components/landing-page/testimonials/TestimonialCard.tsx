@@ -1,4 +1,4 @@
-import type { Testimonial } from "./testimonials-data";
+import type { Testimonial } from "./data";
 import Image from "next/image";
 
 const QuoteIcon = () => (

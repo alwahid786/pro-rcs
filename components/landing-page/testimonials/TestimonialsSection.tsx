@@ -1,7 +1,7 @@
 "use client";
 
-import TestimonialCard from "@/components/landing-page/TestimonialCard";
-import { testimonialsContent } from "@/components/landing-page/testimonials-data";
+import TestimonialCard from "./TestimonialCard";
+import { testimonialsContent } from "./data";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import Button from "@/components/ui/Button";
 import HeadingBlock from "@/components/ui/HeadingBlock";

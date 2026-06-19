@@ -1,6 +1,6 @@
 import GradientCard from "@/components/ui/GradientCard";
 import Heading from "@/components/ui/Heading";
-import type { ProcessStep } from "./process-section-data";
+import type { ProcessStep } from "./data";
 
 const ProcessCard = ({ number, title, description }: ProcessStep) => {
   return (

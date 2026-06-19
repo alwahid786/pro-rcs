@@ -1,6 +1,6 @@
 import GradientCard from "@/components/ui/GradientCard";
 import Heading from "@/components/ui/Heading";
-import type { HowItWorksStep } from "./how-it-works-data";
+import type { HowItWorksStep } from "./data";
 
 const HowItWorksStepCard = ({ number, title, description, icon: Icon }: HowItWorksStep) => {
   return (

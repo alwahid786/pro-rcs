@@ -5,8 +5,8 @@ import HeadingBlock from "@/components/ui/HeadingBlock";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { type ReactNode } from "react";
-import { whatSetsApartContent, type ApartCard, type ApartIconKey } from "./what-sets-apart-data";
-import GradientBg from "../ui/GradientBg";
+import { whatSetsApartContent, type ApartCard, type ApartIconKey } from "./data";
+import GradientBg from "@/components/ui/GradientBg";
 
 const cardOffsets = [
   "translate-y-0 sm:translate-y-5 lg:translate-y-12",

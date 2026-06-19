@@ -1,9 +1,9 @@
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
-import LogoMarquee from "@/components/landing-page/LogoMarquee";
+import LogoMarquee from "./LogoMarquee";
 import Button from "@/components/ui/Button";
 import GradientText from "@/components/ui/GradientText";
 import Heading from "@/components/ui/Heading";
-import RoatatingStar from "../ui/RoatatingStar";
+import RoatatingStar from "@/components/ui/RoatatingStar";
 
 // Tight orange range around primary — smooth sweep without harsh dark/light contrast
 const highlightColors = ['#eb692c', '#f08a52', '#e57638'];

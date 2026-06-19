@@ -1,7 +1,7 @@
 import GradientBg from "@/components/ui/GradientBg";
 import Heading from "@/components/ui/Heading";
 import Image from "next/image";
-import type { StrategyCardData } from "./strategy-section-data";
+import type { StrategyCardData } from "./data";
 
 const StrategyCard = ({ title, subtitle, description, listItems, image, imageClassName }: StrategyCardData) => {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { heroCarouselLogos } from "@/components/landing-page/hero-carousel-logos";
+import { heroCarouselLogos } from "./data";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 

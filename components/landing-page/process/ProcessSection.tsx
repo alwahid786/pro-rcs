@@ -1,6 +1,6 @@
-import ProcessCard from "@/components/landing-page/ProcessCard";
-import ProcessCtaBar from "@/components/landing-page/ProcessCtaBar";
-import { processSectionContent } from "@/components/landing-page/process-section-data";
+import ProcessCard from "./ProcessCard";
+import ProcessCtaBar from "./ProcessCtaBar";
+import { processSectionContent } from "./data";
 import HeadingBlock from "@/components/ui/HeadingBlock";
 
 const ProcessSection = () => {

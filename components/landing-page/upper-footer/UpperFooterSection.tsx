@@ -1,8 +1,8 @@
 "use client";
 
 import ArrowRightIcon from "@iconify-react/pixelarticons/arrow-right";
-import { upperFooterImages } from "@/components/landing-page/upper-footer-data";
-import WavyForeground from "@/components/landing-page/WavyForeground";
+import { upperFooterImages } from "./data";
+import WavyForeground from "./WavyForeground";
 import Button from "@/components/ui/Button";
 import GradientText from "@/components/ui/GradientText";
 import Heading from "@/components/ui/Heading";

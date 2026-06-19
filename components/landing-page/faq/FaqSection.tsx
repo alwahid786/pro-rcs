@@ -2,7 +2,7 @@
 
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import FaqsStar from "@/assets/icons/FaqsStar";
-import { faqSectionContent } from "@/components/landing-page/faq-data";
+import { faqSectionContent } from "./data";
 import Button from "@/components/ui/Button";
 import HeadingBlock from "@/components/ui/HeadingBlock";
 import { cn } from "@/lib/utils";

@@ -2,7 +2,7 @@ import processImgs from "@/assets/imgs/process-imgs.png";
 import BgArrowIcon from "@/assets/icons/BgArrowIcon";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
-import { processSectionContent } from "./process-section-data";
+import { processSectionContent } from "./data";
 
 const ProcessCtaBar = () => {
   const { cta } = processSectionContent;

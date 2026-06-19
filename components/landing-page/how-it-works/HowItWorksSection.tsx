@@ -1,6 +1,6 @@
-import HowItWorksFeatureCard from "@/components/landing-page/HowItWorksFeatureCard";
-import HowItWorksStepCard from "@/components/landing-page/HowItWorksStepCard";
-import { howItWorksContent } from "@/components/landing-page/how-it-works-data";
+import HowItWorksFeatureCard from "./HowItWorksFeatureCard";
+import HowItWorksStepCard from "./HowItWorksStepCard";
+import { howItWorksContent } from "./data";
 import HeadingBlock from "@/components/ui/HeadingBlock";
 
 const HowItWorksSection = () => {

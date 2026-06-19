@@ -3,12 +3,12 @@
 import ChevronDownIcon from "@/assets/icons/ChevronDownIcon";
 import Outcome from "@/assets/icons/Outcome";
 import Problem from "@/assets/icons/Problem";
-import { realProblemsContent, type RealProblemCase } from "@/components/landing-page/real-problems-data";
+import { realProblemsContent, type RealProblemCase } from "./data";
 import HeadingBlock from "@/components/ui/HeadingBlock";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { type ReactNode, useMemo, useState } from "react";
-import RoatatingStar from "../ui/RoatatingStar";
+import RoatatingStar from "@/components/ui/RoatatingStar";
 
 type FilterValue = (typeof realProblemsContent.filters)[number];
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { contactSectionContent } from "@/components/landing-page/contact-section-data";
+import { contactSectionContent } from "./data";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import Button from "@/components/ui/Button";
 import MailIcon from "@iconify-react/pixelarticons/mail";

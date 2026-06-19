@@ -1,6 +1,6 @@
 import GradientCard from "@/components/ui/GradientCard";
 import Heading from "@/components/ui/Heading";
-import type { HowItWorksFeature } from "./how-it-works-data";
+import type { HowItWorksFeature } from "./data";
 
 const HowItWorksFeatureCard = ({ title, description, icon: Icon, tags }: HowItWorksFeature) => {
   return (

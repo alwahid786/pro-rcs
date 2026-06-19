@@ -1,5 +1,5 @@
-import StrategyCard from "@/components/landing-page/StrategyCard";
-import { strategySectionContent } from "@/components/landing-page/strategy-section-data";
+import StrategyCard from "./StrategyCard";
+import { strategySectionContent } from "./data";
 import HeadingBlock from "@/components/ui/HeadingBlock";
 
 const StrategySection = () => {
