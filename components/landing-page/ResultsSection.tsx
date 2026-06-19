@@ -176,7 +176,7 @@ const ResultsSection = () => {
                 <h2 className="text-lg font-semibold sm:text-xl">Revenue growth comparison</h2>
                 <p className="mt-1 text-xs text-white/45 sm:text-sm">Average % increase across client portfolio</p>
               </div>
-              <div className="w-fit rounded-full border border-white/10 bg-[#1a1a1a] px-3 py-1.5 text-[11px] font-medium text-white/80">2023 + 2025</div>
+              <div className="w-fit rounded-full border border-white/10 bg-[#1a1a1a] px-3 py-1.5 text-[11px] font-medium text-white/80">2023 → 2025</div>
             </div>
 
             <div className="mt-8 h-64 sm:h-72">
