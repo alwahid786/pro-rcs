@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { type ReactNode } from "react";
 import { whatSetsApartContent, type ApartCard, type ApartIconKey } from "./what-sets-apart-data";
+import GradientBg from "../ui/GradientBg";
 
 const cardOffsets = [
   "translate-y-0 sm:translate-y-5 lg:translate-y-12",
@@ -127,7 +128,12 @@ const WhatSetsApartSection = () => {
   const { badge, heading, cards } = whatSetsApartContent;
   return (
     <section className="relative overflow-hidden bg-[#FFF8F4] py-16 sm:py-20 lg:py-24">
-      <div className="container relative z-10">
+      <div className="absolute inset-0 ">
+        <div className={cn("pointer-events-none relative h-full w-full overflow-hidden")} aria-hidden>
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-30 w-full rounded-full bg-[#C04A12]/80 blur-[80px]" />
+        </div>
+      </div>
+      <div className="container relative z-2">
         <HeadingBlock badge={badge} heading={heading} isCenter weight="regular" />
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-14 lg:grid-cols-4 lg:gap-6">
@@ -136,8 +142,6 @@ const WhatSetsApartSection = () => {
           ))}
         </div>
       </div>
-
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(180deg,rgba(232,109,42,0)_0%,rgba(232,109,42,0.22)_100%)]" />
     </section>
   );
 };
