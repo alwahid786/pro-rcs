@@ -95,7 +95,7 @@ const RealProblemsSection = () => {
                   <button
                     type="button"
                     onClick={() => toggleOpen(item.id)}
-                    className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 font-sans text-xs font-bold uppercase tracking-[0.08em] text-white shadow-btn-primary"
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 font-sans text-xs font-bold uppercase tracking-[0.08em] text-white shadow-btn-primary self-start"
                   >
                     {isOpen ? "Close" : "Read Full Story"}
                     <ChevronDownIcon className={cn("text-white transition-transform", isOpen ? "rotate-180" : "")} />
@@ -105,7 +105,9 @@ const RealProblemsSection = () => {
                     <div className="flex flex-col gap-5 border-t border-[#ece7e1] pt-5">
                       <DetailRow title="The Problem" icon={<Problem />} text={item.problem} tone="problem" />
                       <DetailRow title="Our Solution" icon={<Outcome />} text={item.outcome} tone="outcome" />
-                      {item.quote && <blockquote className="border-l-2 border-[#8ab3ff] pl-3 font-sans text-base italic text-text-secondary">&ldquo;{item.quote}&rdquo;</blockquote>}
+                      {item.quote && (
+                        <blockquote className="border-l-2 border-[#8ab3ff] pl-3 font-sans text-base italic text-text-secondary">&ldquo;{item.quote}&rdquo;</blockquote>
+                      )}
                     </div>
                   )}
                 </article>
