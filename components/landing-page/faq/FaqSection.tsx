@@ -8,6 +8,7 @@ import HeadingBlock from "@/components/ui/HeadingBlock";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import RoatatingStar from "@/components/ui/RoatatingStar";
 
 const accordionTransition = {
   duration: 0.4,
@@ -19,8 +20,10 @@ const FaqSection = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="bg-background py-16 sm:py-20 lg:py-24">
-      <div className="container">
+    <section className="bg-background py-16 sm:py-20 lg:py-24 relative">
+      <RoatatingStar position="top-[100px] right-[-30px]" width="220" className="max-[1100px]:hidden" />
+      <RoatatingStar position="top-[150px] left-[-80px]" width="220" className="max-[1100px]:hidden" />
+      <div className="container relative z-2">
         <HeadingBlock badge={badge} heading={heading} weight="regular" />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_320px] lg:gap-8">
@@ -106,7 +109,7 @@ const FaqSection = () => {
             </div>
           </div>
 
-          <aside className="rounded-3xl  bg-white p-4 shadow-xl sm:p-5">
+          <aside className="rounded-3xl glass p-4 shadow-xl sm:p-5">
             <div className="relative rounded-2xl bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 p-4 text-center">
               <div className="absolute -top-3 right-3 rounded-full border bg-white/10 shadow-lg backdrop-blur-[2px] border-primary/20 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.08em] text-primary">
                 {cta.helperLabel}

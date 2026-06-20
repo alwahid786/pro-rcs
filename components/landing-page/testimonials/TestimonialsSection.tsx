@@ -57,7 +57,7 @@ const TestimonialsSection = () => {
       </div>
 
       <div className="relative mt-12 md:hidden sm:mt-14 lg:mt-16">
-        <div className="flex items-end gap-4 overflow-x-auto px-6 pb-6 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-5 sm:px-10 [&::-webkit-scrollbar]:hidden">
+        <div className="flex items-end gap-4 overflow-x-auto px-6 pb-6 [-ms-overflow-style:none] scrollbar-none sm:gap-5 sm:px-10 [&::-webkit-scrollbar]:hidden">
           {items.map((item, index) => (
             <div key={`${item.brand}-${index}`} className="shrink-0">
               <TestimonialCard {...item} />
