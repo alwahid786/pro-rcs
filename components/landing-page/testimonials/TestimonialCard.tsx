@@ -1,5 +1,6 @@
 import type { Testimonial } from "./data";
 import Image from "next/image";
+import testimonialBg from "@/assets/imgs/test-ele.png";
 
 const QuoteIcon = () => (
   <svg width="28" height="22" viewBox="0 0 28 22" fill="none" aria-hidden className="text-primary">
@@ -22,18 +23,21 @@ const Stars = () => (
 
 const TestimonialCard = ({ quote, brand, logo }: Testimonial) => {
   return (
-    <article className="flex min-h-[25rem] w-[17.5rem] shrink-0 flex-col rounded-3xl bg-white px-6 py-8 shadow-[0_12px_40px_rgba(0,0,0,0.08)] border border-primary sm:w-80 sm:px-7 sm:py-9">
-      <QuoteIcon />
+    <article className="flex min-h-[25rem] w-[17.5rem] overflow-hidden relative shrink-0 flex-col rounded-3xl bg-white px-6 py-8  border border-primary sm:w-80 sm:px-7 sm:py-9">
+      <Image src={testimonialBg} alt="Testimonial background" className="absolute drop-shadow-lg block bottom-[-18%] right-0 w-full" sizes="100%" />
+      <section className="relative z-4">
+        <QuoteIcon />
 
-      <p className="mt-5 flex-1 font-sans text-sm leading-relaxed text-text-secondary sm:text-base sm:leading-7">{quote}</p>
+        <p className="mt-5 flex-1 font-sans text-sm leading-relaxed text-text-secondary sm:text-base sm:leading-7">{quote}</p>
 
-      <div className="mt-8 flex flex-col items-center gap-3">
-        <div className="relative size-16 overflow-hidden rounded-full sm:size-[4.5rem]">
-          <Image src={logo} alt={`${brand} logo`} className="size-full object-cover" sizes="72px" />
+        <div className="mt-8 flex flex-col items-center gap-3">
+          <div className="relative size-16 overflow-hidden rounded-full sm:size-[4.5rem]">
+            <Image src={logo} alt={`${brand} logo`} className="size-full object-cover" sizes="72px" />
+          </div>
+          <p className="font-sans text-base font-bold text-text sm:text-lg">{brand}</p>
+          <Stars />
         </div>
-        <p className="font-sans text-base font-bold text-text sm:text-lg">{brand}</p>
-        <Stars />
-      </div>
+      </section>
     </article>
   );
 };

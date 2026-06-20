@@ -31,11 +31,11 @@ const Header = () => {
 
   return (
     <>
-      <header className="pointer-events-none sticky top-0 z-50 px-4 pt-4 sm:px-5 sm:pt-5">
-        <div className="container pointer-events-auto">
+      <header className="pointer-events-none sticky top-0 z-50 overflow-visible px-4 pt-4 pb-5 sm:px-5 sm:pt-5 sm:pb-6">
+        <div className="container pointer-events-auto overflow-visible">
           <section
             className={cn(
-              "animate-header-enter flex items-center justify-between gap-4 rounded-full border border-white/60 px-4 py-2.5 shadow-glass transition-all duration-500 sm:px-6 sm:py-3 lg:px-8 glass backdrop-blur-sm",
+              "animate-header-enter flex items-center justify-between gap-4 overflow-visible rounded-full border border-white/60 px-4 py-2.5 shadow-glass transition-all duration-500 sm:px-6 sm:py-3 lg:px-8 glass backdrop-blur-sm",
             )}
           >
             <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">
