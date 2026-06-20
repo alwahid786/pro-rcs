@@ -46,8 +46,8 @@ const TestimonialsSection = () => {
   );
 
   return (
-    <section className="bg-[#FFF8F4] py-16 sm:py-20 w-full lg:py-24 relative overflow-hidden">
-      {/* <RoatatingStar position="top-[-100px] right-[-30px]" width="220" className="max-[1100px]:hidden" /> */}
+    <section className="bg-[#FFF8F4] py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <RoatatingStar position="top-[-100px] right-[-30px]" width="220" className="max-[1100px]:hidden" />
       <div className="container flex flex-col items-center text-center">
         <HeadingBlock badge={badge} heading={heading} isCenter weight="regular" />
 
