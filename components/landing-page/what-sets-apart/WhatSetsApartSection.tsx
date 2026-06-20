@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 import { type ReactNode } from "react";
 import { whatSetsApartContent, type ApartCard, type ApartIconKey } from "./data";
 import GradientBg from "@/components/ui/GradientBg";
+import RoatatingStar from "@/components/ui/RoatatingStar";
 
 const cardOffsets = [
   "translate-y-0 sm:translate-y-5 lg:translate-y-12",
@@ -128,6 +129,7 @@ const WhatSetsApartSection = () => {
   const { badge, heading, cards } = whatSetsApartContent;
   return (
     <section className="relative overflow-hidden bg-[#FFF8F4] py-16 sm:py-20 lg:py-24">
+      <RoatatingStar position="top-[-100px] left-[-30px]" width="220" className="max-[1100px]:hidden" />
       <div className="absolute inset-0 ">
         <div className={cn("pointer-events-none relative h-full w-full overflow-hidden")} aria-hidden>
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-30 w-full rounded-full bg-[#C04A12]/80 blur-[80px]" />
