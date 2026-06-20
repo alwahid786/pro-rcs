@@ -46,17 +46,17 @@ const TestimonialsSection = () => {
   );
 
   return (
-    <section className="bg-[#FFF8F4] py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <section className="relative flex flex-col gap-12 overflow-hidden bg-[#FFF8F4] py-16 sm:gap-14 sm:py-20 lg:gap-16 lg:py-24">
       <RoatatingStar position="top-[-100px] right-[-30px]" width="220" className="max-[1100px]:hidden" />
-      <div className="container flex flex-col items-center text-center">
+      <div className="container flex flex-col items-center gap-8 text-center sm:gap-10">
         <HeadingBlock badge={badge} heading={heading} isCenter weight="regular" />
 
-        <Button variant="primary" size="md" icon={<ArrowRightIcon className="text-white" />} className="mt-8 sm:mt-10">
+        <Button variant="primary" size="md" icon={<ArrowRightIcon className="text-white" />}>
           {ctaLabel}
         </Button>
       </div>
 
-      <div className="relative mt-12 md:hidden sm:mt-14 lg:mt-16">
+      <div className="relative md:hidden">
         <div className="flex items-end gap-4 overflow-x-auto px-6 pb-6 [-ms-overflow-style:none] scrollbar-none sm:gap-5 sm:px-10 [&::-webkit-scrollbar]:hidden">
           {items.map((item, index) => (
             <div key={`${item.brand}-${index}`} className="shrink-0">
@@ -66,7 +66,7 @@ const TestimonialsSection = () => {
         </div>
       </div>
 
-      <div className="relative mx-auto mt-16 hidden h-[31rem] max-w-[1450px] md:block lg:mt-20">
+      <div className="relative mx-auto hidden h-[31rem] max-w-[1450px] md:block">
         <div className="absolute inset-0">
           {carouselItems.map((item) => {
             const boundedOffset = Math.max(-2, Math.min(2, item.offset)) as -2 | -1 | 0 | 1 | 2;

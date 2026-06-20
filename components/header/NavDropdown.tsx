@@ -82,13 +82,13 @@ const NavDropdown = ({ item }: NavDropdownProps) => {
               >
                 <Link
                   href={child.href}
-                  className="group/item block rounded-xl px-3.5 py-3 transition-colors duration-200 hover:bg-secondary/5"
+                  className="group/item flex flex-col gap-0.5 rounded-xl px-3.5 py-3 transition-colors duration-200 hover:bg-secondary/5"
                 >
                   <span className="block text-sm font-medium text-text transition-colors group-hover/item:text-secondary">
                     {child.label}
                   </span>
                   {child.description && (
-                    <span className="mt-0.5 block text-xs leading-relaxed text-text-secondary">
+                    <span className="block text-xs leading-relaxed text-text-secondary">
                       {child.description}
                     </span>
                   )}

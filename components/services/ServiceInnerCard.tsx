@@ -5,8 +5,8 @@ const ServiceInnerCard = ({ category, headline, offeringsHeading, points, footer
   return (
     <article
       className={cn(
-        "relative w-full ",
-        "max-[1100px]:flex max-[1100px]:min-h-130 max-[1100px]:flex-col max-[1100px]:justify-between max-[1100px]:rounded-none",
+        "relative w-full",
+        "max-[1100px]:flex max-[1100px]:min-h-130 max-[1100px]:flex-col max-[1100px]:gap-6 max-[1100px]:rounded-none",
         "min-[1100px]:min-h-137.5 min-[1100px]:max-w-225",
         className,
       )}
@@ -30,8 +30,8 @@ const ServiceInnerCard = ({ category, headline, offeringsHeading, points, footer
 
       <div
         className={cn(
-          "glass relative z-20 rounded-full px-4 py-3 min-[1100px]:min-w-65 flex items-center justify-center text-xl font-medium",
-          "max-[1100px]:mx-6 max-[1100px]:mt-6 max-[1100px]:inline-block max-[1100px]:self-start max-[1100px]:text-white",
+          "glass relative z-20 flex items-center justify-center rounded-full px-4 py-3 min-[1100px]:min-w-65 text-xl font-medium",
+          "max-[1100px]:mx-6 max-[1100px]:inline-block max-[1100px]:self-start max-[1100px]:text-white",
           "min-[1100px]:absolute min-[1100px]:top-[5%] min-[1100px]:left-1 min-[1100px]:text-black border border-gray-200/50 shadow-sm",
         )}
       >

@@ -25,7 +25,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
           : "pointer-events-none -translate-y-4 opacity-0",
       )}
     >
-      <div className="max-h-[calc(100vh-6.5rem)] overflow-y-auto rounded-3xl border border-white/50 bg-white/85 p-4 shadow-glass backdrop-blur-xl">
+      <div className="flex max-h-[calc(100vh-6.5rem)] flex-col gap-4 overflow-y-auto rounded-3xl border border-white/50 bg-white/85 p-4 shadow-glass backdrop-blur-xl">
         <nav className="flex flex-col gap-1">
           {navItems.map((item) =>
             item.children ? (
@@ -85,7 +85,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
           )}
         </nav>
 
-        <div className="mt-4 border-t border-border/60 pt-4">
+        <div className="border-t border-border/60 pt-4">
           <Button variant="secondary" className="w-full" size="md">
             Get A Quote
           </Button>

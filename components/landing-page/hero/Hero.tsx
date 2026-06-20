@@ -23,7 +23,7 @@ const Hero = () => {
         <RoatatingStar position="top-0 right-0" width="70" />
       </div>
 
-      <div className="container relative z-10 flex flex-col items-center px-5 py-16 text-center sm:py-20 lg:py-24">
+      <div className="container relative z-10 flex flex-col items-center gap-10 px-5 py-16 text-center sm:gap-12 sm:py-20 lg:py-24">
         <span className="relative max-w-7xl font-bold">
           <RoatatingStar position="top-[-10px] left-[70px]" width="30" />
 
@@ -40,18 +40,20 @@ const Hero = () => {
           </Heading>
         </span>
 
-        <Heading as="p" align="center" tone="muted" className="mt-6 max-w-2xl">
-          From Startup To Multi-Location Growth, We Build The Structure, Processes, And Partnerships That Keep Your Operations Efficient, Compliant, And Profitable.
-        </Heading>
+        <div className="flex w-full max-w-2xl flex-col items-center gap-6">
+          <Heading as="p" align="center" tone="muted">
+            From Startup To Multi-Location Growth, We Build The Structure, Processes, And Partnerships That Keep Your Operations Efficient, Compliant, And Profitable.
+          </Heading>
 
-        <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:mt-12 sm:w-auto sm:flex-row">
-          <Button variant="secondary" size="md" icon={<ArrowRightIcon />} className="w-full sm:w-auto">
-            Get A Quote
-          </Button>
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
+            <Button variant="secondary" size="md" icon={<ArrowRightIcon />} className="w-full sm:w-auto">
+              Get A Quote
+            </Button>
 
-          <Button variant="primary" size="md" icon={<ArrowRightIcon />} className="w-full sm:w-auto">
-            Book Consultation
-          </Button>
+            <Button variant="primary" size="md" icon={<ArrowRightIcon />} className="w-full sm:w-auto">
+              Book Consultation
+            </Button>
+          </div>
         </div>
       </div>
 

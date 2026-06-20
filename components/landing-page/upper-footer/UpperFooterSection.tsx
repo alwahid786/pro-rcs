@@ -40,8 +40,8 @@ const UpperFooterSection = () => {
     <section className="relative w-full overflow-hidden bg-white pb-0 pt-16 sm:pt-20 lg:pt-24">
       <RoatatingStar position="top-[150px] left-[-80px]" width="220" className="max-[1100px]:hidden" />
       <RoatatingStar position="top-[20px] right-[-20px]" width="120" className="max-[1100px]:hidden" />
-      <section className="relative z-2">
-        <div className="relative mx-auto max-w-305 px-5 text-center">
+      <section className="relative z-2 flex flex-col gap-14 sm:gap-16 lg:gap-20">
+        <div className="relative mx-auto flex max-w-305 flex-col gap-10 px-5 text-center sm:gap-12">
           <Heading as="h2" align="center" className="mx-auto max-w-5xl font-bold">
             Ready To Scale Your{" "}
             <GradientText colors={highlightColors} animationSpeed={3} showBorder={false} direction="vertical">
@@ -54,7 +54,7 @@ const UpperFooterSection = () => {
             With Confidence?
           </Heading>
 
-          <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:mt-12 sm:w-auto sm:flex-row sm:justify-center">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row sm:justify-center">
             <Button variant="secondary" size="md" icon={<ArrowRightIcon width="20" height="20" />} className="w-full sm:w-auto">
               Get A Quote
             </Button>
@@ -64,7 +64,7 @@ const UpperFooterSection = () => {
           </div>
         </div>
 
-        <div ref={imagesRef} className="relative mt-14 w-full overflow-hidden sm:mt-16 lg:mt-20">
+        <div ref={imagesRef} className="relative w-full overflow-hidden">
           <div className="relative h-72 w-full sm:h-68 lg:h-80">
             <div className="absolute inset-x-0 bottom-0 z-10 flex w-full items-end justify-center gap-6 px-4 sm:gap-14 sm:px-6 lg:gap-24">
               {upperFooterImages.map((image, index) => (

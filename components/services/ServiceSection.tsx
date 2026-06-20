@@ -81,21 +81,21 @@ const ServiceSection = () => {
   }, [isDesktop]);
 
   return (
-    <section className="relative container mx-auto flex flex-col items-center overflow-hidden bg-white px-5 py-16 sm:py-20 lg:py-24">
+    <section className="relative container mx-auto flex flex-col items-center gap-10 overflow-hidden bg-white px-5 py-16 sm:py-20 lg:py-24">
       <HeadingBlock
         isCenter
         badge="WHAT WE DO"
         heading={{ prefix: 'Our', highlight: 'Services', suffix: '' }}
       />
 
-      <div className="mt-10 flex w-full flex-col gap-10 min-[1100px]:hidden">
+      <div className="flex w-full flex-col gap-10 min-[1100px]:hidden">
         {serviceData.map((service) => (
           <ServiceInnerCard key={service.slug} {...service} />
         ))}
       </div>
       <RoatatingStar position="top-[200px] right-0" width="120" className="max-[1100px]:hidden" />
 
-      <div className="mt-10 hidden w-full grid-cols-[minmax(0,340px)_1fr] items-start gap-12 min-[1100px]:grid xl:gap-16 bg-linear-to-br from-cyan-100 via-white to-orange-100 rounded-2xl px-10 py-12 shadow-lg relative">
+      <div className="relative hidden w-full grid-cols-[minmax(0,340px)_1fr] items-start gap-12 rounded-2xl bg-linear-to-br from-cyan-100 via-white to-orange-100 px-10 py-12 shadow-lg min-[1100px]:grid xl:gap-16">
         <nav aria-label="Service categories" className="sticky top-28 self-center">
           <ul className="flex flex-col gap-4">
             {serviceData.map((service, index) => {

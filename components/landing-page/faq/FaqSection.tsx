@@ -23,12 +23,12 @@ const FaqSection = () => {
     <section className="bg-background py-16 sm:py-20 lg:py-24 relative">
       <RoatatingStar position="top-[100px] right-[-30px]" width="220" className="max-[1100px]:hidden" />
       <RoatatingStar position="top-[150px] left-[-80px]" width="220" className="max-[1100px]:hidden" />
-      <div className="container relative z-2">
+      <div className="container relative z-2 flex flex-col gap-10">
         <HeadingBlock badge={badge} heading={heading} weight="regular" />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_320px] lg:gap-8">
+        <div className="grid gap-6 lg:grid-cols-[1fr_320px] lg:gap-8">
           <div>
-            <div className="space-y-3">
+            <div className="flex flex-col gap-3">
               {items.map((item, index) => {
                 const isOpen = openIndex === index;
 
@@ -109,25 +109,27 @@ const FaqSection = () => {
             </div>
           </div>
 
-          <aside className="rounded-3xl glass p-4 shadow-xl sm:p-5">
-            <div className="relative rounded-2xl bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 p-4 text-center">
+          <aside className="flex flex-col gap-6 rounded-3xl glass p-4 shadow-xl sm:p-5">
+            <div className="relative flex flex-col gap-1 rounded-2xl bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 p-4 text-center">
               <div className="absolute -top-3 right-3 rounded-full border bg-white/10 shadow-lg backdrop-blur-[2px] border-primary/20 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.08em] text-primary">
                 {cta.helperLabel}
               </div>
               <div className="mx-auto w-fit">
                 <FaqsStar />
               </div>
-              <p className="mt-1 font-sans text-sm font-medium text-text-secondary">Professional Consultant</p>
+              <p className="font-sans text-sm font-medium text-text-secondary">Professional Consultant</p>
             </div>
 
-            <h3 className="mt-5 font-sans text-3xl font-bold tracking-tight text-text">{cta.title}</h3>
-            <p className="mt-3 font-sans text-sm leading-relaxed text-text-secondary">{cta.description}</p>
+            <div className="flex flex-col gap-3">
+              <h3 className="font-sans text-3xl font-bold tracking-tight text-text">{cta.title}</h3>
+              <p className="font-sans text-sm leading-relaxed text-text-secondary">{cta.description}</p>
+            </div>
 
-            <Button variant="primary" size="md" icon={<ArrowRightIcon className="text-white" />} className="mt-6 w-full justify-center">
+            <Button variant="primary" size="md" icon={<ArrowRightIcon className="text-white" />} className="w-full justify-center">
               {cta.buttonLabel}
             </Button>
 
-            <div className="mt-6 flex items-center gap-3">
+            <div className="flex items-center gap-3">
               <div className="flex -space-x-2">
                 <span className="size-4 rounded-full bg-[#f7d2c1]" />
                 <span className="size-4 rounded-full bg-[#f3c5af]" />

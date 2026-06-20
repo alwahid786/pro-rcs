@@ -10,27 +10,29 @@ const StrategyCard = ({ title, subtitle, description, listItems, image, imageCla
         <GradientBg />
       </span>
 
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col gap-3 lg:gap-4">
         <Heading as="h3" multicolor={title} size="display-sm" uppercase={false} />
 
-        <p className="mt-3 font-sans text-xl font-semibold italic leading-[142%] tracking-[-0.02em] text-text sm:text-2xl lg:mt-4 lg:text-[26px]">
+        <p className="font-sans text-xl font-semibold italic leading-[142%] tracking-[-0.02em] text-text sm:text-2xl lg:text-[26px]">
           {subtitle}
         </p>
 
-        <p className="mt-4 font-sans text-base font-medium leading-[142%] text-text-secondary lg:mt-5 lg:text-[18px]">
-          {description}
-        </p>
+        <div className="flex flex-col gap-4 lg:gap-5">
+          <p className="font-sans text-base font-medium leading-[142%] text-text-secondary lg:text-[18px]">
+            {description}
+          </p>
 
-        {listItems && listItems.length > 0 && (
-          <ul className="mt-4 space-y-1 font-sans text-base font-medium leading-[142%] text-text-secondary lg:mt-5 lg:text-[18px]">
-            {listItems.map((item) => (
-              <li key={item} className="flex gap-2">
-                <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-text-secondary" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+          {listItems && listItems.length > 0 && (
+            <ul className="flex flex-col gap-1 font-sans text-base font-medium leading-[142%] text-text-secondary lg:text-[18px]">
+              {listItems.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="size-1.5 shrink-0 translate-y-2.5 rounded-full bg-text-secondary" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
 
       <Image src={image} alt="" aria-hidden className={imageClassName} />

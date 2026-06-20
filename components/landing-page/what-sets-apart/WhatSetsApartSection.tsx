@@ -114,12 +114,14 @@ const GlassCard = ({ card, className }: { card: ApartCard; className?: string })
         </div>
       </div>
 
-      <div className="relative z-20 bg-white/10 shadow-md border border-white/70 backdrop-blur-[2px] py-10 px-6 rounded-3xl">
-        <Heading as="h3" multicolor={card.title} uppercase={false} className="mt-6 text-center text-[2.2rem] leading-[1.1] tracking-[-0.02em]" />
+      <div className="relative z-20 flex flex-col gap-5 rounded-3xl border border-white/70 bg-white/10 px-6 py-10 shadow-md backdrop-blur-[2px]">
+        <Heading as="h3" multicolor={card.title} uppercase={false} className="text-center text-[2.2rem] leading-[1.1] tracking-[-0.02em]" />
 
-        <div className="mt-5 min-h-23 w-full">{Icon()}</div>
+        <div className="flex flex-col gap-4">
+          <div className="min-h-23 w-full">{Icon()}</div>
 
-        <p className="mt-4 text-center font-sans text-base leading-relaxed text-text-secondary">{card.description}</p>
+          <p className="text-center font-sans text-base leading-relaxed text-text-secondary">{card.description}</p>
+        </div>
       </div>
     </article>
   );
@@ -135,10 +137,10 @@ const WhatSetsApartSection = () => {
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-30 w-full rounded-full bg-[#C04A12]/80 blur-[80px]" />
         </div>
       </div>
-      <div className="container relative z-2">
+      <div className="container relative z-2 flex flex-col gap-14">
         <HeadingBlock badge={badge} heading={heading} isCenter weight="regular" />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-14 lg:grid-cols-4 lg:gap-6">
+        <div className="grid gap-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-14 lg:grid-cols-4 lg:gap-6">
           {cards.map((card, index) => (
             <GlassCard key={card.number} card={card} className={cardOffsets[index]} />
           ))}

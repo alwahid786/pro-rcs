@@ -7,10 +7,10 @@ const ProcessSection = () => {
   const { badge, heading, steps } = processSectionContent;
 
   return (
-    <section className="container mx-auto bg-white py-16 sm:py-20 lg:py-24">
+    <section className="container mx-auto flex flex-col gap-10 bg-white py-16 sm:py-20 lg:py-24">
       <HeadingBlock badge={badge} heading={heading} weight="regular" />
 
-      <div className="mt-10 grid gap-5 lg:grid-cols-3">
+      <div className="grid gap-5 lg:grid-cols-3">
         {steps.map((step) => (
           <ProcessCard key={step.number} {...step} />
         ))}

@@ -143,55 +143,57 @@ const ResultsSection = () => {
   return (
     <section className="relative bg-white px-5 pb-16 pt-20 sm:pb-20 lg:pb-24">
       <div className="mx-auto max-w-305 rounded-[1.75rem] bg-[#151515] p-4 shadow-[0_0_94px_0_#00000026] sm:p-6 lg:p-8">
-        <div className="flex justify-center">
-          <Badge showIcon text="Numbers That Speak For Themselves" />
-        </div>
+        <div className="flex flex-col gap-6">
+          <div className="flex justify-center">
+            <Badge showIcon text="Numbers That Speak For Themselves" />
+          </div>
 
-        <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:gap-8">
-          <article className="rounded-2xl bg-black px-4 py-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:px-6 sm:py-7">
-            <div>
-              <h2 className="text-lg font-semibold sm:text-xl">Service breakdown</h2>
-              <p className="mt-1 text-xs text-white/45 sm:text-sm">What clients engage most</p>
-            </div>
-
-            <div className="relative mx-auto mt-8 flex min-h-65 max-w-md items-center justify-center sm:min-h-77.5">
-              <div className="h-52 w-52 sm:h-64 sm:w-64">
-                <canvas ref={serviceChartRef} aria-label="Service breakdown chart" role="img" />
+          <div className="grid gap-5 lg:grid-cols-2 lg:gap-8">
+            <article className="flex flex-col gap-8 rounded-2xl bg-black px-4 py-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:px-6 sm:py-7">
+              <div className="flex flex-col gap-1">
+                <h2 className="text-lg font-semibold sm:text-xl">Service breakdown</h2>
+                <p className="text-xs text-white/45 sm:text-sm">What clients engage most</p>
               </div>
 
-              {serviceData.map((stat) => (
-                <div
-                  key={stat.label}
-                  className={`absolute z-10 rounded-md border border-white/10 bg-[#1a1a1a]/95 px-3 py-2 text-center text-[11px] font-medium text-white shadow-[0_12px_28px_rgba(0,0,0,0.35)] sm:text-xs ${stat.className}`}
-                >
-                  {stat.value}+ {stat.label}
+              <div className="relative mx-auto flex min-h-65 max-w-md items-center justify-center sm:min-h-77.5">
+                <div className="h-52 w-52 sm:h-64 sm:w-64">
+                  <canvas ref={serviceChartRef} aria-label="Service breakdown chart" role="img" />
                 </div>
-              ))}
-            </div>
-          </article>
 
-          <article className="rounded-2xl bg-black px-4 py-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:px-6 sm:py-7">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <h2 className="text-lg font-semibold sm:text-xl">Revenue growth comparison</h2>
-                <p className="mt-1 text-xs text-white/45 sm:text-sm">Average % increase across client portfolio</p>
+                {serviceData.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className={`absolute z-10 rounded-md border border-white/10 bg-[#1a1a1a]/95 px-3 py-2 text-center text-[11px] font-medium text-white shadow-[0_12px_28px_rgba(0,0,0,0.35)] sm:text-xs ${stat.className}`}
+                  >
+                    {stat.value}+ {stat.label}
+                  </div>
+                ))}
               </div>
-              <div className="w-fit rounded-full border border-white/10 bg-[#1a1a1a] px-3 py-1.5 text-[11px] font-medium text-white/80">2023 → 2025</div>
-            </div>
+            </article>
 
-            <div className="mt-8 h-64 sm:h-72">
-              <canvas ref={revenueChartRef} aria-label="Revenue growth comparison chart" role="img" />
-            </div>
-
-            <div className="mt-5 flex flex-wrap gap-4 text-xs text-white/60">
-              {years.map((year, index) => (
-                <div key={year} className="flex items-center gap-2">
-                  <span className="size-3 rounded-sm" style={{ backgroundColor: graphColors[index] }} />
-                  <span>{year}</span>
+            <article className="flex flex-col gap-8 rounded-2xl bg-black px-4 py-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:px-6 sm:py-7">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-lg font-semibold sm:text-xl">Revenue growth comparison</h2>
+                  <p className="text-xs text-white/45 sm:text-sm">Average % increase across client portfolio</p>
                 </div>
-              ))}
-            </div>
-          </article>
+                <div className="w-fit rounded-full border border-white/10 bg-[#1a1a1a] px-3 py-1.5 text-[11px] font-medium text-white/80">2023 → 2025</div>
+              </div>
+
+              <div className="h-64 sm:h-72">
+                <canvas ref={revenueChartRef} aria-label="Revenue growth comparison chart" role="img" />
+              </div>
+
+              <div className="flex flex-wrap gap-4 text-xs text-white/60">
+                {years.map((year, index) => (
+                  <div key={year} className="flex items-center gap-2">
+                    <span className="size-3 rounded-sm" style={{ backgroundColor: graphColors[index] }} />
+                    <span>{year}</span>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
