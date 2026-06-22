@@ -32,10 +32,10 @@ const ServiceInnerCard = ({ category, headline, offeringsHeading, points, footer
         className={cn(
           "glass relative z-20 flex items-center justify-center rounded-full px-4 py-3 min-[1100px]:min-w-65 text-xl font-medium",
           "max-[1100px]:mx-6 max-[1100px]:inline-block max-[1100px]:self-start max-[1100px]:text-white",
-          "min-[1100px]:absolute min-[1100px]:top-[5%] min-[1100px]:left-1 min-[1100px]:text-black border border-gray-200/50 shadow-sm",
+          "min-[1100px]:absolute mt-4 min-[1100px]:left-1 min-[1100px]:text-black border border-gray-200/50 shadow-sm",
         )}
       >
-        {category}
+        {category}ssss
       </div>
 
       <div

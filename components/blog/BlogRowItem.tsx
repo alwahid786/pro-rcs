@@ -18,7 +18,7 @@ const BlogRowItem = ({ post, index }: BlogRowItemProps) => {
         <span className="font-sans text-3xl font-light text-text-secondary/40 xl:text-4xl">{String(index).padStart(2, "0")}</span>
       </div>
 
-      <div className="flex flex-col gap-4 px-0 py-8 sm:py-10 lg:border-r lg:border-[#ece7e1] lg:px-8 lg:py-12">
+      <div className="flex flex-col gap-4 px-5 py-8 sm:py-10 lg:border-r lg:border-[#ece7e1] lg:px-8 lg:py-12">
         <div className="flex flex-wrap items-center gap-3">
           <BlogCategoryBadge label={post.category} />
           <span className="font-sans text-sm text-text-secondary">{post.date}</span>
@@ -31,15 +31,7 @@ const BlogRowItem = ({ post, index }: BlogRowItemProps) => {
 
       <div className="flex flex-col gap-0 py-0">
         <div className="relative aspect-4/3 overflow-hidden">
-          {post.image && (
-            <Image
-              src={post.image as StaticImageData}
-              alt={post.title}
-              fill
-              className="object-cover"
-              sizes="320px"
-            />
-          )}
+          {post.image && <Image src={post.image as StaticImageData} alt={post.title} fill className="object-cover" sizes="320px" />}
         </div>
 
         <div className="flex items-center justify-between gap-4 px-5 py-5 lg:px-6">

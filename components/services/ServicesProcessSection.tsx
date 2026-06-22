@@ -22,7 +22,7 @@ const ServicesProcessSection = ({ badge, steps }: ServicesProcessSectionProps) =
               </div>
 
               <div className="flex flex-col gap-3">
-                <Heading as="h3" weight="bold" className="text-xl sm:text-2xl">
+                <Heading as="h3" weight="bold" className="text-xl! sm:text-2xl!">
                   {step.title}
                 </Heading>
                 <Heading as="p" tone="muted">
