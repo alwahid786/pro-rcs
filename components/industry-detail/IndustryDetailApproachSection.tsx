@@ -31,7 +31,7 @@ const IndustryDetailApproachSection = ({ badge, heading, description, phases }: 
           {phases.map((phase, index) => (
             <article
               key={phase.number}
-              className={`group flex flex-col gap-5 border border-transparent p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-7 ${
+              className={`group flex flex-col gap-5 border border-transparent p-8 transition-transform duration-300 hover:-translate-y-1 ${
                 index === 0 ? "bg-[#241f1b]" : "bg-[#1F1A17]"
               }`}
             >
