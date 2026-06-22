@@ -4,7 +4,7 @@ import type { BlogPost } from "@/components/content/types";
 import BlogFeaturedCard from "@/components/blog/BlogFeaturedCard";
 import BlogGridCard from "@/components/blog/BlogGridCard";
 import BlogRowItem from "@/components/blog/BlogRowItem";
-import { blogPostMatchesFilter, filterBlogPosts } from "@/components/blog/utils";
+import { filterBlogPosts } from "@/components/blog/utils";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
@@ -19,45 +19,31 @@ type BlogListingSectionProps = {
 const BlogListingSection = ({ filters, featured, gridPosts, rowPosts }: BlogListingSectionProps) => {
   const [activeFilter, setActiveFilter] = useState(filters[0] ?? "All");
 
-  const allPosts = useMemo(() => [...gridPosts, ...rowPosts], [gridPosts, rowPosts]);
-
-  const filteredGridPosts = useMemo(() => filterBlogPosts(gridPosts, activeFilter), [gridPosts, activeFilter]);
   const filteredRowPosts = useMemo(() => filterBlogPosts(rowPosts, activeFilter), [rowPosts, activeFilter]);
-  const showFeatured = blogPostMatchesFilter(featured, activeFilter);
 
   const articleCount = useMemo(() => {
-    const listCount = filterBlogPosts(allPosts, activeFilter).length;
-    return showFeatured ? listCount + 1 : listCount;
-  }, [allPosts, activeFilter, showFeatured]);
+    return filteredRowPosts.length;
+  }, [filteredRowPosts]);
 
-  const rowStartIndex = filteredGridPosts.length + 1;
+  const rowStartIndex = gridPosts.length + 1;
 
   return (
     <div className="flex flex-col">
       <section className="bg-white py-12 sm:py-16 lg:py-20">
         <div className="w-full">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`top-${activeFilter}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col gap-0"
-            >
-              {showFeatured && <BlogFeaturedCard post={featured} />}
+          <div className="flex flex-col gap-0">
+            <BlogFeaturedCard post={featured} />
 
-              {filteredGridPosts.length > 0 && (
-                <div className="grid grid-cols-1 gap-0.5 bg-[#ece7e1] md:grid-cols-2">
-                  {filteredGridPosts.map((post) => (
-                    <BlogGridCard key={post.slug ?? post.title} post={post} />
-                  ))}
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
+            {gridPosts.length > 0 && (
+              <div className="grid grid-cols-1 gap-0.5 bg-[#ece7e1] md:grid-cols-2">
+                {gridPosts.map((post) => (
+                  <BlogGridCard key={post.slug ?? post.title} post={post} />
+                ))}
+              </div>
+            )}
+          </div>
 
-          {!showFeatured && filteredGridPosts.length === 0 && filteredRowPosts.length === 0 && (
+          {filteredRowPosts.length === 0 && (
             <p className="py-12 text-center font-sans text-base text-text-secondary">No articles found in this category.</p>
           )}
         </div>
