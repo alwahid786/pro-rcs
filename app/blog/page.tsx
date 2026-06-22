@@ -1,23 +1,21 @@
-import {
-  industriesPageContent,
-  IndustriesMarqueeSection,
-} from "@/components/industries";
+import { blogPageContent, BlogListingSection } from "@/components/blog";
 import IndustryBlockSection from "@/components/ui/IndustryBlockSection";
 import StandForSection from "@/components/ui/StandForSection";
 import HeroSection from "@/components/ui/HeroSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: industriesPageContent.meta.title,
-  description: industriesPageContent.meta.description,
+  title: blogPageContent.meta.title,
+  description: blogPageContent.meta.description,
 };
 
-const heroSection = industriesPageContent.sections.find((section) => section.type === "hero");
-const marqueeSection = industriesPageContent.sections.find((section) => section.type === "marquee");
-const industryBlocks = industriesPageContent.sections.filter((section) => section.type === "industry-block");
-const standForSection = industriesPageContent.sections.find((section) => section.type === "stand-for");
+const heroSection = blogPageContent.sections.find((section) => section.type === "hero");
+const blogListSection = blogPageContent.sections.find((section) => section.type === "blog-list");
+const blogRowsSection = blogPageContent.sections.find((section) => section.type === "blog-rows");
+const industryBlocks = blogPageContent.sections.filter((section) => section.type === "industry-block");
+const standForSection = blogPageContent.sections.find((section) => section.type === "stand-for");
 
-const IndustriesPage = () => {
+const BlogPage = () => {
   return (
     <main className="flex-1 overflow-x-clip">
       {heroSection && (
@@ -29,13 +27,18 @@ const IndustriesPage = () => {
         />
       )}
 
-      {marqueeSection && <IndustriesMarqueeSection items={marqueeSection.items} />}
+      {blogListSection && blogRowsSection && (
+        <BlogListingSection
+          filters={blogListSection.filters}
+          featured={blogListSection.featured}
+          gridPosts={blogListSection.posts}
+          rowPosts={blogRowsSection.posts}
+        />
+      )}
 
-      {industryBlocks.map((block, index) => (
+      {industryBlocks.map((block) => (
         <IndustryBlockSection
           key={block.title}
-          id={index === 0 ? "industries-list" : undefined}
-          index={block.index}
           variant={block.variant}
           badge={block.badge}
           title={block.title}
@@ -58,4 +61,4 @@ const IndustriesPage = () => {
   );
 };
 
-export default IndustriesPage;
+export default BlogPage;

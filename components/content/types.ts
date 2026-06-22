@@ -287,6 +287,7 @@ export type BlogPost = {
 
 export type BlogListSectionContent = {
   type: "blog-list";
+  filters: string[];
   featured: BlogPost;
   posts: BlogPost[];
   badge?: string;

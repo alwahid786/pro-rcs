@@ -2,11 +2,13 @@ import type { StandForSectionContent } from "@/components/content/types";
 import HeadingBlock from "@/components/ui/HeadingBlock";
 import { cn } from "@/lib/utils";
 
-type IndustriesStandForSectionProps = Omit<StandForSectionContent, "type">;
+type StandForSectionProps = Omit<StandForSectionContent, "type"> & {
+  className?: string;
+};
 
-const IndustriesStandForSection = ({ badge, heading, description, items }: IndustriesStandForSectionProps) => {
+const StandForSection = ({ badge, heading, description, items, className }: StandForSectionProps) => {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24">
+    <section className={cn("bg-white py-16 sm:py-20 lg:py-24", className)}>
       <div className="container flex flex-col gap-10 lg:gap-12">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] lg:items-end lg:gap-12">
           <HeadingBlock badge={badge} heading={heading} weight="semibold" uppercase={false} headingClassName="max-w-3xl" />
@@ -30,4 +32,4 @@ const IndustriesStandForSection = ({ badge, heading, description, items }: Indus
   );
 };
 
-export default IndustriesStandForSection;
+export default StandForSection;

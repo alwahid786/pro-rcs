@@ -97,7 +97,7 @@ const IndustryBlockSection = ({
                       {item}
                     </span>
                   </div>
-                  <ArrowRightIcon className={cn("shrink-0", isDark ? "text-primary" : "text-primary")} />
+                  <ArrowRightIcon className="shrink-0 text-primary" />
                 </li>
               ))}
             </ul>
