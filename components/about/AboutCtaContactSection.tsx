@@ -1,7 +1,8 @@
+"use client";
 import Clock from "@/assets/icons/about/Clock";
 import Email from "@/assets/icons/about/Email";
 import LocationOrange from "@/assets/icons/about/LocationOrange";
-import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
+import ArrowRightIcon from "@iconify-react/pixelarticons/arrow-right";
 import StarIcon from "@/assets/icons/StarIcon";
 import type { CtaContactItem, CtaContactSectionContent } from "@/components/content/types";
 import Heading from "@/components/ui/Heading";
@@ -24,13 +25,7 @@ const ContactIcon = ({ label }: { label: string }) => {
 
   if (!Icon) return null;
 
-  return (
-    <div className="flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-primary/15">
-      <div className="h-12 w-12 origin-top-left scale-[0.38]">
-        <Icon />
-      </div>
-    </div>
-  );
+  return <Icon />;
 };
 
 const ContactItem = ({ label, value, href }: CtaContactItem) => {
@@ -88,16 +83,13 @@ const AboutCtaContactSection = ({ badge, heading, description, primaryButton, se
           <Link href={primaryButton.href} className={cn(buttonBaseClasses, "bg-primary text-white shadow-btn-primary btn-primary")}>
             <span className="inline-flex items-center justify-center gap-2">
               {primaryButton.label}
-              <ArrowRightIcon className="text-white" />
+              <ArrowRightIcon width="20" height="20" className="text-white" />
             </span>
           </Link>
-          <Link
-            href={secondaryButton.href}
-            className={cn(buttonBaseClasses, "border border-white/30 bg-transparent text-white hover:bg-white/5")}
-          >
+          <Link href={secondaryButton.href} className={cn(buttonBaseClasses, "border border-white/30 bg-transparent text-white hover:bg-white/5")}>
             <span className="inline-flex items-center justify-center gap-2">
               {secondaryButton.label}
-              <ArrowRightIcon className="text-white" />
+              <ArrowRightIcon width="20" height="20" className="text-white" />
             </span>
           </Link>
         </div>
