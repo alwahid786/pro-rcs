@@ -47,17 +47,23 @@ const ServicesPage = () => {
       )}
 
       {flagshipSection && (
-        <FlagshipServiceSection
-          badge={flagshipSection.badge}
-          heading={flagshipSection.heading}
-          description={flagshipSection.description}
-          quote={flagshipSection.quote}
-          cta={flagshipSection.cta}
-          features={flagshipSection.features}
-        />
+        <div id="flagship-service">
+          <FlagshipServiceSection
+            badge={flagshipSection.badge}
+            heading={flagshipSection.heading}
+            description={flagshipSection.description}
+            quote={flagshipSection.quote}
+            cta={flagshipSection.cta}
+            features={flagshipSection.features}
+          />
+        </div>
       )}
 
-      {processSection && <ServicesProcessSection badge={processSection.badge} steps={processSection.steps} />}
+      {processSection && (
+        <div id="how-we-work">
+          <ServicesProcessSection badge={processSection.badge} steps={processSection.steps} />
+        </div>
+      )}
     </main>
   );
 };
