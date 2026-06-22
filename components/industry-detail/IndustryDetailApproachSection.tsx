@@ -13,15 +13,12 @@ const IndustryDetailApproachSection = ({ badge, heading, description, phases }: 
             <Badge text={badge} variant="glass" />
 
             <Heading as="h2" size="display" className="text-white lg:text-[64px]!">
-              {heading.map((segment, index) =>
-                segment.highlight ? (
-                  <span key={index} className="text-primary">
-                    {segment.text}
-                  </span>
-                ) : (
-                  <span key={index}>{segment.text}</span>
-                ),
-              )}
+              {heading.map((segment, index) => (
+                <span key={index}>
+                  {segment.breakBefore ? <br /> : null}
+                  {segment.highlight ? <span className="text-primary">{segment.text}</span> : segment.text}
+                </span>
+              ))}
             </Heading>
           </div>
 
@@ -38,13 +35,12 @@ const IndustryDetailApproachSection = ({ badge, heading, description, phases }: 
                 index === 0 ? "bg-[#241f1b]" : "bg-[#1F1A17]"
               }`}
             >
-              <div className="h-0.5 w-full bg-primary/80" aria-hidden />
               <span className="flex items-center gap-4 font-sans text-5xl font-extralight text-primary sm:text-6xl">
                 {phase.number}
                 <span className="mt-1 h-px flex-1 bg-primary/45" aria-hidden />
               </span>
               <div className="flex flex-col gap-3">
-                <Heading as="h3" weight="bold" className="text-xl text-white sm:text-2xl">
+                <Heading as="h3" weight="bold" className="text-[28px] leading-[1.1] text-white">
                   {phase.title}
                 </Heading>
                 <Heading as="p" className="text-sm text-white/55 sm:text-base">

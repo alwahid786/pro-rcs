@@ -116,7 +116,7 @@ export const industryDetailPageContent = {
       badge: "OUR APPROACH",
       heading: [
         { text: "Four Phases. " },
-        { text: "One Partnership.", highlight: true },
+        { text: "One Partnership.", highlight: true, breakBefore: true },
       ],
       description:
         "Every engagement follows a proven methodology — structured enough to deliver results, flexible enough to fit your reality.",
