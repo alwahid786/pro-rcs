@@ -39,6 +39,7 @@ const BlogPage = () => {
       {industryBlocks.map((block) => (
         <IndustryBlockSection
           key={block.title}
+          contentWidth="container"
           variant={block.variant}
           badge={block.badge}
           title={block.title}

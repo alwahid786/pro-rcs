@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 type IndustryBlockSectionProps = Omit<IndustryBlockSectionContent, "type"> & {
   id?: string;
+  contentWidth?: "full" | "container";
 };
 
 const IndustryBlockSection = ({
@@ -19,6 +20,7 @@ const IndustryBlockSection = ({
   highlight,
   cta,
   helpItems,
+  contentWidth = "full",
 }: IndustryBlockSectionProps) => {
   const isDark = variant === "dark";
 
@@ -39,7 +41,12 @@ const IndustryBlockSection = ({
         </span>
       )}
 
-      <div className="relative z-10 w-full px-5 lg:px-8 xl:px-12">
+      <div
+        className={cn(
+          "relative z-10",
+          contentWidth === "container" ? "container" : "w-full px-5 lg:px-8 xl:px-12",
+        )}
+      >
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
           <div className="group/content flex flex-col gap-8">
             <Badge text={badge} variant={isDark ? "glass" : "default"} />
