@@ -1,10 +1,11 @@
-import { aboutPageContent, AboutMissionVisionSection, AboutOurStorySection, AboutStatsSection } from "@/components/about";
+import { aboutPageContent, AboutCoreValuesSection, AboutMissionVisionSection, AboutOurStorySection, AboutStatsSection } from "@/components/about";
 import HeroSection from "@/components/ui/HeroSection";
 
 const heroSection = aboutPageContent.sections.find((section) => section.type === "hero");
 const statsSection = aboutPageContent.sections.find((section) => section.type === "stats");
 const ourStorySection = aboutPageContent.sections.find((section) => section.type === "our-story");
 const missionVisionSection = aboutPageContent.sections.find((section) => section.type === "mission-vision");
+const coreValuesSection = aboutPageContent.sections.find((section) => section.type === "core-values");
 
 const AboutPage = () => {
   return (
@@ -36,6 +37,15 @@ const AboutPage = () => {
           heading={missionVisionSection.heading}
           mission={missionVisionSection.mission}
           vision={missionVisionSection.vision}
+        />
+      )}
+
+      {coreValuesSection && (
+        <AboutCoreValuesSection
+          badge={coreValuesSection.badge}
+          heading={coreValuesSection.heading}
+          description={coreValuesSection.description}
+          items={coreValuesSection.items}
         />
       )}
     </main>
