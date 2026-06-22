@@ -13,7 +13,8 @@ export const industriesPageContent = {
       heading: [
         { text: "Every " },
         { text: "Format", highlight: true },
-        { text: ". Every Stage." },
+        { text: "." },
+        { text: "Every Stage.", breakBefore: true },
       ],
       description:
         "Whether You're Running A Single Food Truck Or Scaling A Full-Service Franchise Network, RCS Brings The Same Operational Depth And Strategic Precision To Every Engagement.",

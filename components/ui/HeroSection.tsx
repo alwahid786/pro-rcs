@@ -26,15 +26,16 @@ const HeroSection = ({ heading, description, primaryButton, secondaryButton, cla
       <RoatatingStar position="bottom-[-30px] left-[-30px]" width="130" />
       <div className="flex max-w-6xl flex-col items-center gap-6 sm:gap-8">
         <Heading as="h1" align="center" size="display" className="lg:text-[62px]!">
-          {heading.map((segment, index) =>
-            segment.highlight ? (
-              <span key={index} className="text-primary">
-                {segment.text}
-              </span>
-            ) : (
-              <span key={index}>{segment.text}</span>
-            ),
-          )}
+          {heading.map((segment, index) => (
+            <span key={index}>
+              {segment.breakBefore && <br />}
+              {segment.highlight ? (
+                <span className="text-primary">{segment.text}</span>
+              ) : (
+                segment.text
+              )}
+            </span>
+          ))}
         </Heading>
 
         <Heading as="p" align="center" tone="muted" className="max-w-2xl">

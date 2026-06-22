@@ -11,6 +11,7 @@ export type MulticolorHeading = {
 export type HeadingSegment = {
   text: string;
   highlight?: boolean;
+  breakBefore?: boolean;
 };
 
 export type PageButton = {
