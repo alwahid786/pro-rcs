@@ -57,7 +57,7 @@ export const industriesPageContent = {
       description:
         "From white-tablecloth dining to casual full-service concepts, RCS partners with restaurateurs at every growth stage. We align your brand, operations, and financials to support sustainable scaling — whether you're launching a flagship or franchising your tenth location.",
       highlight: "The most complex format to scale. The one we know best.",
-      cta: { label: "Work With Us", href: "/contact" },
+      cta: { label: "Work With Us", href: "/industries/full-service-restaurants" },
       helpItems: [
         "Concept development & brand positioning",
         "Franchise structure & expansion planning",

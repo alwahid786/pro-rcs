@@ -74,37 +74,37 @@ export const industryDetailPageContent = {
         "Every engagement is scoped to your specific situation — not templated from a playbook.",
       items: [
         {
-          icon: "star",
+          icon: "development",
           title: "Concept Development & Brand Positioning",
           description:
             "Define what makes your concept different, who it's for, and how to communicate that at scale. We build brand architecture that travels.",
         },
         {
-          icon: "plus",
+          icon: "bulb",
           title: "Franchise Expansion Strategy",
           description:
             "Territory planning, franchisee profiles, fee structures, and legal frameworks — the full infrastructure needed to franchise responsibly.",
         },
         {
-          icon: "star",
+          icon: "menu-engineering",
           title: "Menu Engineering & Recipe Development",
           description:
             "Menus engineered for profitability and replication — balancing food cost, kitchen execution, and guest appeal at every price point.",
         },
         {
-          icon: "circle",
+          icon: "operational",
           title: "Operational Performance Audit",
           description:
             "Deep-dive assessment of labor, flow, table turns, and service systems — identifying exactly where margin is being lost.",
         },
         {
-          icon: "pin",
+          icon: "supply-chain",
           title: "Supply Chain Optimization",
           description:
             "Vetted vendor networks, cost management, and procurement systems built for consistency across every location in your network.",
         },
         {
-          icon: "pin",
+          icon: "training",
           title: "Training & SOPs",
           description:
             "Comprehensive training programs and operations manuals that ensure your brand standard is delivered on day one of every new location.",
@@ -171,6 +171,7 @@ export const industryDetailPageContent = {
           description: "Speed, Profitability & Multi-Location Growth",
           image: serviceImage,
           cta: "Explore",
+          href: "/industries",
         },
         {
           index: "03",
@@ -178,14 +179,22 @@ export const industryDetailPageContent = {
           description: "Authentic Concepts Built to Grow",
           image: cafesImage,
           cta: "Explore",
+          href: "/industries",
         },
         {
           title: "Catering & Events",
           description: "Operations, Pricing & Revenue Diversification",
           image: cateringImage,
           cta: "Explore",
+          href: "/industries",
         },
       ],
     },
   ],
 } satisfies IndustryDetailContent;
+
+export const industryDetailPages: Record<string, IndustryDetailContent> = {
+  "full-service-restaurants": industryDetailPageContent,
+};
+
+export const getIndustryDetailPage = (slug: string) => industryDetailPages[slug];
