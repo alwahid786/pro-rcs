@@ -29,7 +29,7 @@ const BlogRowItem = ({ post, index }: BlogRowItemProps) => {
         <p className="max-w-3xl font-sans text-base leading-relaxed text-text-secondary sm:text-lg sm:leading-8 lg:max-w-[90%]">{post.excerpt}</p>
       </div>
 
-      <div className="flex flex-col gap-4 pb-8 lg:px-6 lg:py-12">
+      <div className="flex flex-col gap-0 py-0">
         <div className="relative aspect-4/3 overflow-hidden">
           {post.image && (
             <Image
@@ -42,7 +42,7 @@ const BlogRowItem = ({ post, index }: BlogRowItemProps) => {
           )}
         </div>
 
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 px-5 py-5 lg:px-6">
           <span className="font-sans text-sm text-text-secondary">{post.readTime}</span>
           <Link href={href} className="inline-flex items-center gap-2 font-sans text-sm font-medium text-text">
             Read

@@ -64,8 +64,8 @@ const BlogListingSection = ({ filters, featured, gridPosts, rowPosts }: BlogList
       </section>
 
       <section className="border-t border-[#ece7e1] bg-[#fdfaf7]">
-        <div className="w-full px-5 lg:px-8 xl:px-12">
-          <div className="flex flex-col gap-4 border-b border-[#ece7e1] py-5 sm:flex-row sm:items-center sm:justify-between sm:py-6">
+        <div className="w-full">
+          <div className="flex flex-col gap-4 border-b border-[#ece7e1] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:py-6 lg:px-8 xl:px-12">
             <div className="flex flex-wrap items-center justify-center gap-6 sm:justify-start sm:gap-8">
               {filters.map((filter) => (
                 <button
@@ -98,7 +98,7 @@ const BlogListingSection = ({ filters, featured, gridPosts, rowPosts }: BlogList
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                className="bg-white"
+                className="w-full bg-white"
               >
                 {filteredRowPosts.map((post, index) => (
                   <BlogRowItem key={post.slug ?? post.title} post={post} index={rowStartIndex + index} />
