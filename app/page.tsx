@@ -1,4 +1,4 @@
-import { AboutSection } from '@/components/about';
+import { AboutSection } from "@/components/about";
 import {
   ContactSection,
   FaqSection,
@@ -11,12 +11,12 @@ import {
   TestimonialsSection,
   UpperFooterSection,
   WhatSetsApartSection,
-} from '@/components/landing-page';
-import { ServiceSection } from '@/components/services';
+} from "@/components/landing-page";
+import { ServiceSection } from "@/components/services";
 
 export default function Home() {
   return (
-    <main className="flex-1 overflow-x-clip">
+    <>
       <Hero />
       <ResultsSection />
       <ServiceSection />
@@ -30,6 +30,6 @@ export default function Home() {
       <AboutSection />
       <ContactSection />
       <UpperFooterSection />
-    </main>
+    </>
   );
 }
