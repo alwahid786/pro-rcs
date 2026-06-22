@@ -1,4 +1,11 @@
-import { aboutPageContent, AboutCoreValuesSection, AboutMissionVisionSection, AboutOurStorySection, AboutStatsSection } from "@/components/about";
+import {
+  aboutPageContent,
+  AboutCoreValuesSection,
+  AboutExpertiseAreasSection,
+  AboutMissionVisionSection,
+  AboutOurStorySection,
+  AboutStatsSection,
+} from "@/components/about";
 import HeroSection from "@/components/ui/HeroSection";
 
 const heroSection = aboutPageContent.sections.find((section) => section.type === "hero");
@@ -6,6 +13,7 @@ const statsSection = aboutPageContent.sections.find((section) => section.type ==
 const ourStorySection = aboutPageContent.sections.find((section) => section.type === "our-story");
 const missionVisionSection = aboutPageContent.sections.find((section) => section.type === "mission-vision");
 const coreValuesSection = aboutPageContent.sections.find((section) => section.type === "core-values");
+const expertiseAreasSection = aboutPageContent.sections.find((section) => section.type === "expertise-areas");
 
 const AboutPage = () => {
   return (
@@ -46,6 +54,15 @@ const AboutPage = () => {
           heading={coreValuesSection.heading}
           description={coreValuesSection.description}
           items={coreValuesSection.items}
+        />
+      )}
+
+      {expertiseAreasSection && (
+        <AboutExpertiseAreasSection
+          badge={expertiseAreasSection.badge}
+          heading={expertiseAreasSection.heading}
+          cta={expertiseAreasSection.cta}
+          cards={expertiseAreasSection.cards}
         />
       )}
     </main>

@@ -36,7 +36,6 @@ const CoreValueCard = ({ title, description, featured }: CoreValueItem & { featu
 const AboutCoreValuesSection = ({ badge, heading, description, items }: AboutCoreValuesSectionProps) => {
   return (
     <section className="bg-white py-16 sm:py-20 lg:py-24">
-      <Innovation />
       <div className="container flex flex-col items-center gap-10 lg:gap-12">
         <div className="flex max-w-3xl flex-col items-center gap-6 text-center">
           <HeadingBlock badge={badge} heading={heading} isCenter weight="semibold" uppercase={false} headingClassName="max-w-4xl" />
