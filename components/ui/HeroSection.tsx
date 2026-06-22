@@ -24,8 +24,8 @@ const HeroSection = ({ heading, description, primaryButton, secondaryButton, cla
       <div className="absolute top-1/2 left-1/2 h-30 w-175 -translate-y-1/2 rounded-full bg-[#C04A12]/40 blur-[80px]" />
       <RoatatingStar position="top-0 right-[-30px]" width="130" />
       <RoatatingStar position="bottom-[-30px] left-[-30px]" width="130" />
-      <div className="flex max-w-6xl flex-col items-center gap-6 sm:gap-8">
-        <Heading as="h1" align="center" size="display" className="lg:text-[62px]!">
+      <div className="flex w-full max-w-300 flex-col items-center gap-6 sm:gap-8">
+        <Heading as="h1" align="center" size="display" className="lg:text-[64px]!">
           {heading.map((segment, index) => (
             <span key={index}>
               {segment.breakBefore && <br />}
@@ -38,7 +38,7 @@ const HeroSection = ({ heading, description, primaryButton, secondaryButton, cla
           ))}
         </Heading>
 
-        <Heading as="p" align="center" tone="muted" className="max-w-2xl">
+        <Heading as="p" align="center" tone="muted" className="max-w-[90%] lg:max-w-3xl">
           {description}
         </Heading>
       </div>

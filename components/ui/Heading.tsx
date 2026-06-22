@@ -80,6 +80,16 @@ const Heading = ({
   weight,
   ...props
 }: HeadingProps) => {
+  const renderWithLineBreaks = (text: string) => {
+    const lines = text.split("\n");
+    return lines.map((line, index) => (
+      <span key={`${line}-${index}`}>
+        {index > 0 ? <br /> : null}
+        {line}
+      </span>
+    ));
+  };
+
   if (as === "hr") {
     return <hr className={cn("w-full border-0 border-t border-dashed border-[#b8d9f0]", className)} {...props} />;
   }
@@ -105,8 +115,8 @@ const Heading = ({
     >
       {multicolor ? (
         <>
-          {multicolor.prefix} <span className="text-primary">{multicolor.highlight}</span>
-          {multicolor.suffix ? ` ${multicolor.suffix}` : null}
+          {renderWithLineBreaks(multicolor.prefix)} <span className="text-primary">{renderWithLineBreaks(multicolor.highlight)}</span>
+          {multicolor.suffix ? <>{` `}{renderWithLineBreaks(multicolor.suffix)}</> : null}
         </>
       ) : (
         children

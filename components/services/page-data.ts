@@ -12,7 +12,7 @@ export const servicesPageContent = {
       type: "hero",
       heading: [
         { text: "We Build " },
-        { text: "Restaurants", highlight: true },
+        { text: "Restaurants", highlight: true, breakBefore: true },
         { text: " That Scale" },
       ],
       description:
@@ -24,7 +24,7 @@ export const servicesPageContent = {
       type: "heading-intro",
       badge: "WHAT WE OFFER",
       heading: {
-        prefix: "Nine Services. One ",
+        prefix: "Nine Services.\nOne ",
         highlight: "Partner.",
       },
       description:

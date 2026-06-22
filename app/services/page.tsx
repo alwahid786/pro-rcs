@@ -33,12 +33,16 @@ const ServicesPage = () => {
 
       {(introSection || accordionSection) && (
         <section className="bg-white py-16 sm:py-20 lg:py-24">
-          <div className="container flex flex-col gap-10 lg:gap-12">
-            {introSection && (
+          {introSection && (
+            <div className="container">
               <ServicesIntroSection badge={introSection.badge} heading={introSection.heading} description={introSection.description} />
-            )}
-            {accordionSection && <ServicesAccordionSection id="services-list" items={accordionSection.items} />}
-          </div>
+            </div>
+          )}
+          {accordionSection && (
+            <div className="mt-10 w-full px-5 lg:mt-12 lg:px-8 xl:px-12">
+              <ServicesAccordionSection id="services-list" items={accordionSection.items} />
+            </div>
+          )}
         </section>
       )}
 
