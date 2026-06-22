@@ -36,22 +36,42 @@ export const servicesPageContent = {
         {
           number: "01",
           title: "Franchise Concept Development",
+          tagline: "FROM IDEA TO FRANCHISABLE CONCEPT",
+          description:
+            "We help operators refine their brand positioning, unit economics, and franchise model so the concept is attractive to franchisees and sustainable at scale.",
+          keyAreas: ["Concept validation", "Franchise model design", "Unit economics", "Growth roadmap"],
         },
         {
           number: "02",
           title: "Market Analysis & Feasibility",
+          tagline: "DATA-DRIVEN EXPANSION DECISIONS",
+          description:
+            "Territory analysis, competitive mapping, and demand forecasting to identify where your brand can win before you commit capital to new markets.",
+          keyAreas: ["Market sizing", "Site selection criteria", "Competitive analysis", "Feasibility reporting"],
         },
         {
           number: "03",
           title: "Business Planning & Financial Modeling",
+          tagline: "CLARITY BEFORE YOU SCALE",
+          description:
+            "Investor-ready financial models, pro formas, and growth scenarios that align operations, marketing, and expansion with realistic returns.",
+          keyAreas: ["Pro forma development", "Franchisee ROI modeling", "Capital planning", "Investor materials"],
         },
         {
           number: "04",
           title: "Branding & Franchise Marketing",
+          tagline: "BUILT TO ATTRACT THE RIGHT FRANCHISEES",
+          description:
+            "Brand strategy, franchise sales messaging, and recruitment marketing that positions your concept clearly and drives qualified franchisee pipeline.",
+          keyAreas: ["Brand positioning", "Franchise sales collateral", "Lead generation", "Recruitment funnels"],
         },
         {
           number: "05",
           title: "Menu Engineering & Product Development",
+          tagline: "MARGIN-FOCUSED MENU STRATEGY",
+          description:
+            "Menu architecture, pricing strategy, and product innovation designed to improve profitability while protecting brand consistency across locations.",
+          keyAreas: ["Menu design", "Cost optimization", "Product innovation", "Pricing strategy"],
         },
         {
           number: "06",
@@ -64,10 +84,18 @@ export const servicesPageContent = {
         {
           number: "07",
           title: "Technology, POS & Operational Systems",
+          tagline: "TOOLS THAT ENABLE SCALE",
+          description:
+            "POS selection, tech stack planning, and operational system integration so multi-unit operators run with visibility, speed, and control.",
+          keyAreas: ["POS evaluation", "System integration", "Reporting dashboards", "Tech vendor management"],
         },
         {
           number: "08",
           title: "Franchise Documentation & Compliance",
+          tagline: "PROTECT THE NETWORK AS YOU GROW",
+          description:
+            "FDD preparation, franchise agreements, compliance frameworks, and documentation systems that protect franchisors and franchisees alike.",
+          keyAreas: ["FDD preparation", "Legal documentation", "Compliance audits", "Territory protection"],
         },
       ],
     },
