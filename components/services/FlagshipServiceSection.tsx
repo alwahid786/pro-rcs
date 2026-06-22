@@ -1,18 +1,22 @@
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
-import StarIcon from "@/assets/icons/StarIcon";
 import type { FlagshipFeatureItem, FlagshipServiceSectionContent } from "@/components/content/types";
+import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 
 type FlagshipServiceSectionProps = Omit<FlagshipServiceSectionContent, "type">;
 
 const FeatureRow = ({ number, title, description }: FlagshipFeatureItem) => (
-  <div className="flex flex-col gap-3 border-t border-white/10 py-6 first:border-t-0 first:pt-0 sm:py-8">
-    <div className="flex items-start gap-4">
-      <span className="font-sans text-sm font-bold text-primary">{number}</span>
+  <div className="group flex flex-col gap-3 border-t border-white/10 py-6 transition-all duration-300 first:border-t-0 first:pt-0 hover:translate-x-1 sm:py-8">
+    <div className="flex items-center gap-4">
+      <span className="flex w-8 shrink-0 items-center justify-center font-sans text-sm font-light text-primary">{number}</span>
       <div className="flex flex-col gap-2">
-        <h3 className="font-sans text-lg font-bold text-white sm:text-xl">{title}</h3>
-        <p className="font-sans text-base leading-relaxed text-white/55">{description}</p>
+        <Heading as="h3" weight="bold" className="text-lg text-white sm:text-xl">
+          {title}
+        </Heading>
+        <Heading as="p" className="text-white/55">
+          {description}
+        </Heading>
       </div>
     </div>
   </div>
@@ -23,11 +27,8 @@ const FlagshipServiceSection = ({ badge, heading, description, quote, cta, featu
     <section className="bg-[#1A1612] py-16 sm:py-20 lg:py-24">
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
-          <div className="flex flex-col gap-8">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-white shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
-              <StarIcon />
-              <span className="font-sans text-xs font-bold uppercase tracking-[0.08em]">{badge}</span>
-            </div>
+          <div className="group/content flex flex-col gap-8">
+            <Badge text={badge} variant="glass" />
 
             <Heading as="h2" size="display" className="text-white lg:text-[62px]!">
               {heading.map((segment, index) =>
@@ -41,9 +42,11 @@ const FlagshipServiceSection = ({ badge, heading, description, quote, cta, featu
               )}
             </Heading>
 
-            <p className="font-sans text-base leading-relaxed text-white/65 sm:text-lg sm:leading-8">{description}</p>
+            <Heading as="p" className="text-white/65">
+              {description}
+            </Heading>
 
-            <blockquote className="border-l-2 border-primary pl-5 font-sans text-base italic leading-relaxed text-white/80 sm:text-lg">
+            <blockquote className="border-l-2 border-primary pl-5 font-sans text-base italic leading-relaxed text-white/80 transition-transform duration-300 group-hover/content:translate-x-1 sm:text-lg">
               &ldquo;{quote}&rdquo;
             </blockquote>
 
@@ -52,7 +55,7 @@ const FlagshipServiceSection = ({ badge, heading, description, quote, cta, featu
               variant="primary"
               size="md"
               icon={<ArrowRightIcon className="text-white" />}
-              className="w-full sm:w-auto"
+              className="w-fit transition-transform duration-300 hover:-translate-y-0.5"
             >
               {cta.label}
             </Button>

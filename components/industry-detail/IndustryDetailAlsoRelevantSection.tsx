@@ -1,6 +1,6 @@
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
-import StarIcon from "@/assets/icons/StarIcon";
 import type { AlsoRelevantSectionContent } from "@/components/content/types";
+import Badge from "@/components/ui/Badge";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -11,10 +11,7 @@ const IndustryDetailAlsoRelevantSection = ({ badge, items }: IndustryDetailAlsoR
     <section className="bg-[#fdfaf7] py-16 sm:py-20 lg:py-24">
       <div className="container flex flex-col gap-10 lg:gap-12">
         <div className="flex items-center gap-6">
-          <div className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#1A1612] px-5 py-2 text-white shadow-[0_4px_24px_rgba(0,0,0,0.2)]">
-            <StarIcon />
-            <span className="font-sans text-xs font-bold uppercase tracking-[0.08em]">{badge}</span>
-          </div>
+          <Badge text={badge} />
           <div className="hidden h-px flex-1 bg-[#ece7e1] sm:block" aria-hidden />
         </div>
 

@@ -42,7 +42,7 @@ const AboutExpertiseAreasSection = ({ badge, heading, cta, cards }: AboutExperti
             variant="primary"
             size="md"
             icon={<ArrowRightIcon className="text-white" />}
-            className="w-full shrink-0 sm:w-auto"
+            className="w-fit shrink-0 transition-transform duration-300 hover:-translate-y-0.5"
           >
             {cta.label}
           </Button>

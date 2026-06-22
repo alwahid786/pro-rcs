@@ -48,7 +48,7 @@ const HeroSection = ({ heading, description, primaryButton, secondaryButton, cla
           variant="secondary"
           size="md"
           icon={<ArrowRightIcon width="20" height="20" />}
-          className="w-full sm:w-auto"
+          className="w-fit transition-transform duration-300 hover:-translate-y-0.5"
         >
           {secondaryButton.label}
         </Button>
@@ -57,7 +57,7 @@ const HeroSection = ({ heading, description, primaryButton, secondaryButton, cla
           variant="primary"
           size="md"
           icon={<ArrowRightIcon width="20" height="20" />}
-          className="w-full sm:w-auto"
+          className="w-fit transition-transform duration-300 hover:-translate-y-0.5"
         >
           {primaryButton.label}
         </Button>

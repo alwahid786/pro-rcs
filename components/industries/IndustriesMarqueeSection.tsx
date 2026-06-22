@@ -8,7 +8,7 @@ type IndustriesMarqueeSectionProps = Omit<MarqueeSectionContent, "type">;
 
 const IndustriesMarqueeSection = ({ items }: IndustriesMarqueeSectionProps) => {
   return (
-    <section className="bg-[#1A1612] py-4 sm:py-5">
+    <section className="bg-[#1A1612] py-4 sm:py-5 z-50 relative">
       <Marquee autoFill speed={35} gradient={false}>
         {items.map((item) => (
           <div key={item} className="mx-6 flex items-center gap-6 sm:mx-8">

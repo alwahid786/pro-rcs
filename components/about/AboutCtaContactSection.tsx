@@ -4,8 +4,8 @@ import Clock from "@/assets/icons/about/Clock";
 import Email from "@/assets/icons/about/Email";
 import LocationOrange from "@/assets/icons/about/LocationOrange";
 import ArrowRightIcon from "@iconify-react/pixelarticons/arrow-right";
-import StarIcon from "@/assets/icons/StarIcon";
 import type { CtaContactItem, CtaContactSectionContent } from "@/components/content/types";
+import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import type { ComponentType } from "react";
@@ -57,10 +57,7 @@ const AboutCtaContactSection = ({ badge, heading, description, primaryButton, se
 
       <div className="container relative z-10 flex flex-col items-center gap-10 text-center sm:gap-12">
         <div className="flex max-w-4xl flex-col items-center gap-6 sm:gap-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
-            <StarIcon />
-            <span className="font-sans text-xs font-bold uppercase tracking-[0.08em]">{badge}</span>
-          </div>
+          <Badge text={badge} variant="glass" />
 
           <Heading as="h2" align="center" size="display" className="text-white lg:text-[62px]!">
             {heading.map((segment, index) =>
@@ -83,7 +80,7 @@ const AboutCtaContactSection = ({ badge, heading, description, primaryButton, se
             variant="primary"
             size="md"
             icon={<ArrowRightIcon width="20" height="20" className="text-white" />}
-            className="w-full sm:w-auto"
+            className="w-fit transition-transform duration-300 hover:-translate-y-0.5"
           >
             {primaryButton.label}
           </Button>
@@ -92,7 +89,7 @@ const AboutCtaContactSection = ({ badge, heading, description, primaryButton, se
             variant="ghost"
             size="md"
             icon={<ArrowRightIcon width="20" height="20" className="text-white" />}
-            className="w-full sm:w-auto"
+            className="w-fit transition-transform duration-300 hover:-translate-y-0.5"
           >
             {secondaryButton.label}
           </Button>

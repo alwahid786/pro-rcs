@@ -1,7 +1,8 @@
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
-import StarIcon from "@/assets/icons/StarIcon";
 import type { IndustryBlockSectionContent } from "@/components/content/types";
+import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
+import Heading from "@/components/ui/Heading";
 import { cn } from "@/lib/utils";
 
 type IndustryBlockSectionProps = Omit<IndustryBlockSectionContent, "type"> & {
@@ -30,7 +31,7 @@ const IndustryBlockSection = ({
         <span
           className={cn(
             "pointer-events-none absolute top-8 right-4 font-sans text-[10rem] font-bold leading-none select-none sm:text-[14rem] lg:right-8 lg:text-[18rem]",
-            isDark ? "text-white/[0.04]" : "text-black/[0.04]",
+            isDark ? "text-white/4" : "text-black/4",
           )}
           aria-hidden
         >
@@ -40,28 +41,20 @@ const IndustryBlockSection = ({
 
       <div className="container relative z-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
-          <div className="flex flex-col gap-8">
-            <div
-              className={cn(
-                "inline-flex w-fit items-center gap-2 rounded-full px-5 py-2 shadow-[0_4px_24px_rgba(0,0,0,0.15)]",
-                isDark ? "border border-white/10 bg-white/5 text-white" : "border border-black/10 bg-[#1A1612] text-white",
-              )}
-            >
-              <StarIcon />
-              <span className="font-sans text-xs font-bold uppercase tracking-[0.08em]">{badge}</span>
-            </div>
+          <div className="group/content flex flex-col gap-8">
+            <Badge text={badge} variant={isDark ? "glass" : "default"} />
 
-            <h2 className={cn("font-sans text-4xl font-bold tracking-tight sm:text-5xl lg:text-[3.5rem]", isDark ? "text-white" : "text-text")}>
+            <Heading as="h2" weight="bold" className={cn("lg:text-[3.5rem]!", isDark ? "text-white" : "text-text")}>
               {title}
-            </h2>
+            </Heading>
 
-            <p className={cn("font-sans text-base leading-relaxed sm:text-lg sm:leading-8", isDark ? "text-white/65" : "text-text-secondary")}>
+            <Heading as="p" tone="muted" className={isDark ? "text-white/65" : undefined}>
               {description}
-            </p>
+            </Heading>
 
             <blockquote
               className={cn(
-                "border-l-2 border-primary pl-5 font-sans text-base italic leading-relaxed sm:text-lg",
+                "border-l-2 border-primary pl-5 font-sans text-base italic leading-relaxed transition-transform duration-300 group-hover/content:translate-x-1 sm:text-lg",
                 isDark ? "text-white/80" : "text-text",
               )}
             >
@@ -73,33 +66,35 @@ const IndustryBlockSection = ({
               variant="primary"
               size="md"
               icon={<ArrowRightIcon className="text-white" />}
-              className="w-full sm:w-auto"
+              className="w-fit transition-transform duration-300 hover:-translate-y-0.5"
             >
               {cta.label}
             </Button>
           </div>
 
           <div className="flex flex-col gap-6">
-            <p className="font-sans text-xs font-bold uppercase tracking-[0.12em] text-primary">How We Help</p>
+            <Heading as="h6" uppercase weight="bold" className="text-primary">
+              How We Help
+            </Heading>
 
             <ul className="flex flex-col">
               {helpItems.map((item, itemIndex) => (
                 <li
                   key={item}
                   className={cn(
-                    "flex items-center justify-between gap-4 border-t py-5 first:border-t-0 first:pt-0 sm:py-6",
+                    "group flex items-center justify-between gap-4 border-t py-5 transition-all duration-300 first:border-t-0 first:pt-0 hover:translate-x-1 sm:py-6",
                     isDark ? "border-white/10" : "border-[#ece7e1]",
                   )}
                 >
-                  <div className="flex min-w-0 items-start gap-4">
-                    <span className="shrink-0 font-sans text-sm font-bold text-primary">
+                  <div className="flex min-w-0 items-center gap-4">
+                    <span className="flex w-8 shrink-0 items-center justify-center font-sans text-sm font-light text-primary">
                       {String(itemIndex + 1).padStart(2, "0")}
                     </span>
                     <span className={cn("font-sans text-base leading-relaxed sm:text-lg", isDark ? "text-white" : "text-text")}>
                       {item}
                     </span>
                   </div>
-                  <ArrowRightIcon className="shrink-0 text-primary" />
+                  <ArrowRightIcon className="shrink-0 text-primary transition-transform duration-300 group-hover:translate-x-1" />
                 </li>
               ))}
             </ul>

@@ -1,17 +1,14 @@
-import StarIcon from "@/assets/icons/StarIcon";
 import type { StatsSectionContent } from "@/components/content/types";
+import Badge from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 
 type AboutStatsSectionProps = Pick<StatsSectionContent, "badge" | "items">;
 
 const AboutStatsSection = ({ badge, items }: AboutStatsSectionProps) => {
   return (
-    <section className="bg-[#1A1612] py-16 sm:py-20 lg:py-24 z-10 relative">
+    <section className="relative z-10 bg-[#1A1612] py-16 sm:py-20 lg:py-24">
       <div className="container flex flex-col items-center gap-12 sm:gap-14">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
-          <StarIcon />
-          <span className="font-sans font-medium capitalize">{badge}</span>
-        </div>
+        <Badge text={badge} variant="glass" className="[&_span]:font-medium [&_span]:normal-case [&_span]:capitalize" />
 
         <div className="grid w-full gap-10 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:grid-cols-4 lg:gap-0">
           {items.map((item, index) => (
