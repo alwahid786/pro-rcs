@@ -35,7 +35,7 @@ const ServiceInnerCard = ({ category, headline, offeringsHeading, points, footer
           "min-[1100px]:absolute mt-4 min-[1100px]:left-1 min-[1100px]:text-black border border-gray-200/50 shadow-sm",
         )}
       >
-        {category}ssss
+        {category}
       </div>
 
       <div
