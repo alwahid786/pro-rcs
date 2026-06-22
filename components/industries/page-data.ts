@@ -32,6 +32,24 @@ export const industriesPageContent = {
     },
     {
       type: "industry-block",
+      index: "1",
+      variant: "light",
+      badge: "SPEED, PROFITABILITY & FRANCHISE GROWTH",
+      title: "Quick Service Restaurants",
+      description:
+        "QSR is a game of speed, consistency, and unit economics. RCS helps quick-service operators tighten operations, strengthen franchise systems, and scale profitably across markets.",
+      highlight: "Fast food moves fast. Your strategy should too.",
+      cta: { label: "Work With Us", href: "/contact" },
+      helpItems: [
+        "Efficiency audits & throughput optimization",
+        "POS & technology implementation",
+        "Franchise development & territory planning",
+        "Data-driven marketing strategies",
+        "Multi-location performance management",
+      ],
+    },
+    {
+      type: "industry-block",
       index: "2",
       variant: "dark",
       badge: "CONCEPT TO MULTI UNIT EXPANSION",
