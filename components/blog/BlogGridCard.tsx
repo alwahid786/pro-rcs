@@ -13,7 +13,7 @@ const BlogGridCard = ({ post }: BlogGridCardProps) => {
 
   return (
     <article className="flex flex-col overflow-hidden bg-white">
-      <div className="relative aspect-2/1 overflow-hidden">
+      <div className="relative h-70 overflow-hidden">
         {post.image && (
           <Image
             src={post.image as StaticImageData}
