@@ -1,6 +1,7 @@
 import {
   aboutPageContent,
   AboutCoreValuesSection,
+  AboutCtaContactSection,
   AboutExpertiseAreasSection,
   AboutMissionVisionSection,
   AboutOurStorySection,
@@ -14,6 +15,7 @@ const ourStorySection = aboutPageContent.sections.find((section) => section.type
 const missionVisionSection = aboutPageContent.sections.find((section) => section.type === "mission-vision");
 const coreValuesSection = aboutPageContent.sections.find((section) => section.type === "core-values");
 const expertiseAreasSection = aboutPageContent.sections.find((section) => section.type === "expertise-areas");
+const ctaContactSection = aboutPageContent.sections.find((section) => section.type === "cta-contact");
 
 const AboutPage = () => {
   return (
@@ -63,6 +65,17 @@ const AboutPage = () => {
           heading={expertiseAreasSection.heading}
           cta={expertiseAreasSection.cta}
           cards={expertiseAreasSection.cards}
+        />
+      )}
+
+      {ctaContactSection && (
+        <AboutCtaContactSection
+          badge={ctaContactSection.badge}
+          heading={ctaContactSection.heading}
+          description={ctaContactSection.description}
+          primaryButton={ctaContactSection.primaryButton}
+          secondaryButton={ctaContactSection.secondaryButton}
+          contactItems={ctaContactSection.contactItems}
         />
       )}
     </main>
