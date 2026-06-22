@@ -99,9 +99,20 @@ const ContactSection = () => {
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-10 px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12">
             <div className="grid gap-8 sm:grid-cols-2 sm:gap-x-10">
-              <UnderlineField label={form.firstName.label} name="firstName" autoComplete="given-name" />
+              <UnderlineField
+                label={form.firstName.label}
+                name="firstName"
+                placeholder={form.firstName.placeholder}
+                autoComplete="given-name"
+              />
               <UnderlineField label={form.lastName.label} name="lastName" placeholder={form.lastName.placeholder} autoComplete="family-name" />
-              <UnderlineField label={form.email.label} name="email" type="email" autoComplete="email" />
+              <UnderlineField
+                label={form.email.label}
+                name="email"
+                type="email"
+                placeholder={form.email.placeholder}
+                autoComplete="email"
+              />
               <UnderlineField label={form.phone.label} name="phone" type="tel" placeholder={form.phone.placeholder} autoComplete="tel" />
             </div>
 

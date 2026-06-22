@@ -24,9 +24,9 @@ export const contactSectionContent = {
     },
   ] satisfies ContactDetail[],
   form: {
-    firstName: { label: "First Name", placeholder: "" },
+    firstName: { label: "First Name", placeholder: "John" },
     lastName: { label: "Last Name", placeholder: "Doe" },
-    email: { label: "Email", placeholder: "" },
+    email: { label: "Email", placeholder: "john@example.com" },
     phone: { label: "Phone Number", placeholder: "+1 012 3456 789" },
     message: { label: "Message", placeholder: "Write your message.." },
     submit: "Send Message",
