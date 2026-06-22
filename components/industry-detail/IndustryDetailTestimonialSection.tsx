@@ -1,31 +1,33 @@
+import Gemini from "@/assets/icons/industry/Gemini";
 import type { TestimonialSectionContent } from "@/components/content/types";
 import Image, { type StaticImageData } from "next/image";
 
 type IndustryDetailTestimonialSectionProps = Omit<TestimonialSectionContent, "type">;
 
 const GalleryImage = ({ src, alt, className }: { src: StaticImageData | string; alt: string; className?: string }) => (
-  <div className={`relative overflow-hidden rounded-2xl ${className ?? ""}`}>
-    <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+  <div className={`group/image relative overflow-hidden rounded-2xl ${className ?? ""}`}>
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      className="object-cover transition-transform duration-500 group-hover/image:scale-105"
+      sizes="(max-width: 1024px) 100vw, 50vw"
+    />
   </div>
 );
 
 const IndustryDetailTestimonialSection = ({ quote, attribution, images }: IndustryDetailTestimonialSectionProps) => {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2">
-      <div className="flex flex-col justify-center gap-8 bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24 xl:px-16">
-        <div className="h-8 w-0.5 bg-primary" aria-hidden />
+      <div className="group flex flex-col justify-center gap-8 bg-white px-5 py-16 transition-colors duration-300 hover:bg-[#fdfaf7] sm:px-8 sm:py-20 lg:px-12 lg:py-24 xl:px-16">
+        <div className="h-0.5 w-8 bg-primary transition-all duration-300 group-hover:w-12" aria-hidden />
 
         <blockquote className="font-sans text-2xl font-medium italic leading-snug text-text sm:text-3xl sm:leading-tight lg:text-[2rem] lg:leading-[1.35]">
           &ldquo;{quote}&rdquo;
         </blockquote>
 
-        <div className="flex items-center gap-4">
-          <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary" aria-hidden>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M8 3.33301V12.6663" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-              <path d="M3.33398 8H12.6673" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </div>
+        <div className="flex items-center gap-4 transition-transform duration-300 group-hover:translate-x-1">
+          <Gemini />
           <div className="flex flex-col gap-0.5">
             <p className="font-sans text-base font-bold text-text">{attribution.title}</p>
             <p className="font-sans text-sm text-text-secondary">{attribution.subtitle}</p>

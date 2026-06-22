@@ -37,11 +37,24 @@ const IndustryDetailServicesGridSection = ({ badge, heading, description, items 
 
         <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-[#ece7e1] bg-[#ece7e1] sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
-            <article key={item.title} className="flex flex-col gap-5 bg-white p-6 sm:p-8">
-              {serviceIcons[item.icon] ?? <Development />}
-              <div className="flex flex-col gap-3">
-                <h3 className="font-sans text-lg font-bold text-text sm:text-xl">{item.title}</h3>
-                <p className="font-sans text-sm leading-relaxed text-text-secondary sm:text-base sm:leading-7">{item.description}</p>
+            <article
+              key={item.title}
+              className="group relative flex flex-col gap-5 overflow-hidden bg-white p-6 transition-all duration-300 hover:z-10 hover:bg-[#221d1a] hover:shadow-[0_24px_48px_rgba(0,0,0,0.14)] sm:p-8"
+            >
+              <div
+                className="absolute -top-5 -right-5 z-1 h-40 w-40 rounded-full bg-primary/50 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+                aria-hidden
+              />
+
+              <div className="relative z-10">{serviceIcons[item.icon] ?? <Development />}</div>
+
+              <div className="relative z-10 flex flex-col gap-3">
+                <h3 className="font-sans text-lg font-bold text-text transition-colors duration-300 group-hover:text-white sm:text-xl">
+                  {item.title}
+                </h3>
+                <p className="font-sans text-sm leading-relaxed text-text-secondary transition-colors duration-300 group-hover:text-white/60 sm:text-base sm:leading-7">
+                  {item.description}
+                </p>
               </div>
             </article>
           ))}
