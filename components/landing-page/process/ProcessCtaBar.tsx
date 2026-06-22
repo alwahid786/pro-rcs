@@ -20,7 +20,7 @@ const ProcessCtaBar = () => {
             {cta.textPrefix} <span className="font-semibold text-primary">{cta.textHighlight}</span>
           </p>
         </div>
-        <Button variant="primary" icon={<ArrowRightIcon width="20" height="20" />} iconPosition="right" className="w-full shrink-0 sm:w-auto">
+        <Button href="/contact" variant="primary" icon={<ArrowRightIcon width="20" height="20" />} iconPosition="right" className="w-full shrink-0 sm:w-auto">
           {cta.buttonLabel}
         </Button>
       </section>

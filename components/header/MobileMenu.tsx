@@ -86,7 +86,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
         </nav>
 
         <div className="border-t border-border/60 pt-4">
-          <Button variant="secondary" className="w-full" size="md">
+          <Button href="/contact" variant="secondary" className="w-full" size="md">
             Get A Quote
           </Button>
         </div>

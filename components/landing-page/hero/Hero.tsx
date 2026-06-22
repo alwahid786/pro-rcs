@@ -46,11 +46,11 @@ const Hero = () => {
           </Heading>
 
           <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
-            <Button variant="secondary" size="md" icon={<ArrowRightIcon />} className="w-full sm:w-auto">
+            <Button href="/contact" variant="secondary" size="md" icon={<ArrowRightIcon />} className="w-full sm:w-auto">
               Get A Quote
             </Button>
 
-            <Button variant="primary" size="md" icon={<ArrowRightIcon />} className="w-full sm:w-auto">
+            <Button href="/contact" variant="primary" size="md" icon={<ArrowRightIcon />} className="w-full sm:w-auto">
               Book Consultation
             </Button>
           </div>

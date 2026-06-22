@@ -61,7 +61,7 @@ const Header = () => {
 
               <div className="hidden h-5 w-px bg-border sm:block" />
 
-              <Button variant="secondary" size="sm" className="hidden sm:inline-flex">
+              <Button variant="secondary" size="sm" href="/contact" className="hidden sm:inline-flex">
                 Get A Quote
               </Button>
 

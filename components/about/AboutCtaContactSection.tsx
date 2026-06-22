@@ -1,13 +1,13 @@
 "use client";
+
 import Clock from "@/assets/icons/about/Clock";
 import Email from "@/assets/icons/about/Email";
 import LocationOrange from "@/assets/icons/about/LocationOrange";
 import ArrowRightIcon from "@iconify-react/pixelarticons/arrow-right";
 import StarIcon from "@/assets/icons/StarIcon";
 import type { CtaContactItem, CtaContactSectionContent } from "@/components/content/types";
+import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
 import type { ComponentType } from "react";
 
 type AboutCtaContactSectionProps = Omit<CtaContactSectionContent, "type">;
@@ -17,8 +17,6 @@ const contactIconMap: Record<string, ComponentType> = {
   "Our Office": LocationOrange,
   "Office Hours": Clock,
 };
-
-const buttonBaseClasses = "custom-btn inline-flex w-full cursor-pointer items-center justify-center rounded-full px-6 py-3 text-base font-medium transition-colors sm:w-auto";
 
 const ContactIcon = ({ label }: { label: string }) => {
   const Icon = contactIconMap[label];
@@ -80,18 +78,24 @@ const AboutCtaContactSection = ({ badge, heading, description, primaryButton, se
         </div>
 
         <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
-          <Link href={primaryButton.href} className={cn(buttonBaseClasses, "bg-primary text-white shadow-btn-primary btn-primary")}>
-            <span className="inline-flex items-center justify-center gap-2">
-              {primaryButton.label}
-              <ArrowRightIcon width="20" height="20" className="text-white" />
-            </span>
-          </Link>
-          <Link href={secondaryButton.href} className={cn(buttonBaseClasses, "border border-white/30 bg-transparent text-white hover:bg-white/5")}>
-            <span className="inline-flex items-center justify-center gap-2">
-              {secondaryButton.label}
-              <ArrowRightIcon width="20" height="20" className="text-white" />
-            </span>
-          </Link>
+          <Button
+            href={primaryButton.href}
+            variant="primary"
+            size="md"
+            icon={<ArrowRightIcon width="20" height="20" className="text-white" />}
+            className="w-full sm:w-auto"
+          >
+            {primaryButton.label}
+          </Button>
+          <Button
+            href={secondaryButton.href}
+            variant="ghost"
+            size="md"
+            icon={<ArrowRightIcon width="20" height="20" className="text-white" />}
+            className="w-full sm:w-auto"
+          >
+            {secondaryButton.label}
+          </Button>
         </div>
 
         <div className="h-px w-full max-w-5xl bg-white/10" />

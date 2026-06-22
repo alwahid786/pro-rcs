@@ -51,7 +51,7 @@ const TestimonialsSection = () => {
       <div className="container flex flex-col items-center gap-8 text-center sm:gap-10">
         <HeadingBlock badge={badge} heading={heading} isCenter weight="regular" />
 
-        <Button variant="primary" size="md" icon={<ArrowRightIcon className="text-white" />}>
+        <Button href="/contact" variant="primary" size="md" icon={<ArrowRightIcon className="text-white" />}>
           {ctaLabel}
         </Button>
       </div>

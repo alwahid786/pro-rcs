@@ -4,6 +4,7 @@ import ChevronDownIcon from "@/assets/icons/ChevronDownIcon";
 import Outcome from "@/assets/icons/Outcome";
 import Problem from "@/assets/icons/Problem";
 import { realProblemsContent, type RealProblemCase } from "./data";
+import Button from "@/components/ui/Button";
 import HeadingBlock from "@/components/ui/HeadingBlock";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -92,14 +93,16 @@ const RealProblemsSection = () => {
 
                   <MetricRow metrics={item.metrics} />
 
-                  <button
+                  <Button
                     type="button"
+                    variant="primary"
+                    size="sm"
                     onClick={() => toggleOpen(item.id)}
-                    className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 font-sans text-xs font-bold uppercase tracking-[0.08em] text-white shadow-btn-primary self-start"
+                    icon={<ChevronDownIcon className={cn("text-white transition-transform", isOpen ? "rotate-180" : "")} />}
+                    className="self-start font-bold uppercase tracking-[0.08em]"
                   >
                     {isOpen ? "Close" : "Read Full Story"}
-                    <ChevronDownIcon className={cn("text-white transition-transform", isOpen ? "rotate-180" : "")} />
-                  </button>
+                  </Button>
 
                   {isOpen && (
                     <div className="flex flex-col gap-5 border-t border-[#ece7e1] pt-5">

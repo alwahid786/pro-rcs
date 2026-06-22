@@ -125,7 +125,7 @@ const FaqSection = () => {
               <p className="font-sans text-sm leading-relaxed text-text-secondary">{cta.description}</p>
             </div>
 
-            <Button variant="primary" size="md" icon={<ArrowRightIcon className="text-white" />} className="w-full justify-center">
+            <Button href="/contact" variant="primary" size="md" icon={<ArrowRightIcon className="text-white" />} className="w-full justify-center">
               {cta.buttonLabel}
             </Button>
 

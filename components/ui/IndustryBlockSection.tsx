@@ -1,8 +1,8 @@
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import StarIcon from "@/assets/icons/StarIcon";
 import type { IndustryBlockSectionContent } from "@/components/content/types";
+import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 type IndustryBlockSectionProps = Omit<IndustryBlockSectionContent, "type"> & {
   id?: string;
@@ -68,13 +68,15 @@ const IndustryBlockSection = ({
               {highlight}
             </blockquote>
 
-            <Link
+            <Button
               href={cta.href}
-              className="custom-btn btn-primary inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-medium text-white shadow-btn-primary sm:w-auto"
+              variant="primary"
+              size="md"
+              icon={<ArrowRightIcon className="text-white" />}
+              className="w-full sm:w-auto"
             >
               {cta.label}
-              <ArrowRightIcon className="text-white" />
-            </Link>
+            </Button>
           </div>
 
           <div className="flex flex-col gap-6">

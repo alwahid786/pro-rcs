@@ -1,7 +1,7 @@
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import type { ExpertiseAreaCard, ExpertiseAreasSectionContent } from "@/components/content/types";
+import Button from "@/components/ui/Button";
 import HeadingBlock from "@/components/ui/HeadingBlock";
-import Link from "next/link";
 
 type AboutExpertiseAreasSectionProps = Omit<ExpertiseAreasSectionContent, "type">;
 
@@ -37,13 +37,15 @@ const AboutExpertiseAreasSection = ({ badge, heading, cta, cards }: AboutExperti
         <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <HeadingBlock badge={badge} heading={heading} weight="semibold" uppercase={false} headingClassName="max-w-3xl" />
 
-          <Link
+          <Button
             href={cta.href}
-            className="custom-btn btn-primary inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-medium text-white shadow-btn-primary sm:w-auto"
+            variant="primary"
+            size="md"
+            icon={<ArrowRightIcon className="text-white" />}
+            className="w-full shrink-0 sm:w-auto"
           >
             {cta.label}
-            <ArrowRightIcon className="text-white" />
-          </Link>
+          </Button>
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-6">
