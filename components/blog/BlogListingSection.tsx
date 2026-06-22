@@ -6,6 +6,7 @@ import BlogGridCard from "@/components/blog/BlogGridCard";
 import BlogRowItem from "@/components/blog/BlogRowItem";
 import { blogPostMatchesFilter, filterBlogPosts } from "@/components/blog/utils";
 import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 
 type BlogListingSectionProps = {
@@ -35,15 +36,26 @@ const BlogListingSection = ({ filters, featured, gridPosts, rowPosts }: BlogList
     <div className="flex flex-col">
       <section className="bg-white py-12 sm:py-16 lg:py-20">
         <div className="container flex flex-col gap-10 lg:gap-12">
-          {showFeatured && <BlogFeaturedCard post={featured} />}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`top-${activeFilter}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col gap-10 lg:gap-12"
+            >
+              {showFeatured && <BlogFeaturedCard post={featured} />}
 
-          {filteredGridPosts.length > 0 && (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
-              {filteredGridPosts.map((post) => (
-                <BlogGridCard key={post.slug ?? post.title} post={post} />
-              ))}
-            </div>
-          )}
+              {filteredGridPosts.length > 0 && (
+                <div className="grid grid-cols-1 gap-0.5 bg-[#ece7e1] md:grid-cols-2">
+                  {filteredGridPosts.map((post) => (
+                    <BlogGridCard key={post.slug ?? post.title} post={post} />
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
 
           {!showFeatured && filteredGridPosts.length === 0 && filteredRowPosts.length === 0 && (
             <p className="py-12 text-center font-sans text-base text-text-secondary">No articles found in this category.</p>
@@ -52,7 +64,7 @@ const BlogListingSection = ({ filters, featured, gridPosts, rowPosts }: BlogList
       </section>
 
       <section className="border-t border-[#ece7e1] bg-[#fdfaf7]">
-        <div className="container">
+        <div className="w-full px-5 lg:px-8 xl:px-12">
           <div className="flex flex-col gap-4 border-b border-[#ece7e1] py-5 sm:flex-row sm:items-center sm:justify-between sm:py-6">
             <div className="flex flex-wrap items-center justify-center gap-6 sm:justify-start sm:gap-8">
               {filters.map((filter) => (
@@ -61,12 +73,14 @@ const BlogListingSection = ({ filters, featured, gridPosts, rowPosts }: BlogList
                   type="button"
                   onClick={() => setActiveFilter(filter)}
                   className={cn(
-                    "relative cursor-pointer pb-1 font-sans text-sm font-medium transition-colors",
+                    "relative cursor-pointer pb-1 font-sans text-sm font-medium transition-colors duration-200",
                     activeFilter === filter ? "text-text" : "text-text-secondary hover:text-text",
                   )}
                 >
                   {filter}
-                  {activeFilter === filter && <span className="absolute right-0 bottom-0 left-0 h-0.5 bg-primary" aria-hidden />}
+                  {activeFilter === filter && (
+                    <motion.span layoutId="active-blog-filter" className="absolute right-0 bottom-0 left-0 h-0.5 bg-primary" aria-hidden />
+                  )}
                 </button>
               ))}
             </div>
@@ -76,13 +90,22 @@ const BlogListingSection = ({ filters, featured, gridPosts, rowPosts }: BlogList
             </p>
           </div>
 
-          {filteredRowPosts.length > 0 && (
-            <div className="bg-white">
-              {filteredRowPosts.map((post, index) => (
-                <BlogRowItem key={post.slug ?? post.title} post={post} index={rowStartIndex + index} />
-              ))}
-            </div>
-          )}
+          <AnimatePresence mode="wait">
+            {filteredRowPosts.length > 0 && (
+              <motion.div
+                key={`rows-${activeFilter}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-white"
+              >
+                {filteredRowPosts.map((post, index) => (
+                  <BlogRowItem key={post.slug ?? post.title} post={post} index={rowStartIndex + index} />
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
     </div>

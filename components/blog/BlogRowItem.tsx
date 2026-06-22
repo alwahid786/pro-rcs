@@ -24,13 +24,13 @@ const BlogRowItem = ({ post, index }: BlogRowItemProps) => {
           <span className="font-sans text-sm text-text-secondary">{post.date}</span>
         </div>
 
-        <h3 className="font-sans text-2xl font-bold leading-tight text-text sm:text-3xl lg:text-4xl">{post.title}</h3>
+        <h3 className="font-sans text-xl font-bold leading-tight text-text sm:text-2xl lg:text-3xl">{post.title}</h3>
 
-        <p className="max-w-3xl font-sans text-base leading-relaxed text-text-secondary sm:text-lg sm:leading-8">{post.excerpt}</p>
+        <p className="max-w-3xl font-sans text-base leading-relaxed text-text-secondary sm:text-lg sm:leading-8 lg:max-w-[90%]">{post.excerpt}</p>
       </div>
 
       <div className="flex flex-col gap-4 pb-8 lg:px-6 lg:py-12">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+        <div className="relative aspect-4/3 overflow-hidden">
           {post.image && (
             <Image
               src={post.image as StaticImageData}

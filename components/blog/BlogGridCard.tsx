@@ -12,8 +12,8 @@ const BlogGridCard = ({ post }: BlogGridCardProps) => {
   const href = post.href ?? "#";
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_40px_rgba(0,0,0,0.06)]">
-      <div className="relative aspect-[16/10] overflow-hidden">
+    <article className="flex flex-col overflow-hidden bg-white">
+      <div className="relative aspect-16/10 overflow-hidden">
         {post.image && (
           <Image
             src={post.image as StaticImageData}
@@ -28,12 +28,12 @@ const BlogGridCard = ({ post }: BlogGridCardProps) => {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col gap-4 p-6">
+      <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
         <p className="font-sans text-sm text-text-secondary">
           {post.date} &bull; {post.readTime}
         </p>
 
-        <h3 className="font-sans text-xl font-bold leading-snug text-text sm:text-2xl">{post.title}</h3>
+        <h3 className="font-sans text-lg font-bold leading-snug text-text sm:text-xl">{post.title}</h3>
 
         <p className="line-clamp-3 font-sans text-sm leading-relaxed text-text-secondary sm:text-base">{post.excerpt}</p>
 
