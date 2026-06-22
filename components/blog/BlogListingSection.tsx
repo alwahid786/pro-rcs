@@ -35,7 +35,7 @@ const BlogListingSection = ({ filters, featured, gridPosts, rowPosts }: BlogList
   return (
     <div className="flex flex-col">
       <section className="bg-white py-12 sm:py-16 lg:py-20">
-        <div className="container flex flex-col gap-10 lg:gap-12">
+        <div className="w-full px-5 lg:px-8 xl:px-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={`top-${activeFilter}`}
@@ -43,7 +43,7 @@ const BlogListingSection = ({ filters, featured, gridPosts, rowPosts }: BlogList
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col gap-10 lg:gap-12"
+              className="flex flex-col gap-0"
             >
               {showFeatured && <BlogFeaturedCard post={featured} />}
 
