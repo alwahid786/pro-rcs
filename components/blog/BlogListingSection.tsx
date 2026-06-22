@@ -35,7 +35,7 @@ const BlogListingSection = ({ filters, featured, gridPosts, rowPosts }: BlogList
   return (
     <div className="flex flex-col">
       <section className="bg-white py-12 sm:py-16 lg:py-20">
-        <div className="w-full px-5 lg:px-8 xl:px-12">
+        <div className="w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={`top-${activeFilter}`}

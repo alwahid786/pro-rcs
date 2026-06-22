@@ -12,8 +12,8 @@ const BlogFeaturedCard = ({ post }: BlogFeaturedCardProps) => {
   const href = post.href ?? "#";
 
   return (
-    <article className="grid overflow-hidden rounded-2xl lg:grid-cols-2">
-      <div className="relative min-h-[280px] lg:min-h-[420px]">
+    <article className="grid overflow-hidden lg:grid-cols-2">
+      <div className="relative min-h-70 lg:min-h-105">
         {post.image && (
           <Image
             src={post.image as StaticImageData}
@@ -24,7 +24,7 @@ const BlogFeaturedCard = ({ post }: BlogFeaturedCardProps) => {
             priority
           />
         )}
-        <span className="absolute top-4 left-4 rounded bg-primary px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.1em] text-white sm:text-xs">
+        <span className="absolute top-4 left-4 rounded bg-primary px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-widest text-white sm:text-xs">
           Featured
         </span>
       </div>
