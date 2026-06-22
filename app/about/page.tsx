@@ -1,17 +1,23 @@
-import { aboutPageContent } from "@/components/about";
+import { aboutPageContent, AboutStatsSection } from "@/components/about";
 import HeroSection from "@/components/ui/HeroSection";
-import React from "react";
+
+const heroSection = aboutPageContent.sections.find((section) => section.type === "hero");
+const statsSection = aboutPageContent.sections.find((section) => section.type === "stats");
 
 const AboutPage = () => {
   return (
-    <>
-      <HeroSection
-        heading={aboutPageContent.sections[0].heading}
-        description={aboutPageContent.sections[0].description || ""}
-        primaryButton={aboutPageContent.sections[0].primaryButton || { label: "", href: "" }}
-        secondaryButton={aboutPageContent.sections[0].secondaryButton || { label: "", href: "" }}
-      />
-    </>
+    <main className="flex-1 overflow-x-clip">
+      {heroSection && (
+        <HeroSection
+          heading={heroSection.heading}
+          description={heroSection.description}
+          primaryButton={heroSection.primaryButton}
+          secondaryButton={heroSection.secondaryButton}
+        />
+      )}
+
+      {statsSection && <AboutStatsSection badge={statsSection.badge} items={statsSection.items} />}
+    </main>
   );
 };
 
