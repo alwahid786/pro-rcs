@@ -1,3 +1,5 @@
+"use client";
+
 import PixelArrowRightIcon from "@iconify-react/pixelarticons/arrow-right";
 
 type ArrowRightIconProps = {
