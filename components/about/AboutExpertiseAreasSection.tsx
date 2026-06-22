@@ -1,33 +1,27 @@
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import type { ExpertiseAreaCard, ExpertiseAreasSectionContent } from "@/components/content/types";
 import HeadingBlock from "@/components/ui/HeadingBlock";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 type AboutExpertiseAreasSectionProps = Omit<ExpertiseAreasSectionContent, "type">;
 
-const ExpertiseCard = ({ number, title, items, variant }: ExpertiseAreaCard) => {
-  const isDark = variant === "dark";
-
+const ExpertiseCard = ({ number, title, items }: Omit<ExpertiseAreaCard, "variant">) => {
   return (
-    <article
-      className={cn(
-        "flex flex-col gap-6 rounded-3xl p-6 shadow-[0_20px_60px_rgba(0,0,0,0.06)] sm:p-8",
-        isDark ? "bg-[#221d1a]" : "bg-white",
-      )}
-    >
-      <span className="inline-flex size-10 items-center justify-center rounded-full border border-primary/20 bg-primary/10 font-sans text-sm font-bold text-primary">
+    <article className="group relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:bg-[#221d1a] sm:p-8">
+      <div className="absolute -top-5 -right-5 z-1 h-40 w-40 rounded-full bg-primary/50 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" aria-hidden />
+
+      <span className="relative z-10 inline-flex size-10 items-center justify-center rounded-full border border-primary/20 bg-primary/10 font-sans text-sm font-bold text-primary">
         {number}
       </span>
 
-      <div className="flex flex-col gap-5">
-        <h3 className={cn("font-sans text-xl font-bold sm:text-2xl", isDark ? "text-white" : "text-text")}>{title}</h3>
+      <div className="relative z-10 flex flex-col gap-5">
+        <h3 className="font-sans text-xl font-bold text-text transition-colors duration-300 group-hover:text-white sm:text-2xl">{title}</h3>
 
         <ul className="flex flex-col gap-3">
           {items.map((item) => (
             <li key={item} className="flex items-start gap-3">
               <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-              <span className={cn("font-sans text-base leading-relaxed", isDark ? "text-white/60" : "text-text-secondary")}>{item}</span>
+              <span className="font-sans text-base leading-relaxed text-text-secondary transition-colors duration-300 group-hover:text-white/60">{item}</span>
             </li>
           ))}
         </ul>

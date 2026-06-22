@@ -6,7 +6,6 @@ import Passion from "@/assets/icons/about/Passion";
 import ResultsDriven from "@/assets/icons/about/ResultsDriven";
 import type { CoreValueItem, CoreValuesSectionContent } from "@/components/content/types";
 import HeadingBlock from "@/components/ui/HeadingBlock";
-import { cn } from "@/lib/utils";
 import type { ComponentType } from "react";
 
 type AboutCoreValuesSectionProps = Omit<CoreValuesSectionContent, "type">;
@@ -20,15 +19,22 @@ const coreValueIconMap: Record<string, ComponentType> = {
   "Continuous Learning": ContinuousLearning,
 };
 
-const CoreValueCard = ({ title, description, featured }: CoreValueItem & { featured?: boolean }) => {
+const CoreValueCard = ({ title, description }: CoreValueItem) => {
   const Icon = coreValueIconMap[title];
 
   return (
-    <article className={cn("flex flex-col gap-4 rounded-2xl border border-[#ece7e1] p-6 sm:p-8", featured ? "bg-[#FFF8F4]" : "bg-white")}>
-      {Icon && <Icon />}
+    <article className="group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-[#ece7e1] bg-white p-6 shadow-[0_12px_32px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-2 hover:border-transparent hover:bg-[#221d1a] hover:shadow-[0_24px_48px_rgba(0,0,0,0.14)] sm:p-8">
+      <div
+        className="absolute -top-5 -right-5 z-1 h-40 w-40 rounded-full bg-primary/50 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+        aria-hidden
+      />
 
-      <h3 className="font-sans text-lg font-bold text-text sm:text-xl">{title}</h3>
-      <p className="font-sans text-base leading-relaxed text-text-secondary">{description}</p>
+      <div className="relative z-10 flex flex-col gap-4">
+        {Icon && <Icon />}
+
+        <h3 className="font-sans text-lg font-bold text-text transition-colors duration-300 group-hover:text-white sm:text-xl">{title}</h3>
+        <p className="font-sans text-base leading-relaxed text-text-secondary transition-colors duration-300 group-hover:text-white/60">{description}</p>
+      </div>
     </article>
   );
 };
@@ -43,8 +49,8 @@ const AboutCoreValuesSection = ({ badge, heading, description, items }: AboutCor
         </div>
 
         <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {items.map((item, index) => (
-            <CoreValueCard key={item.title} {...item} featured={index === 0} />
+          {items.map((item) => (
+            <CoreValueCard key={item.title} {...item} />
           ))}
         </div>
       </div>
