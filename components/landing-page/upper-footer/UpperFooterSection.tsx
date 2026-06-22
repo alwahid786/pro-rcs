@@ -37,7 +37,7 @@ const UpperFooterSection = () => {
   const imageHiddenY = isMobile ? "45%" : "75%";
 
   return (
-    <section className="relative w-full overflow-hidden bg-white pb-0 pt-16 sm:pt-20 lg:pt-24">
+    <section className="relative w-full overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
       <RoatatingStar position="top-[150px] left-[-80px]" width="220" className="max-[1100px]:hidden" />
       <RoatatingStar position="top-[20px] right-[-20px]" width="120" className="max-[1100px]:hidden" />
       <section className="relative z-2 flex flex-col gap-14 sm:gap-16 lg:gap-20">
@@ -75,7 +75,7 @@ const UpperFooterSection = () => {
                   transition={{ ...popTransition, delay: index * 0.1 }}
                   className={`relative w-[30%] max-w-64 shrink-0 sm:max-w-72 lg:max-w-80 ${image.rotateClass}`}
                 >
-                  <Image src={image.src} alt={image.alt} className="aspect-[4/5] h-auto w-full object-contain" sizes="(max-width: 640px) 30vw, 320px" />
+                  <Image src={image.src} alt={image.alt} className="aspect-4/5 h-auto w-full object-contain" sizes="(max-width: 640px) 30vw, 320px" />
                 </motion.div>
               ))}
             </div>

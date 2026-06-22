@@ -141,7 +141,7 @@ const ResultsSection = () => {
   }, []);
 
   return (
-    <section className="relative bg-white px-5 pb-16 pt-20 sm:pb-20 lg:pb-24">
+    <section className="relative bg-white px-5 py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-305 rounded-[1.75rem] bg-[#151515] p-4 shadow-[0_0_94px_0_#00000026] sm:p-6 lg:p-8">
         <div className="flex flex-col gap-6">
           <div className="flex justify-center">
