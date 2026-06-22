@@ -28,7 +28,8 @@ export default function RootLayout({
     <html lang="en" className={`${dmSans.variable} ${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col overflow-x-clip bg-background font-sans text-foreground">
         <Header />
-        {children}
+        <main className="flex-1 overflow-x-clip">{children} </main>
+
         <Footer />
       </body>
     </html>
