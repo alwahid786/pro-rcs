@@ -23,7 +23,7 @@ const Stars = () => (
 
 const TestimonialCard = ({ quote, brand, logo }: Testimonial) => {
   return (
-    <article className="flex min-h-[25rem] w-[17.5rem] overflow-hidden relative shrink-0 flex-col rounded-3xl bg-white px-6 py-8  border border-primary sm:w-80 sm:px-7 sm:py-9">
+    <article className="flex min-h-[25rem] w-[17.5rem] overflow-hidden relative shrink-0 flex-col rounded-3xl bg-white px-6 py-8  border border-primary/30 shadow-lg sm:w-80 sm:px-7 sm:py-9">
       <Image src={testimonialBg} alt="Testimonial background" className="absolute drop-shadow-lg block bottom-[-18%] right-0 w-full" sizes="100%" />
       <section className="relative z-4 flex flex-1 flex-col gap-8">
         <div className="flex flex-col gap-5">
