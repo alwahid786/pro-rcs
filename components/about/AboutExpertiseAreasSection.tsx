@@ -2,12 +2,18 @@ import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import type { ExpertiseAreaCard, ExpertiseAreasSectionContent } from "@/components/content/types";
 import Button from "@/components/ui/Button";
 import HeadingBlock from "@/components/ui/HeadingBlock";
+import { cn } from "@/lib/utils";
 
 type AboutExpertiseAreasSectionProps = Omit<ExpertiseAreasSectionContent, "type">;
 
-const ExpertiseCard = ({ number, title, items }: Omit<ExpertiseAreaCard, "variant">) => {
+const ExpertiseCard = ({ number, title, items, className }: Omit<ExpertiseAreaCard, "variant"> & { className?: string }) => {
   return (
-    <article className="group relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:bg-[#221d1a] sm:p-8">
+    <article
+      className={cn(
+        "group relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:bg-[#221d1a] sm:p-8",
+        className,
+      )}
+    >
       <div className="absolute -top-5 -right-5 z-1 h-40 w-40 rounded-full bg-primary/50 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" aria-hidden />
 
       <span className="relative z-10 inline-flex size-10 items-center justify-center rounded-full border border-primary/20 bg-primary/10 font-sans text-sm font-bold text-primary">
@@ -49,8 +55,12 @@ const AboutExpertiseAreasSection = ({ badge, heading, cta, cards }: AboutExperti
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-6">
-          {cards.map((card) => (
-            <ExpertiseCard key={card.number} {...card} />
+          {cards.map((card, index) => (
+            <ExpertiseCard
+              key={card.number}
+              {...card}
+              className={index % 2 === 0 ? "lg:mt-8" : "lg:-mt-4"}
+            />
           ))}
         </div>
       </div>

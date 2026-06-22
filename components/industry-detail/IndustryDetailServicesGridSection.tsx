@@ -25,17 +25,19 @@ const IndustryDetailServicesGridSection = ({ badge, heading, description, items 
     <section className="bg-[#fdfaf7] py-16 sm:py-20 lg:py-24">
       <div className="container flex flex-col gap-10 lg:gap-12">
         <div className="flex flex-col gap-8">
-          <div className="flex justify-center">
+          <div className="flex justify-start">
             <Badge showIcon text={badge} />
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)] lg:items-end lg:gap-12">
-            <Heading as="h2" size="display" multicolor={heading} uppercase={false} weight="semibold" className="lg:text-[52px]!" />
-            <p className="font-sans text-base leading-relaxed text-text-secondary sm:text-lg sm:leading-8">{description}</p>
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] lg:items-end lg:gap-12">
+            <Heading as="h2" size="display" multicolor={heading} uppercase={false} weight="semibold" className="lg:text-[64px]!" />
+            <p className="font-sans text-sm leading-relaxed text-text-secondary sm:text-base sm:leading-7 lg:max-w-[90%] lg:justify-self-end lg:text-right">
+              {description}
+            </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-[#ece7e1] bg-[#ece7e1] sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-[#ece7e1] bg-[#ece7e1] sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <article
               key={item.title}

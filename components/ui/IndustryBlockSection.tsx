@@ -39,16 +39,16 @@ const IndustryBlockSection = ({
         </span>
       )}
 
-      <div className="container relative z-10">
+      <div className="relative z-10 w-full px-5 lg:px-8 xl:px-12">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
           <div className="group/content flex flex-col gap-8">
             <Badge text={badge} variant={isDark ? "glass" : "default"} />
 
-            <Heading as="h2" weight="bold" className={cn("lg:text-[3.5rem]!", isDark ? "text-white" : "text-text")}>
+            <Heading as="h2" weight="bold" className={cn("max-w-190 lg:text-[64px]!", isDark ? "text-white" : "text-text")}>
               {title}
             </Heading>
 
-            <Heading as="p" tone="muted" className={isDark ? "text-white/65" : undefined}>
+            <Heading as="p" tone="muted" className={cn("max-w-[90%]", isDark ? "text-white/65" : undefined)}>
               {description}
             </Heading>
 
@@ -72,7 +72,7 @@ const IndustryBlockSection = ({
             </Button>
           </div>
 
-          <div className="flex flex-col gap-6">
+          <div className={cn("flex flex-col gap-6 lg:border-l lg:pl-12", isDark ? "lg:border-white/10" : "lg:border-[#ece7e1]")}>
             <Heading as="h6" uppercase weight="bold" className="text-primary">
               How We Help
             </Heading>

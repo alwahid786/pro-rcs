@@ -15,11 +15,11 @@ const IndustryDetailAlsoRelevantSection = ({ badge, items }: IndustryDetailAlsoR
           <div className="hidden h-px flex-1 bg-[#ece7e1] sm:block" aria-hidden />
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px border border-[#ece7e1] bg-[#ece7e1] sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => {
             const content = (
               <>
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-4/3 overflow-hidden">
                   <Image
                     src={item.image as StaticImageData}
                     alt={item.title}
@@ -29,7 +29,7 @@ const IndustryDetailAlsoRelevantSection = ({ badge, items }: IndustryDetailAlsoR
                   />
                 </div>
 
-                <div className="flex flex-col gap-3 p-6">
+                <div className="flex flex-col gap-3 p-5">
                   <h3 className="font-sans text-xl font-bold text-text">{item.title}</h3>
                   <p className="font-sans text-sm leading-relaxed text-text-secondary">{item.description}</p>
                   <span className="inline-flex items-center gap-2 font-sans text-sm font-medium text-primary">
@@ -45,7 +45,7 @@ const IndustryDetailAlsoRelevantSection = ({ badge, items }: IndustryDetailAlsoR
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_40px_rgba(0,0,0,0.06)] transition-transform hover:-translate-y-1"
+                  className="group flex flex-col overflow-hidden bg-white transition-transform hover:-translate-y-1"
                 >
                   {content}
                 </Link>
@@ -55,7 +55,7 @@ const IndustryDetailAlsoRelevantSection = ({ badge, items }: IndustryDetailAlsoR
             return (
               <div
                 key={item.title}
-                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_40px_rgba(0,0,0,0.06)]"
+                className="group flex flex-col overflow-hidden bg-white"
               >
                 {content}
               </div>

@@ -23,7 +23,7 @@ export const industryDetailPageContent = {
       type: "hero",
       heading: [
         { text: "Where Craft Meets " },
-        { text: "Scalable", highlight: true },
+        { text: "Scalable", highlight: true, breakBefore: true },
         { text: " Strategy." },
       ],
       description:
