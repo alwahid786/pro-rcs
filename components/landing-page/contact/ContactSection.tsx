@@ -7,7 +7,7 @@ import MailIcon from "@iconify-react/pixelarticons/mail";
 import MapIcon from "@iconify-react/pixelarticons/map";
 import PhoneIcon from "@iconify-react/pixelarticons/phone";
 import { cn } from "@/lib/utils";
-import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes, useState } from "react";
+import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes, useEffect, useState } from "react";
 
 const detailIcons = [PhoneIcon, MailIcon, MapIcon];
 
@@ -55,6 +55,17 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [statusType, setStatusType] = useState<"success" | "error" | null>(null);
+
+  useEffect(() => {
+    if (!statusMessage) return;
+
+    const timer = window.setTimeout(() => {
+      setStatusMessage(null);
+      setStatusType(null);
+    }, 3500);
+
+    return () => window.clearTimeout(timer);
+  }, [statusMessage]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -163,9 +174,6 @@ const ContactSection = () => {
             <UnderlineTextarea label={form.message.label} name="message" placeholder={form.message.placeholder} required />
 
             <div className="flex flex-col items-end gap-3">
-              {statusMessage && (
-                <p className={cn("text-right font-sans text-sm", statusType === "success" ? "text-primary" : "text-red-500")}>{statusMessage}</p>
-              )}
               <Button
                 type="submit"
                 variant="primary"
@@ -180,6 +188,19 @@ const ContactSection = () => {
           </form>
         </div>
       </div>
+
+      {statusMessage && statusType && (
+        <div
+          role="status"
+          aria-live="polite"
+          className={cn(
+            "fixed right-6 bottom-6 z-60 rounded-xl px-4 py-3 text-sm font-medium text-white shadow-xl",
+            statusType === "success" ? "bg-[#16a34a]" : "bg-[#dc2626]",
+          )}
+        >
+          {statusMessage}
+        </div>
+      )}
     </section>
   );
 };
