@@ -25,7 +25,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
           : "pointer-events-none -translate-y-4 opacity-0",
       )}
     >
-      <div className="flex max-h-[calc(100vh-6.5rem)] flex-col gap-4 overflow-y-auto rounded-3xl border border-white/50 bg-white/85 p-4 shadow-glass backdrop-blur-xl">
+      <div className="flex max-h-[calc(100vh-6.5rem)] flex-col gap-4 overflow-y-auto rounded-3xl border border-[#ece7e1] bg-white p-4 shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
         <nav className="flex flex-col gap-1">
           {navItems.map((item) =>
             item.children ? (
