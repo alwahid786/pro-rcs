@@ -71,8 +71,7 @@ const NavDropdown = ({ item }: NavDropdownProps) => {
             : "pointer-events-none -translate-y-2 opacity-0",
         )}
       >
-        <div className="relative overflow-hidden rounded-2xl border border-white/50 bg-white/75 p-2 shadow-glass backdrop-blur-xl">
-          <div className="absolute inset-x-4 top-0 h-px bg-linear-to-r from-transparent via-white/80 to-transparent" />
+        <div className="relative overflow-hidden rounded-2xl border border-[#ece7e1] bg-white p-2 shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
           <ul className="flex flex-col gap-0.5">
             {item.children.map((child, index) => (
               <li
