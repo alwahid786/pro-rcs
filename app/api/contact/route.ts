@@ -1,3 +1,8 @@
+import {
+  buildContactFormEmailHtml,
+  buildContactFormEmailSubject,
+  buildContactFormEmailText,
+} from "@/lib/emails/contact-form-email";
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 
@@ -52,31 +57,15 @@ export async function POST(request: Request) {
       },
     });
 
-    const fullName = `${firstName} ${lastName}`.trim();
+    const emailData = { firstName, lastName, email, phone, message };
 
     await transporter.sendMail({
       from: fromEmail,
       to: toEmail,
       replyTo: email,
-      subject: `New Contact Form Submission${fullName ? ` - ${fullName}` : ""}`,
-      text: [
-        `First Name: ${firstName}`,
-        `Last Name: ${lastName || "-"}`,
-        `Email: ${email}`,
-        `Phone: ${phone || "-"}`,
-        "",
-        "Message:",
-        message,
-      ].join("\n"),
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>First Name:</strong> ${firstName}</p>
-        <p><strong>Last Name:</strong> ${lastName || "-"}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || "-"}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br />")}</p>
-      `,
+      subject: buildContactFormEmailSubject(emailData),
+      text: buildContactFormEmailText(emailData),
+      html: buildContactFormEmailHtml(emailData),
     });
 
     return NextResponse.json({ message: "Thanks! Your message has been sent." }, { status: 200 });
