@@ -7,7 +7,7 @@ import MailIcon from "@iconify-react/pixelarticons/mail";
 import MapIcon from "@iconify-react/pixelarticons/map";
 import PhoneIcon from "@iconify-react/pixelarticons/phone";
 import { cn } from "@/lib/utils";
-import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes } from "react";
+import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes, useState } from "react";
 
 const detailIcons = [PhoneIcon, MailIcon, MapIcon];
 
@@ -52,9 +52,51 @@ const UnderlineTextarea = ({ label, className, id, rows = 3, ...props }: Underli
 
 const ContactSection = () => {
   const { title, subtitle, details, form } = contactSectionContent;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [statusType, setStatusType] = useState<"success" | "error" | null>(null);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setStatusMessage(null);
+    setStatusType(null);
+    setIsSubmitting(true);
+
+    const formElement = event.currentTarget;
+    const formData = new FormData(formElement);
+
+    const payload = {
+      firstName: String(formData.get("firstName") ?? "").trim(),
+      lastName: String(formData.get("lastName") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      phone: String(formData.get("phone") ?? "").trim(),
+      message: String(formData.get("message") ?? "").trim(),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        throw new Error(result.message ?? "Failed to send your message.");
+      }
+
+      setStatusType("success");
+      setStatusMessage(result.message ?? "Message sent successfully.");
+      formElement.reset();
+    } catch (error) {
+      setStatusType("error");
+      setStatusMessage(error instanceof Error ? error.message : "Failed to send your message.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -104,6 +146,7 @@ const ContactSection = () => {
                 name="firstName"
                 placeholder={form.firstName.placeholder}
                 autoComplete="given-name"
+                required
               />
               <UnderlineField label={form.lastName.label} name="lastName" placeholder={form.lastName.placeholder} autoComplete="family-name" />
               <UnderlineField
@@ -112,15 +155,26 @@ const ContactSection = () => {
                 type="email"
                 placeholder={form.email.placeholder}
                 autoComplete="email"
+                required
               />
               <UnderlineField label={form.phone.label} name="phone" type="tel" placeholder={form.phone.placeholder} autoComplete="tel" />
             </div>
 
-            <UnderlineTextarea label={form.message.label} name="message" placeholder={form.message.placeholder} />
+            <UnderlineTextarea label={form.message.label} name="message" placeholder={form.message.placeholder} required />
 
-            <div className="flex justify-end">
-              <Button type="submit" variant="primary" size="md" icon={<ArrowRightIcon className="text-white" />} iconPosition="left">
-                {form.submit}
+            <div className="flex flex-col items-end gap-3">
+              {statusMessage && (
+                <p className={cn("text-right font-sans text-sm", statusType === "success" ? "text-primary" : "text-red-500")}>{statusMessage}</p>
+              )}
+              <Button
+                type="submit"
+                variant="primary"
+                size="md"
+                icon={<ArrowRightIcon className="text-white" />}
+                iconPosition="left"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : form.submit}
               </Button>
             </div>
           </form>
