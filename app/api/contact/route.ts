@@ -29,12 +29,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "Please provide a valid email address." }, { status: 400 });
     }
 
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpPort = Number(process.env.SMTP_PORT ?? 587);
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
+    const smtpHost = process.env.NODEMAILER_HOST ?? process.env.SMTP_HOST;
+    const smtpPort = Number(process.env.NODEMAILER_PORT ?? process.env.SMTP_PORT ?? 587);
+    const smtpUser = process.env.NODEMAILER_USER ?? process.env.SMTP_USER;
+    const smtpPass = process.env.NODEMAILER_PASSWORD ?? process.env.SMTP_PASS;
+    const secureFromEnv = process.env.NODEMAILER_SECURE;
+    const smtpSecure = secureFromEnv ? secureFromEnv.toLowerCase() === "true" : smtpPort === 465;
     const toEmail = process.env.CONTACT_TO_EMAIL ?? smtpUser;
-    const fromEmail = process.env.CONTACT_FROM_EMAIL ?? smtpUser;
+    const fromEmail = process.env.NODEMAILER_FROM ?? process.env.CONTACT_FROM_EMAIL ?? smtpUser;
 
     if (!smtpHost || !smtpUser || !smtpPass || !toEmail || !fromEmail) {
       return NextResponse.json({ message: "Email service is not configured on the server." }, { status: 500 });
@@ -43,7 +45,7 @@ export async function POST(request: Request) {
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
-      secure: smtpPort === 465,
+      secure: smtpSecure,
       auth: {
         user: smtpUser,
         pass: smtpPass,
