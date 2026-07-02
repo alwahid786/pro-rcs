@@ -1,10 +1,16 @@
 function Integrity() {
   return (
-    <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="54"
+      height="54"
+      viewBox="0 0 54 54"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M0 15.4878C0 6.93413 6.93414 0 15.4878 0H37.6133C46.167 0 53.1012 6.93414 53.1012 15.4878V37.6133C53.1012 46.167 46.167 53.1012 37.6133 53.1012H15.4878C6.93413 53.1012 0 46.167 0 37.6133V15.4878Z"
         fill="#EB692C"
-        fill-opacity="0.08"
+        fillOpacity="0.08"
       />
       <g clip-path="url(#clip0_556_3681)">
         <path
@@ -26,7 +32,12 @@ function Integrity() {
       </g>
       <defs>
         <clipPath id="clip0_556_3681">
-          <rect width="26" height="26" fill="white" transform="translate(13.5508 13.5508)" />
+          <rect
+            width="26"
+            height="26"
+            fill="white"
+            transform="translate(13.5508 13.5508)"
+          />
         </clipPath>
       </defs>
     </svg>

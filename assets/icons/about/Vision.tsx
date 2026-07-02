@@ -1,10 +1,16 @@
 function Vision() {
   return (
-    <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="54"
+      height="54"
+      viewBox="0 0 54 54"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M0 15.4878C0 6.93413 6.93414 0 15.4878 0H37.6133C46.167 0 53.1012 6.93414 53.1012 15.4878V37.6133C53.1012 46.167 46.167 53.1012 37.6133 53.1012H15.4878C6.93413 53.1012 0 46.167 0 37.6133V15.4878Z"
         fill="#D5A630"
-        fill-opacity="0.15"
+        fillOpacity="0.15"
       />
       <g clip-path="url(#clip0_556_3654)">
         <path
@@ -14,13 +20,18 @@ function Vision() {
         <path
           d="M26.5509 14.3828V16.5954M26.5509 36.5083V38.7208M17.944 17.945L19.5149 19.5159M33.5868 33.5877L35.1577 35.1586M14.3818 26.5518H16.5944M36.5073 26.5518H38.7199M17.944 35.1586L19.5149 33.5877M33.5868 19.5159L35.1577 17.945"
           stroke="#D5A630"
-          stroke-width="2.21255"
-          stroke-linecap="round"
+          strokeWidth="2.21255"
+          strokeLinecap="round"
         />
       </g>
       <defs>
         <clipPath id="clip0_556_3654">
-          <rect width="26.5506" height="26.5506" fill="white" transform="translate(13.2754 13.2734)" />
+          <rect
+            width="26.5506"
+            height="26.5506"
+            fill="white"
+            transform="translate(13.2754 13.2734)"
+          />
         </clipPath>
       </defs>
     </svg>
