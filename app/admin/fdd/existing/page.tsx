@@ -17,14 +17,16 @@ interface FddItem {
 const formatLocation = (country?: string, state?: string) => {
   const c = country?.trim().toUpperCase();
   const s = state?.trim().toUpperCase();
-  
+
   let countryName = c || "";
   if (c === "USA" || c === "US") countryName = "United States";
   else if (c === "CAN" || c === "CA") countryName = "Canada";
   else if (c === "GBR" || c === "UK") countryName = "United Kingdom";
 
   if (s) {
-    const stateFormatted = s.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
+    const stateFormatted = s
+      .toLowerCase()
+      .replace(/\b\w/g, (char) => char.toUpperCase());
     return `${stateFormatted}, ${countryName}`;
   }
   return countryName || "Global";
@@ -64,7 +66,10 @@ export default function ExistingFddPage() {
   useEffect(() => {
     const handleDocumentClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest(".action-trigger-btn") || target.closest(".action-dropdown-menu")) {
+      if (
+        target.closest(".action-trigger-btn") ||
+        target.closest(".action-dropdown-menu")
+      ) {
         return;
       }
       setOpenDropdownId(null);
@@ -183,10 +188,10 @@ export default function ExistingFddPage() {
 
   // Derive unique values for filters
   const uniqueCountries = Array.from(
-    new Set(fdds.map((f) => f.country || "USA").filter(Boolean))
+    new Set(fdds.map((f) => f.country || "USA").filter(Boolean)),
   );
   const uniqueBrands = Array.from(
-    new Set(fdds.map((f) => f.restaurantName).filter(Boolean))
+    new Set(fdds.map((f) => f.restaurantName).filter(Boolean)),
   );
 
   // Apply filters
@@ -225,7 +230,10 @@ export default function ExistingFddPage() {
   // Paginate items
   const totalPages = Math.ceil(filteredFdds.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedFdds = filteredFdds.slice(startIndex, startIndex + itemsPerPage);
+  const paginatedFdds = filteredFdds.slice(
+    startIndex,
+    startIndex + itemsPerPage,
+  );
 
   const resetFilters = () => {
     setCountryFilter("All");
@@ -245,10 +253,10 @@ export default function ExistingFddPage() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-secondary">
-              Existing FDD Templates
+              Existing FDD Documents
             </h1>
             <p className="text-sm text-text-secondary mt-1">
-              Manage your Franchise Disclosure Documents template versions.
+              Manage your Franchise Disclosure Documents versions.
             </p>
           </div>
           <div>
@@ -267,7 +275,7 @@ export default function ExistingFddPage() {
           <div className="mb-6 space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-bold text-secondary">
-                Uploaded Templates
+                Uploaded FDD Documents
               </h2>
               {(countryFilter !== "All" ||
                 stateFilter !== "" ||
@@ -371,107 +379,135 @@ export default function ExistingFddPage() {
                   <table className="w-full text-left border-collapse overflow-visible">
                     <thead>
                       <tr className="border-b border-border/40 text-xs font-semibold text-text-secondary uppercase tracking-wider">
-                      <th className="pb-3 pl-2">Title</th>
-                      <th className="pb-3">Franchise</th>
-                      <th className="pb-3">Version</th>
-                      <th className="pb-3">Applies To</th>
-                      <th className="pb-3">Min. Review Period</th>
-                      <th className="pb-3">E-Signature</th>
-                      <th className="pb-3">Status</th>
-                      <th className="pb-3">Uploaded</th>
-                      <th className="pb-3 text-right pr-2">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border/20">
-                    {paginatedFdds.map((fdd) => (
-                       <tr
-                        key={fdd._id}
-                        className="text-sm text-text hover:bg-white/10 transition-colors animate-in fade-in overflow-visible"
-                      >
-                        <td
-                          className="py-4 pl-2 font-medium text-secondary truncate max-w-[180px]"
-                          title={fdd.title}
-                        >
-                          {fdd.title}
-                        </td>
-                        <td className="py-4 font-semibold text-secondary">
-                          {fdd.restaurantName || "—"}
-                        </td>
-                        <td className="py-4 font-semibold">{fdd.version}</td>
-                        <td className="py-4 text-xs font-semibold text-secondary">
-                          {formatLocation(fdd.country, fdd.state)}
-                        </td>
-                        <td className="py-4 text-xs text-text-secondary">
-                          14 Days
-                        </td>
-                        <td className="py-4 text-xs text-text-secondary">
-                          Required
-                        </td>
-                        <td className="py-4">
-                          {fdd.isActive ? (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                              Active
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-gray-50 text-gray-600 border border-gray-200">
-                              Inactive
-                            </span>
-                          )}
-                        </td>
-                        <td className="py-4 text-xs text-text-secondary">
-                          {new Date(fdd.uploadedAt).toLocaleDateString()}
-                        </td>
-                        <td className="py-4 text-right pr-2 relative overflow-visible">
-                          <button
-                            onClick={() => toggleDropdown(fdd._id)}
-                            className="action-trigger-btn inline-flex items-center gap-1 px-3 py-1.5 bg-secondary text-white text-xs font-bold rounded-xl shadow transition-all hover:bg-secondary/90 active:scale-95 focus:outline-none cursor-pointer"
-                          >
-                            Action
-                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-                            </svg>
-                          </button>
-
-                          {/* Dropdown Menu */}
-                          {openDropdownId === fdd._id && (
-                            <div
-                              className="action-dropdown-menu absolute right-2 mt-2 w-48 origin-top-right rounded-2xl border border-border/80 bg-white p-2 shadow-[0_12px_40px_rgba(0,0,0,0.08)] backdrop-blur-md transition-all duration-300 z-50 text-left"
-                            >
-                              <div className="py-1 space-y-0.5">
-                                <a
-                                  href={`/api/fdd/download/${fdd._id}`}
-                                  download
-                                  className="flex items-center gap-2 w-full px-3 py-2 text-xs font-semibold text-text rounded-xl transition-colors hover:bg-secondary/5 hover:text-secondary cursor-pointer"
-                                >
-                                  <svg className="w-4 h-4 shrink-0 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                  </svg>
-                                  Download
-                                </a>
-                                <button
-                                  onClick={() => {
-                                    setOpenDropdownId(null);
-                                    handleDelete(fdd._id);
-                                  }}
-                                  className="flex items-center gap-2 w-full px-3 py-2 text-xs font-semibold text-red-600 rounded-xl transition-colors hover:bg-red-50 cursor-pointer"
-                                >
-                                  <svg className="w-4 h-4 shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                  </svg>
-                                  Delete
-                                </button>
-                              </div>
-                            </div>
-                          )}
-                        </td>
+                        <th className="pb-3 pl-2">Title</th>
+                        <th className="pb-3">Franchise</th>
+                        <th className="pb-3">Version</th>
+                        <th className="pb-3">Applies To</th>
+                        <th className="pb-3">Min. Review Period</th>
+                        <th className="pb-3">E-Signature</th>
+                        <th className="pb-3">Status</th>
+                        <th className="pb-3">Uploaded</th>
+                        <th className="pb-3 text-right pr-2">Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-border/20">
+                      {paginatedFdds.map((fdd) => (
+                        <tr
+                          key={fdd._id}
+                          className="text-sm text-text hover:bg-white/10 transition-colors animate-in fade-in overflow-visible"
+                        >
+                          <td
+                            className="py-4 pl-2 font-medium text-secondary truncate max-w-[180px]"
+                            title={fdd.title}
+                          >
+                            {fdd.title}
+                          </td>
+                          <td className="py-4 font-semibold text-secondary">
+                            {fdd.restaurantName || "—"}
+                          </td>
+                          <td className="py-4 font-semibold">{fdd.version}</td>
+                          <td className="py-4 text-xs font-semibold text-secondary">
+                            {formatLocation(fdd.country, fdd.state)}
+                          </td>
+                          <td className="py-4 text-xs text-text-secondary">
+                            14 Days
+                          </td>
+                          <td className="py-4 text-xs text-text-secondary">
+                            Required
+                          </td>
+                          <td className="py-4">
+                            {fdd.isActive ? (
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                Active
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-gray-50 text-gray-600 border border-gray-200">
+                                Inactive
+                              </span>
+                            )}
+                          </td>
+                          <td className="py-4 text-xs text-text-secondary">
+                            {new Date(fdd.uploadedAt).toLocaleDateString()}
+                          </td>
+                          <td className="py-4 text-right pr-2 relative overflow-visible">
+                            <button
+                              onClick={() => toggleDropdown(fdd._id)}
+                              className="action-trigger-btn inline-flex items-center gap-1 px-3 py-1.5 bg-secondary text-white text-xs font-bold rounded-xl shadow transition-all hover:bg-secondary/90 active:scale-95 focus:outline-none cursor-pointer"
+                            >
+                              Action
+                              <svg
+                                className="w-3.5 h-3.5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2.5"
+                                  d="M19 9l-7 7-7-7"
+                                />
+                              </svg>
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            {openDropdownId === fdd._id && (
+                              <div className="action-dropdown-menu absolute right-2 mt-2 w-48 origin-top-right rounded-2xl border border-border/80 bg-white p-2 shadow-[0_12px_40px_rgba(0,0,0,0.08)] backdrop-blur-md transition-all duration-300 z-50 text-left">
+                                <div className="py-1 space-y-0.5">
+                                  <a
+                                    href={`/api/fdd/download/${fdd._id}`}
+                                    download
+                                    className="flex items-center gap-2 w-full px-3 py-2 text-xs font-semibold text-text rounded-xl transition-colors hover:bg-secondary/5 hover:text-secondary cursor-pointer"
+                                  >
+                                    <svg
+                                      className="w-4 h-4 shrink-0 text-text-secondary"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                      />
+                                    </svg>
+                                    Download
+                                  </a>
+                                  <button
+                                    onClick={() => {
+                                      setOpenDropdownId(null);
+                                      handleDelete(fdd._id);
+                                    }}
+                                    className="flex items-center gap-2 w-full px-3 py-2 text-xs font-semibold text-red-600 rounded-xl transition-colors hover:bg-red-50 cursor-pointer"
+                                  >
+                                    <svg
+                                      className="w-4 h-4 shrink-0 text-red-500"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                      />
+                                    </svg>
+                                    Delete
+                                  </button>
+                                </div>
+                              </div>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
-          )}
+            )}
           </div>
 
           {/* Pagination Controls */}
@@ -479,15 +515,23 @@ export default function ExistingFddPage() {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-border/40 mt-4 overflow-visible animate-in fade-in">
               <div className="flex flex-wrap items-center gap-3 text-xs text-text-secondary">
                 <span>
-                  Showing <span className="font-semibold text-secondary">{filteredFdds.length === 0 ? 0 : startIndex + 1}</span> to{" "}
+                  Showing{" "}
+                  <span className="font-semibold text-secondary">
+                    {filteredFdds.length === 0 ? 0 : startIndex + 1}
+                  </span>{" "}
+                  to{" "}
                   <span className="font-semibold text-secondary">
                     {Math.min(startIndex + itemsPerPage, filteredFdds.length)}
                   </span>{" "}
-                  of <span className="font-semibold text-secondary">{filteredFdds.length}</span> documents
+                  of{" "}
+                  <span className="font-semibold text-secondary">
+                    {filteredFdds.length}
+                  </span>{" "}
+                  documents
                 </span>
-                
+
                 <span className="hidden sm:inline text-border/60">|</span>
-                
+
                 <div className="flex items-center gap-1.5">
                   <span>Show</span>
                   <select
@@ -513,12 +557,25 @@ export default function ExistingFddPage() {
                   disabled={currentPage === 1}
                   className="p-2 rounded-xl border border-border bg-white text-secondary hover:bg-secondary/5 transition-all disabled:opacity-40 disabled:hover:bg-transparent cursor-pointer disabled:cursor-not-allowed"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15 19l-7-7 7-7"
+                    />
                   </svg>
                 </button>
 
-                {Array.from({ length: Math.max(1, totalPages) }, (_, i) => i + 1).map((page) => (
+                {Array.from(
+                  { length: Math.max(1, totalPages) },
+                  (_, i) => i + 1,
+                ).map((page) => (
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
@@ -534,12 +591,24 @@ export default function ExistingFddPage() {
                 ))}
 
                 <button
-                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  onClick={() =>
+                    setCurrentPage((p) => Math.min(totalPages, p + 1))
+                  }
                   disabled={currentPage === totalPages || totalPages <= 1}
                   className="p-2 rounded-xl border border-border bg-white text-secondary hover:bg-secondary/5 transition-all disabled:opacity-40 disabled:hover:bg-transparent cursor-pointer disabled:cursor-not-allowed"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </button>
               </div>
@@ -548,7 +617,7 @@ export default function ExistingFddPage() {
         </div>
       </div>
 
-      {/* Upload FDD Template Modal */}
+      {/* Upload FDD Document Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
           {/* Backdrop */}
@@ -563,7 +632,7 @@ export default function ExistingFddPage() {
           <div className="relative w-full max-w-lg glass shadow-glass rounded-3xl p-6 border border-white/60 bg-white/70 backdrop-blur-lg transform transition-all animate-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between mb-5">
               <h3 className="text-xl font-bold text-secondary">
-                Upload FDD Template
+                Upload FDD Document
               </h3>
               <button
                 disabled={uploading}

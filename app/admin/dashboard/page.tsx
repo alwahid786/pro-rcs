@@ -117,12 +117,12 @@ export default async function AdminDashboardPage() {
 
         {/* Top Row: 2 Metrics Widgets */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Widget 1: Active Templates */}
+          {/* Widget 1: Active FDD Documents */}
           <div className="glass shadow-glass rounded-3xl p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between hover:border-secondary/20 transition-all duration-300">
             <div className="flex items-start justify-between">
               <div>
                 <span className="text-xs font-bold text-text-secondary uppercase tracking-wider">
-                  Active FDD Templates
+                  Active FDD Documents
                 </span>
                 <h3 className="text-5xl font-extrabold text-secondary mt-2 tracking-tight flex items-baseline gap-2">
                   {existingCount}
@@ -155,7 +155,7 @@ export default async function AdminDashboardPage() {
                 href="/admin/fdd/existing"
                 className="text-xs font-semibold text-secondary hover:underline flex items-center gap-1"
               >
-                Manage Templates ➜
+                Manage FDD Documents ➜
               </Link>
             </div>
           </div>
@@ -206,16 +206,16 @@ export default async function AdminDashboardPage() {
 
         {/* Second Row: 3 Widgets */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Widget 1: Recent Existing Templates */}
+          {/* Widget 1: Recent Existing FDD Documents */}
           <div className="glass shadow-glass rounded-3xl p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between">
             <div>
               <h3 className="text-lg font-bold text-secondary mb-4 flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-secondary" />
-                Recent Templates
+                Recent FDD Documents
               </h3>
               {topExisting.length === 0 ? (
                 <p className="text-xs text-text-secondary py-8 text-center">
-                  No templates uploaded yet.
+                  No FDD Documents uploaded yet.
                 </p>
               ) : (
                 <div className="space-y-3">
