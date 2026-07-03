@@ -1,6 +1,4 @@
 import { NextRequest } from "next/server";
-import { cookies } from "next/headers";
-import { verifyToken } from "@/lib/utils/jwt";
 import SignedFdd from "@/lib/models/SignedFdd";
 import dbConnect from "@/lib/db";
 import fs from "fs";

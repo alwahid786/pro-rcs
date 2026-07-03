@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Satisfy, Caveat, Marck_Script } from "next/font/google";
 import Modal from "@/components/Modal";
+import { formatPhoneNumber } from "@/lib/utils/phoneFormatter";
 
 // Load calligraphy Google Fonts
 const satisfy = Satisfy({ weight: "400", subsets: ["latin"], display: "swap" });
@@ -92,6 +93,7 @@ export default function SignaturePage({
   const [currentPage, setCurrentPage] = useState(1);
   const [loadingPdf, setLoadingPdf] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const renderTaskRef = useRef<import("pdfjs-dist").RenderTask | null>(null);
 
   // Signature placement
   const [placedSignatures, setPlacedSignatures] = useState<
@@ -254,7 +256,7 @@ export default function SignaturePage({
       try {
         const pdfjs = await import("pdfjs-dist");
         // Use CDN unpkg fallback for worker to avoid route bundling errors
-        pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+        pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
         const loadingTask = pdfjs.getDocument({ url: fdd.downloadUrl });
         const pdf = await loadingTask.promise;
@@ -275,6 +277,16 @@ export default function SignaturePage({
   const renderPage = useCallback(
     async (pageNum: number) => {
       if (!pdfDoc) return;
+
+      // Cancel previous render task if any
+      if (renderTaskRef.current) {
+        try {
+          renderTaskRef.current.cancel();
+        } catch {
+          // ignore
+        }
+      }
+
       try {
         const page = await pdfDoc.getPage(pageNum);
         const canvas = canvasRef.current;
@@ -293,8 +305,16 @@ export default function SignaturePage({
           viewport: viewport,
           canvas: canvas,
         };
-        await page.render(renderContext).promise;
+        const renderTask = page.render(renderContext);
+        renderTaskRef.current = renderTask;
+
+        await renderTask.promise;
       } catch (err) {
+        const error = err as { name?: string };
+        if (error?.name === "RenderingCancelledException") {
+          // Normal cancellation, do not log
+          return;
+        }
         console.error("Page rendering error:", err);
       }
     },
@@ -305,6 +325,15 @@ export default function SignaturePage({
     if (pdfDoc) {
       renderPage(currentPage);
     }
+    return () => {
+      if (renderTaskRef.current) {
+        try {
+          renderTaskRef.current.cancel();
+        } catch {
+          // ignore
+        }
+      }
+    };
   }, [pdfDoc, currentPage, renderPage]);
 
   // Handle click on PDF to position element block
@@ -700,8 +729,9 @@ export default function SignaturePage({
                     <input
                       type="tel"
                       placeholder="+1 (555) 000-0000"
+                      maxLength={17}
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onChange={(e) => setPhone(formatPhoneNumber(e.target.value))}
                       className="w-full px-3 py-2 rounded-xl border border-border bg-white/50 focus:outline-none focus:ring-2 focus:ring-secondary/20 transition-all text-sm"
                     />
                   </div>

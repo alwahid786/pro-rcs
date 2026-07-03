@@ -35,3 +35,18 @@ export async function seedAdminUser(adminData: Partial<IAdmin>): Promise<IAdmin>
     return newAdmin.save();
   }
 }
+
+export async function updateAdminProfile(id: string, updateData: {
+  firstName: string;
+  lastName: string;
+  country: string;
+  state: string;
+  number: string;
+}): Promise<IAdmin | null> {
+  await dbConnect();
+  return Admin.findByIdAndUpdate(
+    id,
+    { $set: updateData },
+    { returnDocument: "after" }
+  ).exec();
+}

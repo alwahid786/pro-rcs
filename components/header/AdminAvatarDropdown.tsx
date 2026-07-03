@@ -71,7 +71,7 @@ export default function AdminAvatarDropdown({ admin }: AdminAvatarDropdownProps)
           </div>
           <div className="py-1 mt-1 space-y-0.5">
             <Link
-              href="/admin/dashboard"
+              href="/admin/profile"
               onClick={() => setIsOpen(false)}
               className="flex w-full items-center px-3 py-2 text-sm text-text rounded-xl transition-colors hover:bg-secondary/5 hover:text-secondary"
             >

@@ -54,7 +54,7 @@ export default function AdminHeader({ admin }: AdminHeaderProps) {
           : "pt-4 pb-5 sm:pt-5 sm:pb-6",
       )}
     >
-      <div className="container pointer-events-auto overflow-visible mx-auto max-w-6xl">
+      <div className="container pointer-events-auto overflow-visible mx-auto">
         <section
           className={cn(
             "animate-header-enter flex items-center justify-between gap-4 overflow-visible rounded-full border transition-all duration-500",

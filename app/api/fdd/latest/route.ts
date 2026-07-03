@@ -18,6 +18,8 @@ export async function GET(req: NextRequest) {
       fileSize: f.fileSize,
       downloadUrl: `/api/fdd/download/${f._id}`,
       uploadedAt: f.uploadedAt,
+      country: f.country,
+      state: f.state,
     }));
 
     return NextResponse.json(results);

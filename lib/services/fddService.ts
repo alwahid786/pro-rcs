@@ -1,7 +1,6 @@
 import dbConnect from "@/lib/db";
 import Fdd, { IFdd } from "@/lib/models/Fdd";
 import SignedFdd, { ISignedFdd } from "@/lib/models/SignedFdd";
-import mongoose from "mongoose";
 
 export async function createFddRecord(data: {
   title: string;
@@ -23,7 +22,7 @@ export async function createFddRecord(data: {
   // Deactivate all previous active versions for the exact same country, state, and restaurantName combination
   await Fdd.updateMany(
     { isDeleted: false, country, state, restaurantName },
-    { $set: { isActive: false } }
+    { $set: { isActive: false } },
   );
 
   const newFdd = new Fdd({
@@ -38,12 +37,18 @@ export async function createFddRecord(data: {
   return newFdd.save();
 }
 
-export async function getLatestFdd(query?: { country?: string; state?: string; restaurantName?: string }): Promise<IFdd | null> {
+export async function getLatestFdd(query?: {
+  country?: string;
+  state?: string;
+  restaurantName?: string;
+}): Promise<IFdd | null> {
   await dbConnect();
 
   const country = query?.country ? query.country.trim().toUpperCase() : "";
   const state = query?.state ? query.state.trim().toUpperCase() : "";
-  const restaurantName = query?.restaurantName ? query.restaurantName.trim() : "";
+  const restaurantName = query?.restaurantName
+    ? query.restaurantName.trim()
+    : "";
 
   // 1. If country is specified, strictly query within that country
   if (country) {
@@ -54,7 +59,13 @@ export async function getLatestFdd(query?: { country?: string; state?: string; r
         isDeleted: false,
         country,
         state,
-        ...(restaurantName ? { restaurantName: { $regex: new RegExp(`^${restaurantName}$`, "i") } } : {}),
+        ...(restaurantName
+          ? {
+              restaurantName: {
+                $regex: new RegExp(`^${restaurantName}$`, "i"),
+              },
+            }
+          : {}),
       }).exec();
       if (exactMatch) return exactMatch;
     }
@@ -65,7 +76,9 @@ export async function getLatestFdd(query?: { country?: string; state?: string; r
       isDeleted: false,
       country,
       state: "",
-      ...(restaurantName ? { restaurantName: { $regex: new RegExp(`^${restaurantName}$`, "i") } } : {}),
+      ...(restaurantName
+        ? { restaurantName: { $regex: new RegExp(`^${restaurantName}$`, "i") } }
+        : {}),
     }).exec();
     if (countryFallback) return countryFallback;
 
@@ -75,8 +88,16 @@ export async function getLatestFdd(query?: { country?: string; state?: string; r
         isActive: true,
         isDeleted: false,
         country,
-        ...(restaurantName ? { restaurantName: { $regex: new RegExp(`^${restaurantName}$`, "i") } } : {}),
-      }).sort({ uploadedAt: -1 }).exec();
+        ...(restaurantName
+          ? {
+              restaurantName: {
+                $regex: new RegExp(`^${restaurantName}$`, "i"),
+              },
+            }
+          : {}),
+      })
+        .sort({ uploadedAt: -1 })
+        .exec();
       if (anyStateMatch) return anyStateMatch;
     }
 
@@ -92,7 +113,9 @@ export async function getLatestFdd(query?: { country?: string; state?: string; r
       isDeleted: false,
       country: "",
       state,
-      ...(restaurantName ? { restaurantName: { $regex: new RegExp(`^${restaurantName}$`, "i") } } : {}),
+      ...(restaurantName
+        ? { restaurantName: { $regex: new RegExp(`^${restaurantName}$`, "i") } }
+        : {}),
     }).exec();
     if (stateMatch) return stateMatch;
   }
@@ -103,7 +126,9 @@ export async function getLatestFdd(query?: { country?: string; state?: string; r
     isDeleted: false,
     country: "",
     state: "",
-    ...(restaurantName ? { restaurantName: { $regex: new RegExp(`^${restaurantName}$`, "i") } } : {}),
+    ...(restaurantName
+      ? { restaurantName: { $regex: new RegExp(`^${restaurantName}$`, "i") } }
+      : {}),
   }).exec();
   if (globalFallback) return globalFallback;
 
@@ -113,15 +138,22 @@ export async function getLatestFdd(query?: { country?: string; state?: string; r
       isActive: true,
       isDeleted: false,
       country: "",
-      ...(restaurantName ? { restaurantName: { $regex: new RegExp(`^${restaurantName}$`, "i") } } : {}),
-    }).sort({ uploadedAt: -1 }).exec();
+      ...(restaurantName
+        ? { restaurantName: { $regex: new RegExp(`^${restaurantName}$`, "i") } }
+        : {}),
+    })
+      .sort({ uploadedAt: -1 })
+      .exec();
     if (anyGlobalStateMatch) return anyGlobalStateMatch;
   }
 
   return null;
 }
 
-export async function getAvailableBrandsForLocation(query?: { country?: string; state?: string }): Promise<string[]> {
+export async function getAvailableBrandsForLocation(query?: {
+  country?: string;
+  state?: string;
+}): Promise<string[]> {
   await dbConnect();
 
   const country = query?.country ? query.country.trim().toUpperCase() : "";
@@ -132,11 +164,7 @@ export async function getAvailableBrandsForLocation(query?: { country?: string; 
     isDeleted: false,
     restaurantName: { $ne: "" },
     country: country || "",
-    ...(state
-      ? { state: { $in: [state, ""] } }
-      : country
-      ? {}
-      : { state: "" }),
+    ...(state ? { state: { $in: [state, ""] } } : country ? {} : { state: "" }),
   };
 
   const brands = await Fdd.distinct("restaurantName", filter).exec();
@@ -178,23 +206,31 @@ export async function softDeleteFddRecord(id: string): Promise<IFdd | null> {
   return fdd;
 }
 
-export async function createSignedFddRecord(data: Partial<ISignedFdd>): Promise<ISignedFdd> {
+export async function createSignedFddRecord(
+  data: Partial<ISignedFdd>,
+): Promise<ISignedFdd> {
   await dbConnect();
   const signed = new SignedFdd(data);
   return signed.save();
 }
 
-export async function getLatestFddsForLocation(query?: { country?: string; state?: string; restaurantName?: string }): Promise<IFdd[]> {
+export async function getLatestFddsForLocation(query?: {
+  country?: string;
+  state?: string;
+  restaurantName?: string;
+}): Promise<IFdd[]> {
   await dbConnect();
 
   const country = query?.country ? query.country.trim().toUpperCase() : "";
   const state = query?.state ? query.state.trim().toUpperCase() : "";
-  const restaurantName = query?.restaurantName ? query.restaurantName.trim() : "";
+  const restaurantName = query?.restaurantName
+    ? query.restaurantName.trim()
+    : "";
 
   const brands = await getAvailableBrandsForLocation({ country, state });
 
-  const targetBrands = restaurantName 
-    ? brands.filter(b => b.toLowerCase() === restaurantName.toLowerCase())
+  const targetBrands = restaurantName
+    ? brands.filter((b) => b.toLowerCase() === restaurantName.toLowerCase())
     : brands;
 
   const results: IFdd[] = [];
@@ -206,7 +242,9 @@ export async function getLatestFddsForLocation(query?: { country?: string; state
     }
   }
 
-  return results.sort((a, b) => b.uploadedAt.getTime() - a.uploadedAt.getTime());
+  return results.sort(
+    (a, b) => b.uploadedAt.getTime() - a.uploadedAt.getTime(),
+  );
 }
 
 export async function getAllSignedFdds(): Promise<ISignedFdd[]> {
