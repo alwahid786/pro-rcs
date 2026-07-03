@@ -45,7 +45,10 @@ export default async function AdminDashboardPage() {
   // Connect to DB and fetch dashboard metrics
   await dbConnect();
 
-  const existingCount = await Fdd.countDocuments({ isDeleted: false, isActive: true });
+  const existingCount = await Fdd.countDocuments({
+    isDeleted: false,
+    isActive: true,
+  });
   const signedCount = await SignedFdd.countDocuments({});
 
   // Query top 5 recent existing templates
@@ -86,6 +89,9 @@ export default async function AdminDashboardPage() {
     monthlyStats.push({ month: monthLabel, count });
   }
 
+  const currentMonthSignings =
+    monthlyStats[monthlyStats.length - 1]?.count || 0;
+
   const counts = monthlyStats.map((s) => s.count);
   const maxCount = Math.max(...counts, 1);
 
@@ -107,7 +113,6 @@ export default async function AdminDashboardPage() {
               Welcome back, {admin.firstName} {admin.lastName}
             </p>
           </div>
-
         </div>
 
         {/* Top Row: 2 Metrics Widgets */}
@@ -119,8 +124,11 @@ export default async function AdminDashboardPage() {
                 <span className="text-xs font-bold text-text-secondary uppercase tracking-wider">
                   Active FDD Templates
                 </span>
-                <h3 className="text-5xl font-extrabold text-secondary mt-2 tracking-tight">
+                <h3 className="text-5xl font-extrabold text-secondary mt-2 tracking-tight flex items-baseline gap-2">
                   {existingCount}
+                  <span className="text-xs font-semibold text-text-secondary">
+                    active
+                  </span>
                 </h3>
               </div>
               <div className="p-3 bg-secondary/5 rounded-2xl border border-secondary/10 text-secondary">
@@ -159,8 +167,11 @@ export default async function AdminDashboardPage() {
                 <span className="text-xs font-bold text-text-secondary uppercase tracking-wider">
                   Signed FDD Documents
                 </span>
-                <h3 className="text-5xl font-extrabold text-secondary mt-2 tracking-tight">
+                <h3 className="text-5xl font-extrabold text-secondary mt-2 tracking-tight flex items-baseline gap-2">
                   {signedCount}
+                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
+                    {`+${currentMonthSignings} this month`}
+                  </span>
                 </h3>
               </div>
               <div className="p-3 bg-emerald-50 rounded-2xl border border-emerald-100 text-emerald-600">
@@ -291,115 +302,157 @@ export default async function AdminDashboardPage() {
           </div>
 
           {/* Widget 3: Monthly Signings Trend SVG Graph */}
-          <div className="glass shadow-glass rounded-3xl p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between">
+          <div className="glass shadow-glass rounded-3xl p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between hover:border-secondary/20 transition-all duration-300">
             <div>
-              <h3 className="text-lg font-bold text-secondary mb-4 flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-indigo-500" />
-                Signings Trend (Monthly)
-              </h3>
-              <div className="h-[150px] flex items-center justify-center">
-                <svg
-                  className="w-full h-full"
-                  viewBox="0 0 300 160"
-                  preserveAspectRatio="none"
-                >
-                  <defs>
-                    <linearGradient
-                      id="barGradient"
-                      x1="0"
-                      y1="0"
-                      x2="0"
-                      y2="1"
-                    >
-                      <stop offset="0%" stopColor="#0f172a" />
-                      <stop offset="100%" stopColor="rgba(15, 23, 42, 0.4)" />
-                    </linearGradient>
-                  </defs>
-
-                  {/* Grid Lines */}
-                  <line
-                    x1="20"
-                    y1="20"
-                    x2="290"
-                    y2="20"
-                    stroke="#F1F5F9"
-                    strokeWidth="1"
-                    strokeDasharray="3,3"
-                  />
-                  <line
-                    x1="20"
-                    y1="65"
-                    x2="290"
-                    y2="65"
-                    stroke="#F1F5F9"
-                    strokeWidth="1"
-                    strokeDasharray="3,3"
-                  />
-                  <line
-                    x1="20"
-                    y1="110"
-                    x2="290"
-                    y2="110"
-                    stroke="#F1F5F9"
-                    strokeWidth="1"
-                    strokeDasharray="3,3"
-                  />
-                  <line
-                    x1="20"
-                    y1="130"
-                    x2="290"
-                    y2="130"
-                    stroke="#E2E8F0"
-                    strokeWidth="1"
-                  />
-
-                  {/* Render the bars dynamically */}
-                  {monthlyStats.map((stat, i) => {
-                    const h = (stat.count / maxCount) * 100;
-                    const x = 30 + i * 44;
-                    const y = 130 - h;
-                    return (
-                      <g key={stat.month}>
-                        {/* Rounded top rect */}
-                        <rect
-                          x={x}
-                          y={y}
-                          width="22"
-                          height={Math.max(h, 2)}
-                          rx="4"
-                          fill="url(#barGradient)"
-                          className="transition-all duration-300 hover:opacity-80"
-                        />
-                        {/* Value text above bar */}
-                        <text
-                          x={x + 11}
-                          y={y - 6}
-                          textAnchor="middle"
-                          fontSize="9"
-                          fontWeight="700"
-                          fill="#475569"
-                        >
-                          {stat.count}
-                        </text>
-                        {/* Month label below chart base */}
-                        <text
-                          x={x + 11}
-                          y="146"
-                          textAnchor="middle"
-                          fontSize="9"
-                          fontWeight="600"
-                          fill="#64748B"
-                        >
-                          {stat.month}
-                        </text>
-                      </g>
-                    );
-                  })}
-                </svg>
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-secondary flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-indigo-500" />
+                  Signings Trend (Monthly)
+                </h3>
+                <div className="mt-2 flex items-baseline justify-between">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl font-extrabold text-secondary tracking-tight">
+                      {signedCount}
+                    </span>
+                    <span className="text-[10px] font-bold text-text-secondary uppercase tracking-wider">
+                      Total Signings
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-semibold text-text-secondary/70">
+                    Updated: Today
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="text-[10px] text-text-secondary/70 text-center mt-4">
-              Visualizes signature submission metrics over the last 6 months
+
+              {signedCount === 0 ? (
+                <div className="h-[220px] flex flex-col items-center justify-center text-center p-6 border border-dashed border-border/60 rounded-2xl bg-white/20">
+                  <svg
+                    className="w-10 h-10 text-text-secondary/50 mb-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <p className="text-xs font-bold text-secondary">
+                    No signings yet
+                  </p>
+                  <p className="text-[10px] text-text-secondary mt-1 max-w-[200px]">
+                    Signing activity will appear here once users submit
+                    signatures.
+                  </p>
+                </div>
+              ) : (
+                <div className="h-[220px] flex items-center justify-center">
+                  <svg
+                    className="w-full h-full"
+                    viewBox="0 0 300 240"
+                    preserveAspectRatio="none"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="barGradient"
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="1"
+                      >
+                        <stop offset="0%" stopColor="#0f172a" />
+                        <stop offset="100%" stopColor="rgba(15, 23, 42, 0.4)" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Grid Lines */}
+                    <line
+                      x1="20"
+                      y1="30"
+                      x2="290"
+                      y2="30"
+                      stroke="#F1F5F9"
+                      strokeWidth="1"
+                      strokeDasharray="3,3"
+                    />
+                    <line
+                      x1="20"
+                      y1="90"
+                      x2="290"
+                      y2="90"
+                      stroke="#F1F5F9"
+                      strokeWidth="1"
+                      strokeDasharray="3,3"
+                    />
+                    <line
+                      x1="20"
+                      y1="150"
+                      x2="290"
+                      y2="150"
+                      stroke="#F1F5F9"
+                      strokeWidth="1"
+                      strokeDasharray="3,3"
+                    />
+                    <line
+                      x1="20"
+                      y1="210"
+                      x2="290"
+                      y2="210"
+                      stroke="#E2E8F0"
+                      strokeWidth="1"
+                    />
+
+                    {/* Render the bars dynamically */}
+                    {monthlyStats.map((stat, i) => {
+                      const h =
+                        maxCount > 0 ? (stat.count / maxCount) * 150 : 0;
+                      const x = 30 + i * 44;
+                      const y = 210 - h;
+                      const isZero = stat.count === 0;
+                      return (
+                        <g key={stat.month}>
+                          {/* Rounded top rect */}
+                          <rect
+                            x={x}
+                            y={isZero ? 209 : y}
+                            width="22"
+                            height={isZero ? 1 : Math.max(h, 2)}
+                            rx="3"
+                            fill={isZero ? "#E2E8F0" : "url(#barGradient)"}
+                            className="transition-all duration-300 hover:opacity-80"
+                          />
+                          {/* Value text above bar */}
+                          {!isZero && (
+                            <text
+                              x={x + 11}
+                              y={y - 6}
+                              textAnchor="middle"
+                              fontSize="9"
+                              fontWeight="700"
+                              fill="#475569"
+                            >
+                              {stat.count}
+                            </text>
+                          )}
+                          {/* Month label below chart base */}
+                          <text
+                            x={x + 11}
+                            y="226"
+                            textAnchor="middle"
+                            fontSize="9"
+                            fontWeight="600"
+                            fill="#64748B"
+                          >
+                            {stat.month}
+                          </text>
+                        </g>
+                      );
+                    })}
+                  </svg>
+                </div>
+              )}
             </div>
           </div>
         </div>
