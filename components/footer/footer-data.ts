@@ -21,6 +21,7 @@ export const footerNavLinks: FooterNavLink[] = [
   { label: "Cookies", href: "#" },
   { label: "Product", href: "#" },
   { label: "Company", href: "#" },
+  { label: "FDD", href: "/fdd" },
 ];
 
 export const footerSocialLinks: FooterSocialLink[] = [

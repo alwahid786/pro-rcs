@@ -9,7 +9,7 @@ type ArrowRightIconProps = {
 };
 
 const ArrowRightIcon = ({ className, width = 18, height = 18 }: ArrowRightIconProps) => (
-  <PixelArrowRightIcon className={className} width={width} height={height} aria-hidden />
+  <PixelArrowRightIcon className={className} width={String(width)} height={String(height)} aria-hidden />
 );
 
 export default ArrowRightIcon;

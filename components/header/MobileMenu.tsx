@@ -57,8 +57,8 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
                 >
                   <div className="overflow-hidden">
                     <ul className="flex flex-col gap-0.5 pb-2 pl-2">
-                      {item.children.map((child) => (
-                        <li key={child.href}>
+                      {item.children.map((child, index) => (
+                        <li key={`${child.href}-${index}`}>
                           <Link
                             href={child.href}
                             onClick={onClose}

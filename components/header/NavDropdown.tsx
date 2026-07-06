@@ -75,7 +75,7 @@ const NavDropdown = ({ item }: NavDropdownProps) => {
           <ul className="flex flex-col gap-0.5">
             {item.children.map((child, index) => (
               <li
-                key={child.href}
+                key={`${child.href}-${index}`}
                 className="animate-dropdown-item"
                 style={{ animationDelay: open ? `${index * 40}ms` : "0ms" }}
               >

@@ -8,7 +8,7 @@ type ChevronDownIconProps = {
 };
 
 const ChevronDownIcon = ({ className }: ChevronDownIconProps) => {
-  return <ChevronDown width={14} height={14} className={cn("shrink-0", className)} aria-hidden />;
+  return <ChevronDown width="14" height="14" className={cn("shrink-0", className)} aria-hidden />;
 };
 
 export default ChevronDownIcon;
