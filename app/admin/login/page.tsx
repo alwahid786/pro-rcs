@@ -36,7 +36,6 @@ export default function AdminLoginPage() {
     } catch (err) {
       const message = err instanceof Error ? err.message : "An unexpected error occurred.";
       setError(message);
-    } finally {
       setIsLoading(false);
     }
   };
