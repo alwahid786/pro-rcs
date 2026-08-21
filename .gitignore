@@ -39,3 +39,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 config.bat
+
+#enviroment
+.env
+.env.local
+.env.test
+.env.development
+.env.production
