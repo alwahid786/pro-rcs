@@ -38,6 +38,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-config.bat
 
 #enviroment
+
+# env: local settings and secrets stay on each machine
+.env
+.env.*
+!.env.example
